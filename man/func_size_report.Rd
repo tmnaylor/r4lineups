@@ -10,6 +10,8 @@ func_size_report(lineup_vec, target_pos)
 \item{lineup_vec}{A numeric vector of lineup choices}
 
 \item{target_pos}{A scalar, representing target position in lineup. Must be declared by user}
+
+\item{R}{Number of bootstrap samples}
 }
 \description{
 This function is a master function, calling other functions it needs,
@@ -19,14 +21,13 @@ and reporting results in some detail
 Function depends on functions from package 'boot'
 }
 \examples{
-Data:
+#Data:
 lineup_vec <- round(runif(100, 1, 6))
 target_pos <- 3
 
-Call:
+#Call:
 x <- func_size_report(lineup_vec, target_pos)
 x <- func_size_report(lineup_vec, 3)
-
 }
 \references{
 Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their

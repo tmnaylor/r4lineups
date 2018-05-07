@@ -7,10 +7,10 @@
 gen_esize_m_ci(lineupesizes, perc = 0.05)
 }
 \arguments{
-\item{perc}{Defaults to 0.5. Can be specified by user, according to desired
-level of alpha}
+\item{perc}{Defaults to .05. Can be specified by user, according to desired
+level of alpha (scalar)}
 
-\item{lineupsizes}{A dataframe of bootstrapped effective sizes}
+\item{lineupsizes}{A vector of bootstrapped effective sizes}
 }
 \value{
 Confidence intervals for effective size
@@ -20,7 +20,17 @@ Function for computing Effective Size (Malpass, 1981, as adjusted by Tredoux, 19
 with CIs from bootstrap df of lineups
 }
 \examples{
-Use gen_boot_samples to get bootstrapped data
+#Data:
+esize_vec <- round(runif(100, 1, 6))
 
+#Use gen_boot_samples to get bootstrapped data:
 e_size_boot <- gen_boot_samples(esize_vec, 1000)
+
+#Compute effective size for bootstrapped data:
+lineupsizes <- lapply(bootdata, esize_m) \%>\% unlist
+
+#Call:
+gen_esize_m_ci(lineupsizes)
+gen_esize_m_ci(lineupsizes, perc = .025)
+gen_esize_m_ci(lineupsizes, perc = .975)
 }

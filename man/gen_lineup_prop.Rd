@@ -20,11 +20,14 @@ A vector of bootstrapped proportions, indicating the frequency with which
 Function for computing lineup proportion over a dataframe
 }
 \examples{
-Get bootstrapped data:
-lineup_boot_df <- gen_boot_samples(lineup_vec, 1000)
+#Data
+lineup_vec <- round(runif(100, 1, 6))
 target_pos <- 3
 
-Call:
+#Get bootstrapped data:
+lineup_boot_df <- gen_boot_samples(lineup_vec, 1000)
+
+#Call:
 lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos)
 lineuprops <- gen_lineup_prop(lineup_boot_df, 3)
 

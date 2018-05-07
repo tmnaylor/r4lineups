@@ -23,22 +23,16 @@ Function that computes bootstrapped lineup proportion using 1000 bootstrap draws
         Calls 'boot function in 'boot' package
 }
 \examples{
-Data:
+#Data:
 lineup_vec <- round(runif(100, 1, 6))
 target_pos <- c(1, 2, 3, 4, 5, 6)
 
-Call:
-lineup_boot_allprop(lineup_vec, target_pos)
-Data:
-lineup_vec <- round(runif(100, 1, 6))
-target_pos <- c(1, 2, 3, 4, 5, 6)
-
-Call:
+#Call:
 lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos)
 }
 \references{
 Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their
-           applicatio}n. Cambridge University Press.
+           application}. Cambridge University Press.
 
            Wells, G. L., Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
            assessing the fairness of a lineup. \emph{Law and Human Behavior, 3}(4),

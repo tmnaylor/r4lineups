@@ -18,11 +18,11 @@ Returns a vector containing lineup proportion for each lineup member
 Computes lineup proportion for each member in a lineup
 }
 \examples{
-Get data:
+#Data:
 lineup_vec <- round(runif(100, 1, 6))
 target_pos <- c(1, 2, 3, 4, 5, 6)
 
-Call:
+#Call:
 x <- allprop(lineup_vec, target_pos)
 }
 \references{

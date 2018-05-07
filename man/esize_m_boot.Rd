@@ -4,7 +4,7 @@
 \alias{esize_m_boot}
 \title{Bootstrapped Effective Size}
 \usage{
-esize_m_boot(lineup_vec, d, printarg = FALSE)
+esize_m_boot(lineup_vec, d, printarg = TRUE)
 }
 \arguments{
 \item{lineup_vec}{A vector of lineup choices}
@@ -19,6 +19,14 @@ Base function for computing bootstrapped effective size
 }
 \details{
 Function to call when bootstrap resampling using boot function (in package 'boot')
+}
+\examples{
+#Get boot object:
+bootobject <- boot(lineup_vec, esize_m_boot, R=1000)
+bootobject
+
+#To get confidence intervals:
+cis <- boot.ci(bootobject, conf = 0.95, type = "all")
 }
 \references{
 Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their

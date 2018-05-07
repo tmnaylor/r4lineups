@@ -27,8 +27,15 @@
 #'            Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
+#'@examples
+#'#Get boot object:
+#'bootobject <- boot(lineup_vec, esize_m_boot, R=1000)
+#'bootobject
+#'
+#'#To get confidence intervals:
+#'cis <- boot.ci(bootobject, conf = 0.95, type = "all")
 
-esize_m_boot <- function (lineup_vec, d, printarg=FALSE){
+esize_m_boot <- function (lineup_vec, d, printarg=TRUE){
     lineup_table <- table(lineup_vec[d])
     k <- length(lineup_table)
     ea <- sum(lineup_table)/k

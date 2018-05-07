@@ -9,6 +9,10 @@ d_weights(linedf)
 \arguments{
 \item{linedf}{A dataframe of parameters for computing diagnosticity ratio}
 }
+\value{
+A dataframe with one column containing weights for each pair of
+        lineups for which diagnosticity ratio is being calculated.
+}
 \description{
 Function to compute weights of each diagnosticity ratio  for k lineup pairs
 }
@@ -36,10 +40,10 @@ In order to obtain a pooled estimate of a set of diagnosticity ratios,
              }
 }
 \examples{
-Get data:
+#Data:
 linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
 
-Call:
+#Call:
 wi <- d_weights(linedf)
 
 }

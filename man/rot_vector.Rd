@@ -6,6 +6,9 @@
 \usage{
 rot_vector(lineup_vec)
 }
+\arguments{
+\item{lineup_vec}{}
+}
 \description{
 Helper function to rotate vector
 }

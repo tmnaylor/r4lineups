@@ -1,4 +1,3 @@
-
 #'Effective Size with Confidence Intervals from Normal Theory(Tredoux, 1998)
 #'
 #'Function for generating Effective Size (Tredoux, 1998) with CIs from normal theory
@@ -25,13 +24,12 @@
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
 #'@examples
-#'Data:
+#'#Data:
 #'lineup_vec <- round(runif(100, 1, 6))
 #'lineup_table <- table(lineup_vec)
 #'
-#'Call:
-#'e_ci <- esize_T_ci_n(lineup_table, 0.05)
-#'e_ci <- esize_T_ci_n(lineup_table, 0.001)
+#'#Call:
+#'e_ci <- esize_T_ci_n(lineup_table, .95)
 
 esize_T_ci_n <- function(lineup_table, alpha){
     N = sum(lineup_table)
@@ -40,7 +38,7 @@ esize_T_ci_n <- function(lineup_table, alpha){
     c <- (sum((lineup_table/N)^2)^2)
     var_i <- a*(b-c)
     sd_i <- sqrt(var_i)
-    ci_low <- i_T(lineup_table) + qnorm((1-alpha)/2)*sd_i
-    ci_high <- i_T(lineup_table) + qnorm(alpha+((1-alpha)/2))*sd_i
+    ci_low <- i_esize_T(lineup_table) + qnorm((1-alpha)/2)*sd_i
+    ci_high <- i_esize_T(lineup_table) + qnorm(alpha+((1-alpha)/2))*sd_i
     e_ci <- list(ci_low = 1/(1-ci_low), ci_high = 1/(1-ci_high))
 }

@@ -58,11 +58,11 @@ lineups in which the number of choices and number of lineup members differs.
 }
 }
 \examples{
-Target present data:
+#Target present data:
 A <-  round(runif(100,1,6))
 B <-  round(runif(70,1,5))
 C <-  round(runif(20,1,4))
-lineup_pos_list <- list(A, B, C)
+lineup_pres_list <- list(A, B, C)
 rm(A, B, C)
 
 a1 <- c(1, 2, 3, 4, 5, 6)
@@ -71,7 +71,7 @@ c1 <- c(1, 2, 3, 4)
 pos_pres <- list(a1, b1, c1)
 rm(a1, b1, c1)
 
-Target absent data:
+#Target absent data:
 A <-  round(runif(100,1,6))
 B <-  round(runif(70,1,5))
 C <-  round(runif(20,1,4))
@@ -84,8 +84,8 @@ c1 <- c(1, 2, 3, 4)
 pos_abs <- list(a1, b1, c1)
 rm(a1, b1, c1)
 
-Call:
-diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
+#Call:
+linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
 }
 \references{
 Malpass, R. S. (1981). Effective size and defendant bias in

@@ -1,11 +1,11 @@
 #'Functional Size
 #'
-#'This function computes functional size, which is just N/D, where N = number of
-#'mock witnesses and D = number of mock witnesses choosing the target
+#'This function computes functional size (N/D), where N = number of
+#'mock witnesses, & D = number of mock witnesses choosing the target
 #'
 #'@param lineup_vec A numeric vector of lineup choices
 #'@param target_pos A scalar, representing target position in lineup. Must be declared by user
-#'@returns Functional size of lineup
+#'@return Functional size of lineup
 #'@details An estimation of the number of plausible lineup members in a given lineup.
 #'@references Tredoux, C. G. (1998). Statistical inference on measures of lineup fairness.
 #'            \emph{Law and Human Behavior, 22}(2), 217-237.
@@ -17,13 +17,15 @@
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
 #'@examples
-#'Data:
+#'#Data:
 #'lineup_vec <- round(runif(100, 1, 6))
 #'target_pos <- 3
 #'
-#'Call:
+#'#Call:
 #'x <- func_size(lineup_vec, target_pos)
 #'x <- func_size(lineup_vec, 3)
+
 func_size <- function(lineup_vec, target_pos){
     fsize <- length(lineup_vec) / sum(lineup_vec == target_pos)
+    print(fsize)
 }

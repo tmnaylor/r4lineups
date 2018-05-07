@@ -30,13 +30,13 @@
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
 #'@examples
-#'Data:
+#'#Data:
 #'
 #'lineup_vec1 <- round(runif(100, 1, 6))
 #'lineup_vec2 <- round(runif(100, 1, 6))
-#'linedf -as.data.frame(cbind(lineup_vec1, lineup_vec2))
+#'linedf <- as.data.frame(cbind(lineup_vec1, lineup_vec2))
 #'
-#'Call:
+#'#Call:
 #'x <- effsize_compare(linedf)
 effsize_compare <- function(linedf){
     cat ("\n")

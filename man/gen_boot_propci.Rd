@@ -23,17 +23,17 @@ Function for computing arbitrary percentile of bootstrapped lineup proportion
 Can be used to calculate confidence intervals at desired level of alpha
 }
 \examples{
-Data:
+#Data:
 lineup_vec <- round(runif(100, 1, 6))
 target_pos <- 3
 
-Bootstrap data:
+#Bootstrap data:
 bootdf <- gen_boot_samples(lineup_vec, 1000)
 
-Compute proportion for bootstrapp samples:
+#Compute proportion for bootstrapp samples:
 lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos)
 
-Get boot CIs:
+#Get boot CIs:
 prop_bootci_lower <- gen_boot_propci(lineuprops, perc = .025)
 prop_bootci_upper <- gen_boot_propci(lineuprops, perc = .975)
 }

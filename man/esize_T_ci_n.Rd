@@ -20,13 +20,12 @@ Reduces the size of a lineup from a (corrected) nominal starting
          the level of chance expectation
 }
 \examples{
-Data:
+#Data:
 lineup_vec <- round(runif(100, 1, 6))
 lineup_table <- table(lineup_vec)
 
-Call:
-e_ci <- esize_T_ci_n(lineup_table, 0.05)
-e_ci <- esize_T_ci_n(lineup_table, 0.001)
+#Call:
+e_ci <- esize_T_ci_n(lineup_table, .95)
 }
 \references{
 Malpass, R. S. (1981). Effective size and defendant bias in

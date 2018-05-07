@@ -11,19 +11,22 @@ func_size(lineup_vec, target_pos)
 
 \item{target_pos}{A scalar, representing target position in lineup. Must be declared by user}
 }
+\value{
+Functional size of lineup
+}
 \description{
-This function computes functional size, which is just N/D, where N = number of
-mock witnesses and D = number of mock witnesses choosing the target
+This function computes functional size (N/D), where N = number of
+mock witnesses, & D = number of mock witnesses choosing the target
 }
 \details{
 An estimation of the number of plausible lineup members in a given lineup.
 }
 \examples{
-Data:
+#Data:
 lineup_vec <- round(runif(100, 1, 6))
 target_pos <- 3
 
-Call:
+#Call:
 x <- func_size(lineup_vec, target_pos)
 x <- func_size(lineup_vec, 3)
 }

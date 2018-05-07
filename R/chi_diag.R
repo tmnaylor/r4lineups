@@ -2,12 +2,22 @@
 #'
 #'Function for getting chi-squared value for homogeneity of diagnosticity ratios
 #'@param df A dataframe containing: ln(d), variance of ln(d), d weights
-#'@details To compute df, use the diag_param helper function.
+#'@details To compute linedf, use the diag_param helper function.
+#'         To compute df, apply ln_diag_ratio, var_lnd & d_weights functions
+#'         to linedf, then bind results into one dataframe
 #'@examples
+#'#Parameters for diagnosticity calculations
+#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
+#'
+#'#Get ln(d), variance of ln(d) & d weights
 #'ratio <- ln_diag_ratio(linedf)
 #'var <- var_lnd(linedf)
 #'wi <- d_weights(linedf)
+#'
+#'#Bind estimates into one dataframe
 #'df <- cbind(ratio, var, wi)
+#'
+#'#Call:
 #'chi_diag(df)
 #'
 #'@references Malpass, R. S. (1981). Effective size and defendant bias in

@@ -28,10 +28,10 @@
 #'@references Tredoux, C. G. (1998). Statistical inference on measures of lineup
 #'            fairness. \emph{Law and Human Behavior, 22}(2), 217-237.
 #'@examples
-#'Get data:
+#'#Data:
 #'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
 #'
-#'Call:
+#'#Call:
 #'wi <- d_weights(linedf)
 #'
 d_weights <- function(linedf){

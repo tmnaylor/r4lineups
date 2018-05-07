@@ -21,13 +21,13 @@ the target was absent}
 Computes Tredoux's diagnosticity ratio for one lineup pair
 }
 \examples{
-Data:
+#Data:
 lineup_pres <- round(runif(100, 1, 6))
 lineup_abs <- round(runif(70, 1, 5))
 pos_pres <- 3
 pos_abs <- 5
 
-Call:
+#Call:
 diag_ratio_T(lineup_pres, lineup_abs, pos_pres, pos_abs)
 diag_ratio_T(lineup_pres, lineup_abs, 3, 5)
 }

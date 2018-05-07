@@ -5,6 +5,7 @@
 #'
 #'@param lineup_vec A numeric vector of lineup choices
 #'@param target_pos A scalar, representing target position in lineup. Must be declared by user
+#'@param R Number of bootstrap samples
 #'@seealso \code{\link[boot:boot]{boot}}: https://cran.r-project.org/web/packages/boot/boot.pdf
 #'@details Function depends on functions from package 'boot'
 #'@references Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their
@@ -20,17 +21,17 @@
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
 #'@examples
-#'Data:
+#'#Data:
 #'lineup_vec <- round(runif(100, 1, 6))
 #'target_pos <- 3
 #'
-#'Call:
+#'#Call:
 #'x <- func_size_report(lineup_vec, target_pos)
 #'x <- func_size_report(lineup_vec, 3)
-#'
+
 func_size_report <- function(lineup_vec, target_pos){
     cat ("\n")
-    temp1 <- boot(lineup_vec, func_size.boot, target_pos=3, R=1000)
+    temp1 <- boot(lineup_vec, func_size.boot, target_pos, R=1000)
     temp2 <- boot.ci(temp1, type = c("norm","bca","perc"))
     cat ("Functional size of lineup is ",round(func_size(lineup_vec,target_pos),3))
     cat ("\n")

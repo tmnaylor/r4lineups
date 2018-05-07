@@ -9,9 +9,14 @@
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
 #'@examples
-#'lineup_prop_vec(lineup_table, 3)
-#'lineup_prop_vec(table(lineup_vec), 2))
-#'lineup_prop_vec(table(c(1, 2, 5, 3, 2, 4)), 2)
+#'#Data:
+#'lineup_vec <- round(runif(100, 1, 6))
+#'lineup_table <- table(lineup_vec)
+#'
+#'#Call:
+#'lineup_prop_tab(lineup_table, 3)
+#'lineup_prop_tab(table(lineup_vec), 2)
+#'lineup_prop_tab(table(c(1, 2, 5, 3, 2, 4)), 2)
 
 lineup_prop_tab <- function (lineup_table,target_pos){
     lineup_table[target_pos]/sum(lineup_table)

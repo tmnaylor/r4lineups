@@ -13,11 +13,11 @@ i_esize_T(lineup_table)
 Function for generating I component of effective size
 }
 \examples{
-Data:
+#Data:
 lineup_vec <- round(runif(100, 1, 6))
 lineup_table <- table(lineup_vec)
 
-Call:
+#Call:
 i <- i_esize_T(lineup_table)
 }
 \references{

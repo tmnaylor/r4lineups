@@ -10,12 +10,12 @@ allfoilbias(lineup_table)
 \item{lineup_table}{A table of lineup choices}
 }
 \description{
-Function to compute bias for each lineup member (assuming foil is suspect, 
+Function to compute bias for each lineup member (assuming foil is suspect,
 from Malpass, 1981)
 }
 \examples{
 lineup_vec <- round(runif(100, 1, 6))
-lineup_tablex <- table(lineup_vec)
+lineup_table <- table(lineup_vec)
 x <- allfoilbias(lineup_table)
 
 }

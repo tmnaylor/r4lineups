@@ -4,21 +4,25 @@
 \alias{lineup_prop_vec}
 \title{Lineup proportion}
 \usage{
-lineup_prop_vec(lineup_vec, susp_pos)
+lineup_prop_vec(lineup_vec, target_pos)
 }
 \arguments{
 \item{lineup_vec}{A numeric vector of lineup choices}
 
-\item{susp_pos}{Suspect/lineup member position. Must be declared by user}
+\item{target_pos}{Suspect/lineup member position. Must be declared by user}
 }
 \value{
-Returns a proportion indicating the frequency with which a lineup
-       member was selected
+Returns a proportion indicating the frequency with which a target was
+       identified in a lineup
 }
 \description{
 Computes the proportion of mock witnesses identifying a particular lineup member
 }
 \examples{
+#Data:
+lineup_vec <- round(runif(100, 1, 6))
+
+#Call:
 lineup_prop_vec(lineup_vec, 3)
 lineup_prop_vec(c(1, 2, 5, 3, 2, 4), 2)
 }

@@ -9,29 +9,31 @@ d_bar(df)
 \arguments{
 \item{df}{A dataframe containing: ln(d), variance of ln(d), d weights}
 }
+\value{
+Mean diagnosticity ratio for k independent lineups
+}
 \description{
 Function for computing pooled estimator from a set of k diagnosticity ratios
 }
 \examples{
-Get data:
+#Data:
 
 linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
 
-Compute ln(d):
+#Compute ln(d):
 ratio <- ln_diag_ratio(linedf)
 
-Compute variance of ln(d):
+#Compute variance of ln(d):
 var <- var_lnd(linedf)
 
-Compute weights for pooled estimator:
+#Compute weights for pooled estimator:
 wi <- d_weights(linedf)
 
-Bind ln(d), variance of ln(d) and weights into one df:
+#Bind ln(d), variance of ln(d) and weights into one df:
 df <- cbind(ratio, var, wi)
 
-Call:
+#Call:
 d_bar(df)
-
 }
 \references{
 Malpass, R. S. (1981). Effective size and defendant bias in

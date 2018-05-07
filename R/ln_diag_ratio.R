@@ -38,10 +38,10 @@
 #'            3}(4), 285-293.
 
 #'@examples
-#'Data:
-#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
+#'#Data:
+#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
 #'
-#'Call:
+#'#Call:
 #'lnd <- ln_diag_ratio(linedf)
 ln_diag_ratio <- function(linedf){
     d   <- (linedf$n11+0.5/((linedf$n11+linedf$n21)+0.5))/

@@ -4,7 +4,7 @@
 #'to compute bootstrapped confidence intervals for the estimate of functional size
 #'@param lineup_vec A numeric vector of lineup choices
 #'@param d Iindices for bootstrap resampling
-#'@param susp_pos A scalar, representing position of target in lineup. Must be declared by user
+#'@param target_pos A scalar, representing position of target in lineup. Must be declared by user
 #'@seealso \code{\link[boot:boot]{boot}}: https://cran.r-project.org/web/packages/boot/boot.pdf
 #'@details Function is called bootstrap resampling using boot function (in package 'boot')
 #'         This function is never called by the user - it is called in the functional
@@ -21,7 +21,7 @@
 #'            Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
-#'
-func_size.boot <- function(lineup_vec, d=d, susp_pos){
-    return (func_size(lineup_vec[d], susp_pos))
+
+func_size.boot <- function(lineup_vec, d=d, target_pos){
+    return (func_size(lineup_vec[d], target_pos))
 }

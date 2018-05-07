@@ -2,12 +2,21 @@
 #'
 #'Function for computing mean. med and se of boot proportion
 #'@param lineuprops A dataframe of bootstrapped lineup proportions
-#'@returns Mean, median and standard error of lineup proportion across a bootstrapped
-#'         dataframe
+#'@return Mean, median, standard deviation, standard error & 95 CIs of
+#'        lineup proportion across a bootstrapped dataframe
 #'@examples
+#'#Data:
+#'lineup_vec <- round(runif(100, 1, 6))
+#'target_pos <- 3
 #'
-#'Data: Get bootstrapped data using gen_boot_samples?
+#'#Bootstrap data:
+#'bootdf <- gen_boot_samples(lineup_vec, 1000)
 #'
+#'#Compute proportion for bootstrapp samples:
+#'lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos)
+#'
+#'#Call:
+#'gen_boot_propmean_se(lineuprops)
 gen_boot_propmean_se <- function (lineuprops){
     mean_boot_prop = mean(lineuprops, na.rm = T)
     median_boot_prop = median(lineuprops, na.rm = T)

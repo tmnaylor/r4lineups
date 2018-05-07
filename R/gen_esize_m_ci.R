@@ -2,14 +2,24 @@
 #'
 #'Function for computing Effective Size (Malpass, 1981, as adjusted by Tredoux, 1998)
 #'with CIs from bootstrap df of lineups
-#'@param lineupsizes A dataframe of bootstrapped effective sizes
-#'@param perc Defaults to 0.5. Can be specified by user, according to desired
-#'            level of alpha
+#'@param lineupsizes A vector of bootstrapped effective sizes
+#'@param perc Defaults to .05. Can be specified by user, according to desired
+#'            level of alpha (scalar)
 #'@return Confidence intervals for effective size
 #'@examples
-#'Use gen_boot_samples to get bootstrapped data
+#'#Data:
+#'esize_vec <- round(runif(100, 1, 6))
 #'
+#'#Use gen_boot_samples to get bootstrapped data:
 #'e_size_boot <- gen_boot_samples(esize_vec, 1000)
+#'
+#'#Compute effective size for bootstrapped data:
+#'lineupsizes <- lapply(bootdata, esize_m) %>% unlist
+#'
+#'#Call:
+#'gen_esize_m_ci(lineupsizes)
+#'gen_esize_m_ci(lineupsizes, perc = .025)
+#'gen_esize_m_ci(lineupsizes, perc = .975)
 gen_esize_m_ci <- function (lineupesizes, perc=.05){
     if(perc >= 0 & perc <= 1) {
         quantile(lineupesizes, probs = perc)

@@ -20,11 +20,11 @@
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
 #'@examples
-#'Data:
+#'#Data:
 #'lineup_vec <- round(runif(100, 1, 6))
 #'lineup_table <- table(lineup_vec)
 #'
-#'Call:
+#'#Call:
 #'i <- i_esize_T(lineup_table)
 i_esize_T <- function(lineup_table){
   i <- 1-(1/(sum(lineup_table)^2))*sum(lineup_table^2)

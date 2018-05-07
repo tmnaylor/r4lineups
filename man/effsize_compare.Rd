@@ -20,12 +20,16 @@ Function for comparing effective size of two independent lineups (Tredoux, 1998)
 \details{
 This function is a master function, calling other functions
         it needs, and reporting results in some detail
-
-Function to call when bootstrap resampling using boot function (in package 'boot')
 }
 \examples{
+#Data:
 
-Data:
+lineup_vec1 <- round(runif(100, 1, 6))
+lineup_vec2 <- round(runif(100, 1, 6))
+linedf <- as.data.frame(cbind(lineup_vec1, lineup_vec2))
+
+#Call:
+x <- effsize_compare(linedf)
 }
 \references{
 Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their

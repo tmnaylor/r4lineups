@@ -28,18 +28,19 @@
 #'            3}(4), 285-293.
 #'@return Tredoux's & Malpass's estimates of effective size
 #'@examples
-#'Data:
+#'#Data:
 #'lineup_vec <- round(runif(100, 1, 6))
 #'lineup_table <- table(lineup_vec)
 #'
-#'Call:
-#'e <- esize_m(lineup_table, printarg = TRUE)
+#'#Call:
+#'esize_m(lineup_table, printarg = TRUE)
+#'esize_m(lineup_table)
 esize_m <- function (lineup_table, printarg=FALSE){
   k <- length(lineup_table)
   ea <- sum(lineup_table)/k
   x <- sum(abs(lineup_table-ea)/(2*ea))
   esize_ma = k-x
-  ka <- sum(linetable!=0)
+  ka <- sum(lineup_table!=0)
   lineup_table_a <- lineup_table[lineup_table!=0]
   ea <- (sum(lineup_table))/ka
   xa <- sum(abs(lineup_table_a-ea)/(2*ea))

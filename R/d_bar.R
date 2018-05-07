@@ -3,7 +3,7 @@
 #'Function for computing pooled estimator from a set of k diagnosticity ratios
 #'
 #'@param df A dataframe containing: ln(d), variance of ln(d), d weights
-#'@returns Mean diagnosticity ratio for k independent lineups
+#'@return Mean diagnosticity ratio for k independent lineups
 #'@references Malpass, R. S. (1981). Effective size and defendant bias in
 #'            eyewitness identification lineups. \emph{Law and Human Behavior, 5}(4), 299-309.
 #'
@@ -22,25 +22,25 @@
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
 #'@examples
-#'Get data:
+#'#Data:
 #'
 #'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
 #'
-#'Compute ln(d):
+#'#Compute ln(d):
 #'ratio <- ln_diag_ratio(linedf)
 #'
-#'Compute variance of ln(d):
+#'#Compute variance of ln(d):
 #'var <- var_lnd(linedf)
 #'
-#'Compute weights for pooled estimator:
+#'#Compute weights for pooled estimator:
 #'wi <- d_weights(linedf)
 #'
-#'Bind ln(d), variance of ln(d) and weights into one df:
+#'#Bind ln(d), variance of ln(d) and weights into one df:
 #'df <- cbind(ratio, var, wi)
 #'
-#'Call:
+#'#Call:
 #'d_bar(df)
-#'
+
 d_bar <- function(df){
     numerator   <- sum(df$wi*df$lnd)
     denominator <- sum(df$wi)

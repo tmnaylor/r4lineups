@@ -60,7 +60,7 @@
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
 #'@examples
-#'Target present data:
+#'#Target present data:
 #'A <-  round(runif(100,1,6))
 #'B <-  round(runif(70,1,5))
 #'C <-  round(runif(20,1,4))
@@ -73,7 +73,7 @@
 #'pos_pres <- list(a1, b1, c1)
 #'rm(a1, b1, c1)
 #'
-#'Target absent data:
+#'#Target absent data:
 #'A <-  round(runif(100,1,6))
 #'B <-  round(runif(70,1,5))
 #'C <-  round(runif(20,1,4))
@@ -86,8 +86,8 @@
 #'pos_abs <- list(a1, b1, c1)
 #'rm(a1, b1, c1)
 #'
-#'Call:
-#'diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
+#'#Call:
+#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
 
 diag_param <- function(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs){
   diagdf1 <- as.data.frame(matrix(ncol = 2,
