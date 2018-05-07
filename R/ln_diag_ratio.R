@@ -1,7 +1,6 @@
-#' Variance of ln of diagnosticity ratio
+#' Ln of Diagnosticity Ratio
 #'
-#' Function to compute variance of ln(d) for k lineup pairs
-#'
+#' Computes ln of diagnosticity ratio: ln(d)
 #' @param linedf A dataframe of parameters for computing diagnosticity ratio
 #' @details \strong{To get linedf, use the diag_param helper function}
 #'
@@ -20,7 +19,6 @@
 #'          \item \emph{n13}: Number of mock witnesses who did not identify the suspect in the
 #'              target absent condition
 #'              }
-#'
 #'@references Malpass, R. S. (1981). Effective size and defendant bias in
 #'            eyewitness identification lineups. \emph{Law and Human Behavior, 5}(4), 299-309.
 #'
@@ -30,25 +28,25 @@
 #'            people} (pp. 155-178). Mahwah, NJ: Lawrence Erlbaum Associates.
 #'
 #'            Tredoux, C. G. (1998). Statistical inference on measures of lineup fairness.
-#'            \emph{Law and Human Behavior, 22}(2), 217-237.
+#'           \emph{Law and Human Behavior, 22}(2), 217-237.
 #'
 #'            Tredoux, C. (1999). Statistical considerations when determining measures of
-#'            lineup size and lineup bias. \emph{Applied Cognitive Psychology}, 13, S9-S26.
+#'            lineup size and lineup bias. \emph{Applied Cognitive Psychology, 13}, S9-S26.
 #'
 #'            Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
-#'
+
 #'@examples
-#'Get data:
-#'linedf <- diag_param(lineup_pres_list, lineup_abs_list,
-#'                                          pos_pres, abs_pres)
-#'Call:
-#'var_lnd <- var_lnd(linedf)
+#'Data:
+#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
 #'
-var_lnd <- function(linedf){
-    var <- (linedf$n21/(linedf$n11+(linedf$n11+linedf$n21)))+
-        (linedf$n22/(linedf$n12+(linedf$n12+linedf$n22)))
-    var <- as.data.frame(var)
-    return(var)
+#'Call:
+#'lnd <- ln_diag_ratio(linedf)
+ln_diag_ratio <- function(linedf){
+    d   <- (linedf$n11+0.5/((linedf$n11+linedf$n21)+0.5))/
+           (linedf$n12+0.5/((linedf$n12+linedf$n22)+0.5))
+    lnd <- log(d)
+    lnd <- as.data.frame(lnd)
+    return(lnd)
 }

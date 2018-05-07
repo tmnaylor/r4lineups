@@ -12,6 +12,25 @@ in which the target was either absent or present}
 
 \item{bootno}{Number of bootstrap samples}
 }
+\value{
+A list of bootstrapped lineup data
+        Length of list = no. of boostrap sample draws
+}
 \description{
 Function for generating bootstrapped samples for of k vectors of lineup choices
+}
+\examples{
+Data:
+A <-  round(runif(100,1,6))
+B <-  round(runif(70,1,5))
+C <-  round(runif(20,1,4))
+
+df <- cbind(A, B, C)
+df <- as.data.frame(df)
+
+lineup_list <- as.list(df)
+bootno <- 1000
+
+Call:
+bootdata <- gen_boot_samples(linuep_list, bootno)
 }

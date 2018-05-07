@@ -11,13 +11,21 @@ gen_lineup_prop(lineup_boot_df, target_pos)
 
 \item{target_pos}{A scalar, representing target position in lineup. Must be declared by user}
 }
+\value{
+A vector of bootstrapped proportions, indicating the frequency with which
+       a target was identified in a lineup
+       Length of vector = number of bootstrap sample draws
+}
 \description{
 Function for computing lineup proportion over a dataframe
 }
 \examples{
+Get bootstrapped data:
 lineup_boot_df <- gen_boot_samples(lineup_vec, 1000)
 target_pos <- 3
-gen_lineup_prop(lineup_boot_df, target_pos)
-bootprops <- gen_lineup_prop(lineup_boot_df, 3)
+
+Call:
+lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos)
+lineuprops <- gen_lineup_prop(lineup_boot_df, 3)
 
 }

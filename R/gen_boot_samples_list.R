@@ -4,13 +4,13 @@
 #'@param lineup_list A list containing k vectors of lineup choices for k lineups,
 #'                        in which the target was either absent or present
 #'@param bootno Number of bootstrap samples
-#'@returns A list of bootstrapped lineup data
+#'@return A list of bootstrapped lineup data
 #'         Length of list = no. of boostrap sample draws
-#'@example
+#'@examples
 #'Data:
 #'A <-  round(runif(100,1,6))
-#'B <-  round(runif(100,1,6))
-#'C <-  round(runif(100,1,6))
+#'B <-  round(runif(70,1,5))
+#'C <-  round(runif(20,1,4))
 #'
 #'df <- cbind(A, B, C)
 #'df <- as.data.frame(df)

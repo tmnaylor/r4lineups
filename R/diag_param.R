@@ -7,55 +7,64 @@
 #'                        target was present
 #'@param lineup_abs_list A list containing k vectors of lineup choices for k lineups, in which the
 #'                       target was absent
-#'@param pos_pres A list containing k numeric vectors indexing lineup member positions 
+#'@param pos_pres A list containing k numeric vectors indexing lineup member positions
 #'                for the target present condition
-#'@param pos_abs A list containing k numeric vectors indexing lineup member positions 
+#'@param pos_abs A list containing k numeric vectors indexing lineup member positions
 #'               for the target absent condition
-#'@returns A dataframe containing:
-#'         n11: Number of mock witnesses who identified the target in the target
-#'              present condition
-#'         n21: Number of mock witnesses who did not identify the target in the
-#'              target present condition
-#'         n12: Number of mock witnesses who identified the target in the target
-#'              absent condition
-#'         n13: Number of mock witnesses who did not identify the target in the
-#'              target absent condition
-#'@details Lineup pairs consist of one lineup in which the target was present (TP)
-#'         and one lineup in which the target was absent (TA).
+#'@return Returns a dataframe containing:
 #'
-#'         Each lineup pair must occupy corresponding positions in the TA and TP lists.
+#'         \itemize{
+#'          \item \emph{n11}: Number of mock witnesses who identified the suspect in the target
+#'               present condition
+#'
+#'          \item \emph{n21}: Number of mock witnesses who did not identify the suspect in the
+#'              target present condition
+#'
+#'          \item \emph{n12}: Number of mock witnesses who identified the suspect in the target
+#'              absent condition
+#'
+#'          \item \emph{n13}: Number of mock witnesses who did not identify the suspect in the
+#'              target absent condition
+#'              }
+#'@details
+#'\itemize{
+#'\item Lineup pairs consist of one lineup in which the target was present (TP)
+#'      and one lineup in which the target was absent (TA).
+#'
+#'\item Each lineup pair must occupy corresponding positions in the TA and TP lists.
 #'
 #'         Example:
 #'
 #'         For a lineup pair A that consists of (1)TP lineup and (2)TA lineup:
 #'         A(1) is the first vector in the TP list
 #'         A(2) is the first vector in the TP list
-#'         
-#'         Data must be in a list format. This allows the function to compare 
-#'         lineups in which the number of choices and number of lineup members differs. 
+#'
+#'\item Data must be in a list format. This allows the function to compare
+#'lineups in which the number of choices and number of lineup members differs.
+#'}
 #'@references Malpass, R. S. (1981). Effective size and defendant bias in
-#'            eyewitness identification lineups. Law and Human Behavior, 5(4), 299-309.
+#'            eyewitness identification lineups. \emph{Law and Human Behavior, 5}(4), 299-309.
 #'
 #'            Malpass, R. S., Tredoux, C., & McQuiston-Surrett, D. (2007). Lineup
 #'            construction and lineup fairness. In R. Lindsay, D. F. Ross, J. D. Read,
-#'            & M. P. Toglia (Eds.), Handbook of Eyewitness Psychology, Vol. 2: Memory for
-#'            people (pp. 155-178). Mahwah, NJ: Lawrence Erlbaum Associates.
+#'            & M. P. Toglia (Eds.), \emph{Handbook of Eyewitness Psychology, Vol. 2: Memory for
+#'            people} (pp. 155-178). Mahwah, NJ: Lawrence Erlbaum Associates.
 #'
 #'            Tredoux, C. G. (1998). Statistical inference on measures of lineup fairness.
-#'            Law and Human Behavior, 22(2), 217-237.
+#'            \emph{Law and Human Behavior, 22}(2), 217-237.
 #'
 #'            Tredoux, C. (1999). Statistical considerations when determining measures of
-#'            lineup size and lineup bias. Applied Cognitive Psychology, 13, S9-S26.
+#'            lineup size and lineup bias. \emph{Applied Cognitive Psychology}, 13, S9-S26.
 #'
 #'            Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
-#'            empirically assessing the fairness of a lineup. Law and Human Behavior,
-#'            3(4), 285-293.
+#'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
+#'            3}(4), 285-293.
 #'@examples
-#'#Target present data:
+#'Target present data:
 #'A <-  round(runif(100,1,6))
 #'B <-  round(runif(70,1,5))
-#'C <-  round(runif(20,1,4)) 
-#'lineup_pos_list <- list(A, B, C)
+#'C <-  round(runif(20,1,4))
+#'lineup_pres_list <- list(A, B, C)
 #'rm(A, B, C)
 #'
 #'a1 <- c(1, 2, 3, 4, 5, 6)
@@ -67,7 +76,7 @@
 #'Target absent data:
 #'A <-  round(runif(100,1,6))
 #'B <-  round(runif(70,1,5))
-#'C <-  round(runif(20,1,4)) 
+#'C <-  round(runif(20,1,4))
 #'lineup_abs_list <- list(A, B, C)
 #'rm(A, B, C)
 #'

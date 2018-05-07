@@ -3,12 +3,17 @@
 #'Function for computing lineup proportion over a dataframe
 #'@param lineup_boot_df Dataframe of lineup choices (usually a bootstrapped set)
 #'@param target_pos A scalar, representing target position in lineup. Must be declared by user
-#'@returns A vector of bootstrapped proportions
+#'@return A vector of bootstrapped proportions, indicating the frequency with which
+#'        a target was identified in a lineup
+#'        Length of vector = number of bootstrap sample draws
 #'@examples
+#'Get bootstrapped data:
 #'lineup_boot_df <- gen_boot_samples(lineup_vec, 1000)
 #'target_pos <- 3
-#'gen_lineup_prop(lineup_boot_df, target_pos)
-#'bootprops <- gen_lineup_prop(lineup_boot_df, 3)
+#'
+#'Call:
+#'lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos)
+#'lineuprops <- gen_lineup_prop(lineup_boot_df, 3)
 #'
 gen_lineup_prop <- function (lineup_boot_df, target_pos){
   map(lineup_boot_df,~table(.)) %>%

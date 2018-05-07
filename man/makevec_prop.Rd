@@ -6,6 +6,11 @@
 \usage{
 makevec_prop(prop, n)
 }
+\arguments{
+\item{prop}{A dataframe of bootstrapped proportions}
+
+\item{n}{Number of lineup members}
+}
 \description{
 Several helper functions that compute bootcis from proportions
 }

@@ -11,12 +11,15 @@ gen_boot_samples(lineup_vec, bootno)
 
 \item{bootno}{Number of bootstrap samples}
 }
+\value{
+A dataframe of bootstrapped lineup data
+}
 \description{
-Function for generating bootstrapped samples of lineup data from 1 vector
+Function for generating bootstrapped samples from 1 vector of lineup data
 }
 \examples{
 Data:
-lineup_vec <- runif(round(100,1,6))
+lineup_vec <- round(runif(100,1,6))
 bootno <- 1000
 
 Call:

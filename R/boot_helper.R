@@ -1,7 +1,8 @@
 #'Helper functions
 #'
 #'Several helper functions that compute bootcis from proportions
-#'@prop A dataframe of bootstrapped proportions
+#'@param prop A dataframe of bootstrapped proportions
+#'@param n Number of lineup members
 #'
 makevec_prop <- function(prop,n){
     lineup_vec_1 = rep(1,n*prop)

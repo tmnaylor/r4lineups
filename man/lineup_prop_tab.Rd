@@ -11,6 +11,10 @@ lineup_prop_tab(lineup_table, target_pos)
 
 \item{target_pos}{A scalar, representing target position in lineup. Must be declared by user}
 }
+\value{
+Returns a proportion indicating the frequency with which a lineup
+       member was selected
+}
 \description{
 Computes the proportion of mock witnesses identifying a particular lineup member
 }
@@ -18,4 +22,9 @@ Computes the proportion of mock witnesses identifying a particular lineup member
 lineup_prop_vec(lineup_table, 3)
 lineup_prop_vec(table(lineup_vec), 2))
 lineup_prop_vec(table(c(1, 2, 5, 3, 2, 4)), 2)
+}
+\references{
+Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
+           empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
+           3}(4), 285-293.
 }

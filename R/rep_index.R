@@ -1,6 +1,6 @@
 #'Rep index
 #'
-#'Function that repeats a number k times
+#'Helper function that repeats a number k times
 #'@details Can be used to create vectors of lineup data
 #'@param index Number to be repeated
 #'@param num Number of times to repeat index

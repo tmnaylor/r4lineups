@@ -5,11 +5,14 @@
 #'@param target_pos A numeric vector indexing all lineup members
 #'@return Returns a vector containing lineup proportion for each lineup member
 #'@examples
+#'Get data:
 #'lineup_vec <- round(runif(100, 1, 6))
 #'target_pos <- c(1, 2, 3, 4, 5, 6)
+#'
+#'Call:
 #'x <- allprop(lineup_vec, target_pos)
 #'@references Wells, G. L., Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
-#'             assessing the fairness of a lineup. Law and Human Behavior, 3(4),
+#'             assessing the fairness of a lineup. \emph{Law and Human Behavior, 3}(4),
 #'             285-293.
 
 allprop <- function(lineup_vec, target_pos){

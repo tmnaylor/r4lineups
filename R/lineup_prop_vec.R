@@ -5,6 +5,9 @@
 #'@param susp_pos Suspect/lineup member position. Must be declared by user
 #'@return Returns a proportion indicating the frequency with which a lineup
 #'        member was selected
+#'@references Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
+#'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
+#'            3}(4), 285-293.
 #'@examples
 #'lineup_prop_vec(lineup_vec, 3)
 #'lineup_prop_vec(c(1, 2, 5, 3, 2, 4), 2)

@@ -22,3 +22,8 @@ Computes the proportion of mock witnesses identifying a particular lineup member
 lineup_prop_vec(lineup_vec, 3)
 lineup_prop_vec(c(1, 2, 5, 3, 2, 4), 2)
 }
+\references{
+Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
+           empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
+           3}(4), 285-293.
+}

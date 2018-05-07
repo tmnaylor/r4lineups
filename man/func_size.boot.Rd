@@ -15,24 +15,26 @@ func_size.boot(lineup_vec, d = d, susp_pos)
 }
 \description{
 This function is a base function for the bootstrapping that ensues
-to compute the confidence intervals
+to compute bootstrapped confidence intervals for the estimate of functional size
 }
 \details{
-Function to call when bootstrap resampling using boot function (in package 'boot')
+Function is called bootstrap resampling using boot function (in package 'boot')
+        This function is never called by the user - it is called in the functional
+        size master function
 }
 \references{
-Davison,  A.C. & Hinkley,  D.V. (1997). Bootstrap methods and their
-           application. Cambridge University Press.
-           
-           Tredoux, C. G. (1998). Statistical inference on measures of lineup 
-           fairness.Law and Human Behavior, 22(2), 217-237.
+Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their
+           application}. Cambridge University Press.
+
+           Tredoux, C. G. (1998). Statistical inference on measures of lineup fairness.
+           \emph{Law and Human Behavior, 22}(2), 217-237.
 
            Tredoux, C. (1999). Statistical considerations when determining measures of
-           lineup size and lineup bias. Applied Cognitive Psychology, 13, S9-S26.
+           lineup size and lineup bias. \emph{Applied Cognitive Psychology}, 13, S9-S26.
 
            Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
-           empirically assessing the fairness of a lineup. Law and Human Behavior,
-           3(4), 285-293.
+           empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
+           3}(4), 285-293.
 }
 \seealso{
 \code{\link[boot:boot]{boot}}: https://cran.r-project.org/web/packages/boot/boot.pdf

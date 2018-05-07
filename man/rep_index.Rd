@@ -12,7 +12,7 @@ rep_index(index, num)
 \item{num}{Number of times to repeat index}
 }
 \description{
-Function that repeats a number k times
+Helper function that repeats a number k times
 }
 \details{
 Can be used to create vectors of lineup data

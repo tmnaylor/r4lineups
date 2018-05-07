@@ -1,12 +1,12 @@
 #'Bootstrap resampling
 #'
-#'Function for generating bootstrapped samples of lineup data from 1 vector
+#'Function for generating bootstrapped samples from 1 vector of lineup data
 #'@param lineup_vec A numeric vectors of lineup choices
 #'@param bootno Number of bootstrap samples
-#'@returns A dataframe of bootstrapped lineup data
+#'@return A dataframe of bootstrapped lineup data
 #'@examples
 #'Data:
-#'lineup_vec <- runif(round(100,1,6))
+#'lineup_vec <- round(runif(100,1,6))
 #'bootno <- 1000
 #'
 #'Call:

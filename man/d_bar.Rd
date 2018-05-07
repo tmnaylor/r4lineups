@@ -13,32 +13,42 @@ d_bar(df)
 Function for computing pooled estimator from a set of k diagnosticity ratios
 }
 \examples{
-ratio <- ln_diag_ratio(linedf)  
+Get data:
+
+linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
+
+Compute ln(d):
+ratio <- ln_diag_ratio(linedf)
+
+Compute variance of ln(d):
 var <- var_lnd(linedf)
+
+Compute weights for pooled estimator:
 wi <- d_weights(linedf)
+
+Bind ln(d), variance of ln(d) and weights into one df:
 df <- cbind(ratio, var, wi)
+
+Call:
 d_bar(df)
 
 }
 \references{
-Tredoux, C. G. (1998). Statistical inference on measures of lineup 
-           fairness. Law and Human Behavior, 22(2), 217-237.
-
 Malpass, R. S. (1981). Effective size and defendant bias in
-           eyewitness identification lineups. Law and Human Behavior, 5(4), 299-309.
+           eyewitness identification lineups. \emph{Law and Human Behavior, 5}(4), 299-309.
 
            Malpass, R. S., Tredoux, C., & McQuiston-Surrett, D. (2007). Lineup
            construction and lineup fairness. In R. Lindsay, D. F. Ross, J. D. Read,
-           & M. P. Toglia (Eds.), Handbook of Eyewitness Psychology, Vol. 2: Memory for
-           people (pp. 155-178). Mahwah, NJ: Lawrence Erlbaum Associates.
+           & M. P. Toglia (Eds.), \emph{Handbook of Eyewitness Psychology, Vol. 2: Memory for
+           people} (pp. 155-178). Mahwah, NJ: Lawrence Erlbaum Associates.
 
            Tredoux, C. G. (1998). Statistical inference on measures of lineup fairness.
-           Law and Human Behavior, 22(2), 217-237.
+          \emph{Law and Human Behavior, 22}(2), 217-237.
 
            Tredoux, C. (1999). Statistical considerations when determining measures of
-           lineup size and lineup bias. Applied Cognitive Psychology, 13, S9-S26.
+           lineup size and lineup bias. \emph{Applied Cognitive Psychology, 13}, S9-S26.
 
            Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
-           empirically assessing the fairness of a lineup. Law and Human Behavior,
-           3(4), 285-293.
+           empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
+           3}(4), 285-293.
 }

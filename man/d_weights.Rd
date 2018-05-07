@@ -17,26 +17,33 @@ In order to obtain a pooled estimate of a set of diagnosticity ratios,
         we use a weight for each ratio that is equal to the inverse of its
         variance.
 
-        linedf dataframe is computed using the diag_param helper function,
-         diag_param: returns a dataframe containing the following:
-         n11: Number of mock witnesses who identified the suspect in the target
-             present condition
-         n21: Number of mock witnesses who did not identify the suspect in the
+        \strong{To get linedf, use the diag_param helper function}
+
+         \emph{diag_param} returns a dataframe containing the following:
+
+         \itemize{
+         \item \emph{n11}: Number of mock witnesses who identified the suspect in the target
+              present condition
+
+         \item \emph{n21}: Number of mock witnesses who did not identify the suspect in the
              target present condition
-         n12: Number of mock witnesses who identified the suspect in the target
+
+         \item \emph{n12}: Number of mock witnesses who identified the suspect in the target
              absent condition
-         n13: Number of mock witnesses who did not identify the suspect in the
+
+         \item \emph{n13}: Number of mock witnesses who did not identify the suspect in the
              target absent condition
+             }
 }
 \examples{
-Use diag_param helper function to get linedf: produces a dataframe containing
-the parameters needed to calculate diagnosticity ratio (see documentation for 
-diag_param)
-
+Get data:
 linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
+
+Call:
 wi <- d_weights(linedf)
+
 }
 \references{
-Tredoux, C. G. (1998). Statistical inference on measures of lineup 
-           fairness. Law and Human Behavior, 22(2), 217-237.
+Tredoux, C. G. (1998). Statistical inference on measures of lineup
+           fairness. \emph{Law and Human Behavior, 22}(2), 217-237.
 }
