@@ -25,5 +25,5 @@ lineup_vec <- round(runif(100, 1, 6))
 lineup_table <- table(lineup_vec)
 
 #Call:
-lineup_vec <- gen_linevec_table(lineup_table, 3)
+lineup_vec <- gen_linevec(lineup_table, 3)
 }

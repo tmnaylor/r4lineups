@@ -13,7 +13,8 @@
 #'               absent condition
 #'@return Computes diagnosticity ratio with chi-squared estimate and significance
 #'         level for k lineup pairs
-#'@details Master function that calls several other functions.
+#'@details Master function for assessing homogeneity of diagnosticity ratio for
+#'         k independent lineups.
 #'@references Malpass, R. S. (1981). Effective size and defendant bias in
 #'            eyewitness identification lineups. \emph{Law and Human Behavior, 5}(4), 299-309.
 #'
@@ -45,7 +46,7 @@
 #'pos_pres <- list(a1, b1, c1)
 #'rm(a1, b1, c1)
 #'
-#'Target absent data:
+#'#Target absent data:
 #'A <-  round(runif(100,1,6))
 #'B <-  round(runif(70,1,5))
 #'C <-  round(runif(20,1,4))
@@ -58,8 +59,8 @@
 #'pos_abs <- list(a1, b1, c1)
 #'rm(a1, b1, c1)
 #'
-#'Call:
-#'homog_diag(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
+#'#Call:
+#'homog_diag(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
 
 homog_diag <- function(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs){
   linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)

@@ -9,24 +9,38 @@ chi_diag(df)
 \arguments{
 \item{df}{A dataframe containing: ln(d), variance of ln(d), d weights}
 }
+\value{
+Chi squared estimate of homogeneity of diagnosticity ratios for k independent lineups
+}
 \description{
 Function for getting chi-squared value for homogeneity of diagnosticity ratios
 }
 \details{
-To compute linedf, use the diag_param helper function.
-        To compute df, apply ln_diag_ratio, var_lnd & d_weights functions
-        to linedf, then bind results into one dataframe
+\itemize{
+        \item To compute linedf, use the diag_param helper function.
+
+       \item To compute df, apply ln_diag_ratio, var_lnd & d_weights functions
+        to linedf, then bind results into one dataframe (see \strong{Examples})
+
+        \item For this function to work, ln(d), the variance of ln(d) and the weights
+        must always be assigned to vectors named ratio, var and wi, respectively.
+        This is because these particular character strings are called in the d_bar function.
+
+       \item The order in which the estimates are bound together (i.e., their position
+        in the dataframe) does not matter.
+        }
 }
 \examples{
-#Parameters for diagnosticity calculations
-linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
+#Data:
+linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
 
-#Get ln(d), variance of ln(d) & d weights
+#Get ln(d), variance of ln(d) & d weights:
 ratio <- ln_diag_ratio(linedf)
 var <- var_lnd(linedf)
 wi <- d_weights(linedf)
 
-#Bind estimates into one dataframe
+#Bind estimates into one df
+#(see Details above)
 df <- cbind(ratio, var, wi)
 
 #Call:

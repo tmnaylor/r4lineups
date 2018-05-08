@@ -29,7 +29,7 @@
 #'            fairness. \emph{Law and Human Behavior, 22}(2), 217-237.
 #'@examples
 #'#Data:
-#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
+#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
 #'
 #'#Call:
 #'wi <- d_weights(linedf)

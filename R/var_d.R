@@ -25,15 +25,15 @@
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
 #'@examples
-#'Data:
+#'#Data:
 #'lineup_pres <- round(runif(100, 1, 6))
 #'lineup_abs <- round(runif(100, 1, 6))
 #'pos_pres <- 3
 #'pos_abs <- 4
 #'
-#'Call:
-#'var_d <- var_diag_ratio_T(lineup_pres, lineup_abs, pos_pres, pos_abs)
-#'var_d <- var_diag_ratio_T(lineup_pres, lineup_abs, 3, 4)
+#'#Call:
+#'var_d <- var_diag_ratio(lineup_pres, lineup_abs, pos_pres, pos_abs)
+#'var_d <- var_diag_ratio(lineup_pres, lineup_abs, 3, 4)
 
 var_diag_ratio <- function(lineup_pres, lineup_abs, pos_pres, pos_abs){
     a <- sum(lineup_pres  != pos_pres)

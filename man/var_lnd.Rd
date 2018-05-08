@@ -9,6 +9,10 @@ var_lnd(linedf)
 \arguments{
 \item{linedf}{A dataframe of parameters for computing diagnosticity ratio}
 }
+\value{
+A dataframe containing ln of the variance of the diagnosticity ratio for
+       each lineup.
+}
 \description{
 Function to compute variance of ln(d) for k lineup pairs
 }
@@ -32,11 +36,11 @@ Function to compute variance of ln(d) for k lineup pairs
              }
 }
 \examples{
-Get data:
+#Data:
 linedf <- diag_param(lineup_pres_list, lineup_abs_list,
-                                         pos_pres, abs_pres)
-Call:
-var_lnd <- var_lnd(linedf)
+                                         pos_pres, pos_abs)
+#Call:
+var <- var_lnd(linedf)
 
 }
 \references{

@@ -41,7 +41,7 @@ In order to obtain a pooled estimate of a set of diagnosticity ratios,
 }
 \examples{
 #Data:
-linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
+linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
 
 #Call:
 wi <- d_weights(linedf)

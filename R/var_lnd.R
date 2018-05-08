@@ -20,6 +20,8 @@
 #'          \item \emph{n13}: Number of mock witnesses who did not identify the suspect in the
 #'              target absent condition
 #'              }
+#'@return A dataframe containing ln of the variance of the diagnosticity ratio for
+#'        each lineup.
 #'
 #'@references Malpass, R. S. (1981). Effective size and defendant bias in
 #'            eyewitness identification lineups. \emph{Law and Human Behavior, 5}(4), 299-309.
@@ -40,11 +42,11 @@
 #'            3}(4), 285-293.
 #'
 #'@examples
-#'Get data:
+#'#Data:
 #'linedf <- diag_param(lineup_pres_list, lineup_abs_list,
-#'                                          pos_pres, abs_pres)
-#'Call:
-#'var_lnd <- var_lnd(linedf)
+#'                                          pos_pres, pos_abs)
+#'#Call:
+#'var <- var_lnd(linedf)
 #'
 var_lnd <- function(linedf){
     var <- (linedf$n21/(linedf$n11+(linedf$n11+linedf$n21)))+

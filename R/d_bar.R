@@ -21,9 +21,15 @@
 #'            Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
+#'@details For this function to work, ln(d), the variance of ln(d) and the weights
+#'         must always be assigned to vectors named ratio, var and wi, respectively.
+#'
+#'         This is because these particular character strings are called in the d_bar function.
+#'
+#'         The order in which the estimates are bound together (i.e., their position
+#'         in the dataframe) does not matter.
 #'@examples
 #'#Data:
-#'
 #'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
 #'
 #'#Compute ln(d):
@@ -35,7 +41,8 @@
 #'#Compute weights for pooled estimator:
 #'wi <- d_weights(linedf)
 #'
-#'#Bind ln(d), variance of ln(d) and weights into one df:
+#'#Bind ln(d), variance of ln(d) and weights into one df
+#'#(see Details above):
 #'df <- cbind(ratio, var, wi)
 #'
 #'#Call:
