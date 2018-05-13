@@ -9,7 +9,7 @@
 #It returns an ROC object of package pROC
 
 make_rocdata <- function(df_confacc) {
-    rocobj <- roc(acc ~ confidence, df_confacc)
+    rocobj <- roc(accuracy ~ confidence, df_confacc)
     hits <-
         as.numeric(coords(rocobj, "all", ret = c("tp")) / nrow(df_confacc))
     fp <-

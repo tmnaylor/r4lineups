@@ -1,4 +1,4 @@
-#'Bootstrapped sampling
+#'Bootstrapped resampling
 #'
 #'Function for generating bootstrapped samples for of k vectors of lineup choices
 #'@param lineup_list A list containing k vectors of lineup choices for k lineups,
@@ -7,21 +7,19 @@
 #'@return A list of bootstrapped lineup data
 #'         Length of list = no. of boostrap sample draws
 #'@examples
-#'Data:
+#'#Data:
 #'A <-  round(runif(100,1,6))
 #'B <-  round(runif(70,1,5))
 #'C <-  round(runif(20,1,4))
+#'linelist <- list(A, B, C)
+#'rm(A, B, C)
 #'
-#'df <- cbind(A, B, C)
-#'df <- as.data.frame(df)
-#'
-#'lineup_list <- as.list(df)
 #'bootno <- 1000
 #'
-#'Call:
-#'bootdata <- gen_boot_samples(linuep_list, bootno)
+#'#Call:
+#'bootdata <- gen_boot_samples_list(linelist, bootno)
 
-gen_boot_samples_list <- function (lineup_list, bootno){
+gen_boot_samples_list <- function(lineup_list, bootno){
   lineup_boot_samples <- NULL
   for (i in 1:length(lineup_list)){
 

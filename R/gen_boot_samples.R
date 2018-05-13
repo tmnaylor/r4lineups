@@ -5,14 +5,14 @@
 #'@param bootno Number of bootstrap samples
 #'@return A dataframe of bootstrapped lineup data
 #'@examples
-#'Data:
+#'#Data:
 #'lineup_vec <- round(runif(100,1,6))
 #'bootno <- 1000
 #'
-#'Call:
+#'#Call:
 #'bootdf <- gen_boot_samples(lineup_vec, bootno)
 #'
-#'Execute function line-by-line:
+#'#Execute function line-by-line:
 #'names_a <- rep("sample_",1000)
 #'names_b <- as.character(1:1000)
 #'1000 %>% rerun(sample(lineup_vec, length(lineup_vec), replace = TRUE))  -> x

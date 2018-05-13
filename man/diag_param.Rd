@@ -58,7 +58,7 @@ This function calculates the parameters needed to calculate the diagnosticity
       \item The following warning will appear if vectors comprising lineup lists are of
                    different lengths: \emph{longer object length is not a multiple of
                    shorter object length}. \strong{This does not affect the accuracy of
-                   the function and can be ignored}}
+                   the function and can be ignored.}}
 }
 \examples{
 #Target present data:

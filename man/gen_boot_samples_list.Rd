@@ -2,7 +2,7 @@
 % Please edit documentation in R/gen_boot_samples_list.R
 \name{gen_boot_samples_list}
 \alias{gen_boot_samples_list}
-\title{Bootstrapped sampling}
+\title{Bootstrapped resampling}
 \usage{
 gen_boot_samples_list(lineup_list, bootno)
 }
@@ -20,17 +20,15 @@ A list of bootstrapped lineup data
 Function for generating bootstrapped samples for of k vectors of lineup choices
 }
 \examples{
-Data:
+#Data:
 A <-  round(runif(100,1,6))
 B <-  round(runif(70,1,5))
 C <-  round(runif(20,1,4))
+linelist <- list(A, B, C)
+rm(A, B, C)
 
-df <- cbind(A, B, C)
-df <- as.data.frame(df)
-
-lineup_list <- as.list(df)
 bootno <- 1000
 
-Call:
-bootdata <- gen_boot_samples(linuep_list, bootno)
+#Call:
+bootdata <- gen_boot_samples_list(linelist, bootno)
 }

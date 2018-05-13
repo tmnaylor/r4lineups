@@ -5,6 +5,7 @@ Authors@R: person("Colin", "Tredoux", email = "colin.tredoux@uct.ac.za", role = 
 Description: 
 Depends: R (>= 3.4.3)
 Imports: boot,
+         ggrepel,
          here,
          magick,
          magrittr,

@@ -4,16 +4,19 @@
 #'experiment, where accuracy is recorded for target present and target
 #'absent lineups
 #'
-#'This function takes a df with two columns, confidence and acc
-#'where acc = binary accuracy.
-#'It returns an ROC object of package pROC
-#'
 #'The approach is outlined in several papers by Mickes, Wixted, Gronlund,
-#'Clark, and others (see references)
+#'Clark, and others (see \strong{References})
 #'
-#'@param adf A dataframe with two columns, named confidence and acc
+#'@param df_confacc A dataframe with two columns, named confidence and accuracy (where accuracy = binary accuracy)
+#'@return An ROC object of package pROC
 #'@examples
-#'make_roc(mickwick)
+#'#Data:
+#'df <- View(mickwix)
+#'
+#'#Call:
+#'make_roc(df)
+#'make_roc(wixdata)
+#'make_roc(conf_acc)
 #'
 #'
 #'
@@ -22,11 +25,14 @@
 #'analysis. \emph{Current Directions in Psychological Science, 23}(1), 3-10.
 #'
 #'@details This function is a user level function.  It chains the two roc functions
-#'together.  The user must pass a dataframe, with one column indicating
-#'confidence, and another accuracy, and these must be named
+#'together. The user must pass a dataframe, with one column indicating
+#'confidence, and another accuracy, and these must be named as such.
+#'
+#'The approach is outlined in several papers by Mickes, Wixted, Gronlund,
+#'Clark, and others (see references)
 
-make_roc <- function(adf){
-  make_rocdata(adf) %>%
+make_roc <- function(df_confacc){
+  make_rocdata(df_confacc) %>%
     make_roc_gg() -> rocplot
   return(rocplot)
 }

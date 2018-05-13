@@ -23,7 +23,7 @@
 #'
 #'@references Tredoux, C. (2002). A direct measure of facial similarity
 #'            and its relation to human similarity perceptions.
-#'            \emph{Journal of Experimental Psychology: Applied, 8}(3), 180–193.
+#'            \emph{Journal of Experimental Psychology: Applied, 8}(3), 180-193.
 #'            doi:10.1037/1076-898x.8.3.180
 #'
 #'
