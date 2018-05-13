@@ -23,5 +23,5 @@
 #'            3}(4), 285-293.
 
 func_size.boot <- function(lineup_vec, d=d, target_pos){
-    return (func_size(lineup_vec[d], target_pos))
+    return(func_size(lineup_vec[d], target_pos))
 }

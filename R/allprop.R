@@ -3,6 +3,7 @@
 #'Computes lineup proportion for each member in a lineup
 #'@param lineup_vec A numeric vector of lineup choices
 #'@param target_pos A numeric vector indexing all lineup members
+#'@param conf Desired level of alpha. Defaults to 0.95. May be specified by user (scalar).
 #'@return Returns a vector containing lineup proportion for each lineup member
 #'@examples
 #'#Data:

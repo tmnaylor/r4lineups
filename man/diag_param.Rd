@@ -42,20 +42,23 @@ This function calculates the parameters needed to calculate the diagnosticity
 }
 \details{
 \itemize{
-\item Lineup pairs consist of one lineup in which the target was present (TP)
-     and one lineup in which the target was absent (TA).
+         \item Lineup pairs consist of one lineup in which the target was present (TP)
+               and one lineup in which the target was absent (TA).
 
-\item Each lineup pair must occupy corresponding positions in the TA and TP lists.
+         \item Each lineup pair must occupy corresponding positions in the TA and TP lists.
 
-        Example:
+               Example:
 
-        For a lineup pair A that consists of (1)TP lineup and (2)TA lineup:
-        A(1) is the first vector in the TP list
-        A(2) is the first vector in the TP list
+               For a lineup pair A that consists of (1)TP lineup and (2)TA lineup:
+               A(1) is the first vector in the TP list
+               A(2) is the first vector in the TP list
 
-\item Data must be in a list format. This allows the function to compare
-lineups in which the number of choices and number of lineup members differs.
-}
+      \item Data must be in a list format. This allows the function to compare
+            lineups in which the number of choices and number of lineup members differs.
+      \item The following warning will appear if vectors comprising lineup lists are of
+                   different lengths: \emph{longer object length is not a multiple of
+                   shorter object length}. \strong{This does not affect the accuracy of
+                   the function and can be ignored}}
 }
 \examples{
 #Target present data:

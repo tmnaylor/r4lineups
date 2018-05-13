@@ -3,6 +3,7 @@
 #'Computes bootstrapped confidence intervals for lineup proportion
 #'@param lineup_vec A numeric vector of lineup choices
 #'@param target_pos A numeric vector indexing all lineup members
+#'@param conf Desired level of alpha. Defaults to 0.95. May be specified by user (scalar).
 #'@return Returns a vector of bias corrected confidence intervals for
 #'        lineup proportion for each member in a lineup
 #'@seealso \code{\link[boot:boot]{boot}}: https://cran.r-project.org/web/packages/boot/boot.pdf
@@ -21,14 +22,15 @@
 #'
 #'#Call:
 #'lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos)
+#'lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos, conf = 0.975)
 
-lineup_boot_allprop <- function(lineup_vec, target_pos){
+lineup_boot_allprop <- function(lineup_vec, target_pos, conf = 0.95){
   z <- map(target_pos,~boot(lineup_vec, lineup_prop_boot, target_pos = .x, R = 1000) %>%
-             boot.ci(type = "bca")) %>%
+             boot.ci(conf = 0.95, type = "bca")) %>%
     map(magrittr::extract, "bca") %>%
     map_df(magrittr::extract,"bca")
 
-  z2 <-  matrix(ncol = 6,nrow = 5, z$bca) %>%
+  z2 <-  matrix(ncol = length(target_pos),nrow = 5, z$bca) %>%
     data.frame() %>%
     slice(4:5)
   ci <- as.data.frame(t(z2))

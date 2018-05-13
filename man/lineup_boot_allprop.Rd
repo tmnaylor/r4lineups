@@ -4,12 +4,14 @@
 \alias{lineup_boot_allprop}
 \title{Confidence intervals for lineup proportion}
 \usage{
-lineup_boot_allprop(lineup_vec, target_pos)
+lineup_boot_allprop(lineup_vec, target_pos, conf = 0.95)
 }
 \arguments{
 \item{lineup_vec}{A numeric vector of lineup choices}
 
 \item{target_pos}{A numeric vector indexing all lineup members}
+
+\item{conf}{Desired level of alpha. Defaults to 0.95. May be specified by user (scalar).}
 }
 \value{
 Returns a vector of bias corrected confidence intervals for
@@ -29,6 +31,7 @@ target_pos <- c(1, 2, 3, 4, 5, 6)
 
 #Call:
 lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos)
+lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos, conf = 0.975)
 }
 \references{
 Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their

@@ -30,10 +30,9 @@
 #'x <- func_size_report(lineup_vec, 3)
 
 func_size_report <- function(lineup_vec, target_pos){
-    cat ("\n")
-    temp1 <- boot(lineup_vec, func_size.boot, target_pos, R=1000)
+    temp1 <- boot(lineup_vec, func_size.boot, target_pos = target_pos, R=1000)
     temp2 <- boot.ci(temp1, type = c("norm","bca","perc"))
-    cat ("Functional size of lineup is ",round(func_size(lineup_vec,target_pos),3))
+    cat ("Functional size of lineup is ",round(func_size(lineup_vec, target_pos),3))
     cat ("\n")
     cat ("Confidence intervals [95%]")
     cat ("\n")

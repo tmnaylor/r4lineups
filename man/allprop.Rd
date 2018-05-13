@@ -10,6 +10,8 @@ allprop(lineup_vec, target_pos)
 \item{lineup_vec}{A numeric vector of lineup choices}
 
 \item{target_pos}{A numeric vector indexing all lineup members}
+
+\item{conf}{Desired level of alpha. Defaults to 0.95. May be specified by user (scalar).}
 }
 \value{
 Returns a vector containing lineup proportion for each lineup member

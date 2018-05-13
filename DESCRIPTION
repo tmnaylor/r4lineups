@@ -5,7 +5,12 @@ Authors@R: person("Colin", "Tredoux", email = "colin.tredoux@uct.ac.za", role = 
 Description: 
 Depends: R (>= 3.4.3)
 Imports: boot,
+         here,
+         magick,
          magrittr,
+         pacman,
+         pROC,
+         psych,
          tidyverse
 License: CC0
 Encoding: UTF-8

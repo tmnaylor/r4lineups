@@ -4,12 +4,14 @@
 \alias{eff_size_per_foils}
 \title{Effective Size per Foils}
 \usage{
-eff_size_per_foils(lineup_vec, target_pos)
+eff_size_per_foils(lineup_vec, target_pos, conf = 0.95)
 }
 \arguments{
 \item{lineup_vec}{A numeric vector of lineup choices}
 
 \item{target_pos}{A numeric vector indexing all lineup members}
+
+\item{conf}{Desired level of alpha. Defaults to 0.95. May be specified by user (scalar).}
 }
 \description{
 Function for computing effective size (Malpass, 1981) counting foils who fall
@@ -22,6 +24,7 @@ target_pos <- c(1, 2, 3, 4, 5, 6)
 
 #Call:
 eff_size_per_foils(lineup_vec, target_pos)
+eff_size_per_foils(lineup_vec, target_pos, conf = 0.95)
 }
 \references{
 Malpass, R S. (1981). Effective size and defendant bias in eyewitness
