@@ -29,20 +29,48 @@
 #'            Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
+#'@examples
+#'#'@examples
+#'#Target present data:
+#'A <-  round(runif(100,1,6))
+#'B <-  round(runif(70,1,5))
+#'C <-  round(runif(20,1,4))
+#'lineup_pres_list <- list(A, B, C)
+#'rm(A, B, C)
+#'
+#'#Target absent data:
+#'A <-  round(runif(100,1,6))
+#'B <-  round(runif(70,1,5))
+#'C <-  round(runif(20,1,4))
+#'lineup_abs_list <- list(A, B, C)
+#'rm(A, B, C)
 
-homog_diag_boot <- function(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, B){
-    pres_bootdf <- gen_boot_samples_list(lineup_pres_list, B)
-    abs_bootdf <- gen_boot_samples_list(lineup_abs_list, B)
-    linedf <- diag_param_boot(pres_bootdf, abs_bootdf, pos_pres, pos_abs)
-    par1 <- ln_diag_ratio(linedf)
-    par2 <- var_lnd(linedf)
-    par3 <- d_weights(linedf)
-    par4 <- cbind(par1, par2, par3)
-    par5 <- d_bar(par4)
-    par6 <- chi_diag(par4, par5)
-    cat("Mean diagnosticity ratio:", par5)
-    cat("\n")
-    cat("Chi-square estimate (q):", par6)
-    cat("\n")
-    cat("Sig:",pchisq(par6, ncol(linedf)-1, lower.tail=F))
+homog_diag_boot <- function(lineup_pres_list, lineup_abs_list, B){
+  bootdata1 <- gen_boot_samples_list(lineup_pres_list, B)
+  bootdata2 <- gen_boot_samples_list(lineup_abs_list, B)
+  pres_boot.dat <- lapply(bootdata1, diag_param_boot)
+  abs_boot.dat <- lapply(bootdata2, diag_param_boot)
+  bootlist <- mapply(cbind,pres_boot.dat, abs_boot.dat)
+
+  listdf <- as.data.frame(bootlist)
+  names<-  c("n11", "n21", "n12", "n22")
+  linedf <- lapply(listdf, data.frame, stringsAsFactors = FALSE)
+  linedf <- lapply(listdf, setNames, nm = names)
+
+  par1 <- lapply(linedf, var_lnd) %>% unlist
+  par2 <- lapply(linedf, ln_diag_ratio) %>% unlist
+  par3 <- lapply(linedf, d_weights) %>% unlist
+  par4 <- as.data.frame(cbind(par1, par2, par3))
+  names(par4) <- c("var", "lnd", "wi")
+
+  bootdata3 <- gen_boot_samples_list(par4, 100)
+  par4.1 <- as.data.frame(bootdata3[1])
+  par4.2 <- as.data.frame(bootdata3[2])
+  par4.3 <- as.data.frame(bootdata3[3])
+
+
+  chi <- lapply(par4, chi_diag)
+  par6 <- pchisq(par5, df = 3, lower.tail=F)
+  par7 <- d_bar(par4)
+
 }
