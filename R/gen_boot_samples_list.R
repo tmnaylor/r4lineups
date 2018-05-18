@@ -18,6 +18,8 @@
 #'
 #'#Call:
 #'bootdata <- gen_boot_samples_list(linelist, bootno)
+#'
+#'@export
 
 gen_boot_samples_list <- function(lineup_list, bootno){
   lineup_boot_samples <- NULL

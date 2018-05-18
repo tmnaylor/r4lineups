@@ -34,6 +34,8 @@
 #'#Call:
 #'wi <- d_weights(linedf)
 #'
+#'@export
+
 d_weights <- function(linedf){
     numerator   <- linedf$n11*linedf$n12*(linedf$n11+linedf$n21)*
                    (linedf$n12+linedf$n22)

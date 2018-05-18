@@ -44,6 +44,8 @@
 #'C <-  round(runif(20,1,4))
 #'lineup_abs_list <- list(A, B, C)
 #'rm(A, B, C)
+#'
+#'@export
 
 homog_diag_boot <- function(lineup_pres_list, lineup_abs_list, B){
   bootdata1 <- gen_boot_samples_list(lineup_pres_list, B)

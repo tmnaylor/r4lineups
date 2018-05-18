@@ -47,6 +47,7 @@
 #'
 #'#Call:
 #'d_bar(df)
+#'@export
 
 d_bar <- function(df){
     numerator   <- sum(df$wi*df$lnd)

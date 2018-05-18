@@ -29,4 +29,5 @@ lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos)
 
 #Call:
 gen_boot_propmean_se(lineuprops)
+
 }

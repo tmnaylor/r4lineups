@@ -60,6 +60,7 @@ rm(a1, b1, c1)
 
 #Call:
 homog_diag(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
+
 }
 \references{
 Malpass, R. S. (1981). Effective size and defendant bias in

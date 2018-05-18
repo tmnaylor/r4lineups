@@ -4,7 +4,7 @@
 \alias{diag_ratio_W}
 \title{Diagnosticity Ratio (Wells & Lindsay, 1980; Wells & Turtle, 1986)}
 \usage{
-diag_ratio_W(lineup_pres, lineup_abs, pos_pres, pos_abs)
+diag_ratio_W(lineup_pres, lineup_abs, pos_pres, pos_abs, k1, k2)
 }
 \arguments{
 \item{lineup_pres}{A numeric vector of lineup choices for a lineup in which
@@ -16,6 +16,10 @@ the target was absent}
 \item{pos_pres}{A scalar, representing target position in TP lineup. Must be declared by user}
 
 \item{pos_abs}{A scalar, representing target position in TA lineup. Must be declared by user}
+
+\item{k1}{Number of targets in TP lineup. Must be specified by user (scalar).}
+
+\item{k2}{Number of targets in TA lineup. Must be specified by user (scalar).}
 }
 \description{
 Computes Wells' diagnosticity ratio for one lineup pair
@@ -28,8 +32,8 @@ pos_pres <- 3
 pos_abs <- 5
 
 #Call:
-diag_ratio_W(lineup_pres, lineup_abs, pos_pres, pos_abs)
-diag_ratio_W(lineup_pres, lineup_abs, 3, 5)
+diag_ratio_W(lineup_pres, lineup_abs, pos_pres, pos_abs, 6, 5)
+diag_ratio_W(lineup_pres, lineup_abs, 3, 5, 6, 5)
 }
 \references{
 Wells, G. L., & Lindsay, R. C. L. (1980).On estimating the diagnosticity

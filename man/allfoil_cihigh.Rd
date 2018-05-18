@@ -16,5 +16,5 @@ Function to compute ci high for each foil in a lineup
 }
 \references{
 Malpass, R. S. (1981). Effective size and defendant bias in
-           eyewitness identification lineups. Law and Human Behavior, 5(4), 299-309.
+           eyewitness identification lineups. \emph{Law and Human Behavior, 5}(4), 299-309.
 }

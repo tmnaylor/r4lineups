@@ -27,7 +27,9 @@
 #'            doi:10.1037/1076-898x.8.3.180
 #'
 #'
-#
+#'@export
+#'
+
 face_sim <- function(){
   root <- paste(here(),"/Faces/*.jpg",sep = "")
   file_list <- choose.files(default = "root", caption = "Select files",

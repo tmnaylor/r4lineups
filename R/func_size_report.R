@@ -28,6 +28,8 @@
 #'#Call:
 #'x <- func_size_report(lineup_vec, target_pos)
 #'x <- func_size_report(lineup_vec, 3)
+#'
+#'@export
 
 func_size_report <- function(lineup_vec, target_pos){
     temp1 <- boot(lineup_vec, func_size.boot, target_pos = target_pos, R=1000)

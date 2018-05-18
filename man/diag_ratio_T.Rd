@@ -4,7 +4,7 @@
 \alias{diag_ratio_T}
 \title{Diagnosticty Ratio (Tredoux, 1998)}
 \usage{
-diag_ratio_T(lineup_pres, lineup_abs, pos_pres, pos_abs)
+diag_ratio_T(lineup_pres, lineup_abs, pos_pres, pos_abs, k1, k2)
 }
 \arguments{
 \item{lineup_pres}{A numeric vector of lineup choices for a lineup in which
@@ -14,6 +14,10 @@ the target was present}
 the target was absent}
 
 \item{pos_abs}{A scalar, representing target position in TA lineup. Must be declared by user}
+
+\item{k1}{Number of targets in TP lineup. Must be specified by user (scalar).}
+
+\item{k2}{Number of targets in TA lineup. Must be specified by user (scalar).}
 
 \item{pos_res}{A scalar, representing target position in TP lineup. Must be declared by user}
 }
@@ -28,8 +32,9 @@ pos_pres <- 3
 pos_abs <- 5
 
 #Call:
-diag_ratio_T(lineup_pres, lineup_abs, pos_pres, pos_abs)
-diag_ratio_T(lineup_pres, lineup_abs, 3, 5)
+diag_ratio_T(lineup_pres, lineup_abs, pos_pres, pos_abs, 6, 5)
+diag_ratio_T(lineup_pres, lineup_abs, 3, 5, 6, 5)
+
 }
 \references{
 Malpass, R. S. (1981). Effective size and defendant bias in

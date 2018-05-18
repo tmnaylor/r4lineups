@@ -43,6 +43,10 @@
 #'
 #'#Call:
 #'lnd <- ln_diag_ratio(linedf)
+#'
+#'@export
+#'
+
 ln_diag_ratio <- function(linedf){
     d   <- (linedf$n11+0.5/((linedf$n11+linedf$n21)+0.5))/
            (linedf$n12+0.5/((linedf$n12+linedf$n22)+0.5))

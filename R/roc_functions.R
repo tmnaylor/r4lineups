@@ -1,12 +1,13 @@
-#Helper functions: Compute and plot ROC curve for lineup accuracy ~ confidence
-#
-#Function to compute and plot an ROC curve for data from an eyewitness
-#experiment, where accuracy is recorded for target present and target
-#absent lineups
-#
-#This function takes a df with two columns, confidence and acc
-#where acc = binary accuracy.
-#It returns an ROC object of package pROC
+#'Helper functions: Compute and plot ROC curve for lineup accuracy ~ confidence
+#'
+#'Function to compute and plot an ROC curve for data from an eyewitness
+#'experiment, where accuracy is recorded for target present and target
+#'absent lineups
+#'
+#'@param df_confacc A df with two columns, confidence and accuracy,
+#'where accuracy = binary accuracy.
+#'@return An ROC object of package pROC
+#'@export
 
 make_rocdata <- function(df_confacc) {
     rocobj <- roc(accuracy ~ confidence, df_confacc)

@@ -30,6 +30,7 @@
 #'            Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
+#'@export
 
 compare_eff_sizes.boot <- function(linedf, d){
   temp_df <- linedf[d,]

@@ -34,6 +34,8 @@
 #'#Call:
 #'var_d <- var_diag_ratio(lineup_pres, lineup_abs, pos_pres, pos_abs)
 #'var_d <- var_diag_ratio(lineup_pres, lineup_abs, 3, 4)
+#'
+#'@export
 
 var_diag_ratio <- function(lineup_pres, lineup_abs, pos_pres, pos_abs){
     a <- sum(lineup_pres  != pos_pres)

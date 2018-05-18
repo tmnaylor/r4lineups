@@ -15,6 +15,8 @@
 #'#Call:
 #'lineup_prop_vec(lineup_vec, 3)
 #'lineup_prop_vec(c(1, 2, 5, 3, 2, 4), 2)
+#'
+#'@export
 
 lineup_prop_vec <- function(lineup_vec, target_pos){
     sum(lineup_vec == target_pos)/length(lineup_vec)

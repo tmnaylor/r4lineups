@@ -7,7 +7,7 @@
 rot_vector(lineup_vec)
 }
 \arguments{
-\item{lineup_vec}{}
+\item{lineup_vec}{A vector of lineup data}
 }
 \description{
 Helper function to rotate vector

@@ -3,6 +3,7 @@
 #'Computes bootstrapped confidence intervals for lineup proportion
 #'@param lineup_vec A numeric vector of lineup choices
 #'@param target_pos A numeric vector indexing all lineup members
+#'@param k Number of targets in lineup. Must be specified by user (scalar).
 #'@param conf Desired level of alpha. Defaults to 0.95. May be specified by user (scalar).
 #'@return Returns a vector of bias corrected confidence intervals for
 #'        lineup proportion for each member in a lineup
@@ -23,8 +24,11 @@
 #'#Call:
 #'lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos)
 #'lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos, conf = 0.975)
+#'
+#'@export
 
-lineup_boot_allprop <- function(lineup_vec, target_pos, conf = 0.95){
+lineup_boot_allprop <- function(lineup_vec, target_pos, k, conf = 0.95){
+  datacheck1(lineup_vec, k)
   z <- map(target_pos,~boot(lineup_vec, lineup_prop_boot, target_pos = .x, R = 1000) %>%
              boot.ci(conf = 0.95, type = "bca")) %>%
     map(magrittr::extract, "bca") %>%

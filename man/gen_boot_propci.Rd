@@ -36,4 +36,5 @@ lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos)
 #Get boot CIs:
 prop_bootci_lower <- gen_boot_propci(lineuprops, perc = .025)
 prop_bootci_upper <- gen_boot_propci(lineuprops, perc = .975)
+
 }

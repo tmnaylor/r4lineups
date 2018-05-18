@@ -38,6 +38,9 @@
 #'
 #'#Call:
 #'x <- effsize_compare(linedf)
+#'
+#'@export
+
 effsize_compare <- function(linedf){
     cat ("\n")
     temp1 <- boot(linedf, compare_eff_sizes.boot, R=1000)

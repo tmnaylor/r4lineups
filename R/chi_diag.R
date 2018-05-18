@@ -49,6 +49,7 @@
 #'            Wells, G. L., Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
+#'@export
 
 chi_diag <- function(df){
     q <- sum(((df$lnd-log(d_bar(df)))^2)/(df$var))

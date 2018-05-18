@@ -21,6 +21,8 @@
 #'            Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
+#'
+#'@export
 
 func_size.boot <- function(lineup_vec, d=d, target_pos){
     return(func_size(lineup_vec[d], target_pos))

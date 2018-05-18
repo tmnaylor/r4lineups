@@ -61,6 +61,8 @@
 #'
 #'#Call:
 #'homog_diag(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
+#'
+#'@export
 
 homog_diag <- function(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs){
   linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)

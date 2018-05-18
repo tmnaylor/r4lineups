@@ -4,7 +4,7 @@
 #'lineup data
 #'
 #'@param lineup_table A table of lineup choices
-#'@param nom_size Nominal size (i.e.,total number of lineup members).
+#'@param k Nominal size (i.e.,total number of lineup members).
 #'                Must be declared by user
 #'@return Returns a vector of lineup choices
 #'@examples
@@ -14,8 +14,10 @@
 #'
 #'#Call:
 #'lineup_vec <- gen_linevec(lineup_table, 3)
+#'
+#'@export
 
-gen_linevec <- function (lineup_table, nom_size){
+gen_linevec <- function (lineup_table, k){
   line_index <- 1:(length(lineup_table))
   map2(line_index, lineup_table, rep_index) %>% unlist
 }

@@ -22,6 +22,8 @@
 #'#Get boot CIs:
 #'prop_bootci_lower <- gen_boot_propci(lineuprops, perc = .025)
 #'prop_bootci_upper <- gen_boot_propci(lineuprops, perc = .975)
+#'
+#'@export
 
 gen_boot_propci <- function (lineuprops, perc=.05){
     if(perc >= 0 & perc <= 1) {

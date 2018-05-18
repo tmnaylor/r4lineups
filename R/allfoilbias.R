@@ -11,7 +11,8 @@
 #'
 #'@references Malpass, R. S. (1981). Effective size and defendant bias in
 #'            eyewitness identification lineups. Law and Human Behavior, 5(4), 299-309.
-#'
+#'@export
+
 allfoilbias <- function (lineup_table){
     # Make df for testing
     linedf <- as.data.frame(matrix(ncol = length(lineup_table),

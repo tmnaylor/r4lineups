@@ -7,7 +7,8 @@
 #'@examples
 #'rep_index(1, 10)
 #'[1] 1 1 1 1 1 1 1 1 1 1
-#'
+#'@export
+
 rep_index <- function(index,num){
   rep(index, num)
 }

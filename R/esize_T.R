@@ -26,6 +26,9 @@
 #'
 #'Call:
 #'e <- esize_T(lineup_table)
+#'
+#'@export
+
 esize_T <- function(lineup_table){
   i <- 1-(1/(sum(lineup_table)^2))*sum(lineup_table^2)
   i <- 1/(1-i)

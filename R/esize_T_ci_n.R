@@ -30,6 +30,8 @@
 #'
 #'#Call:
 #'e_ci <- esize_T_ci_n(lineup_table, .95)
+#'
+#'@export
 
 esize_T_ci_n <- function(lineup_table, alpha){
     N = sum(lineup_table)

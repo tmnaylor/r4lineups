@@ -34,6 +34,8 @@
 #'
 #'#To get confidence intervals:
 #'cis <- boot.ci(bootobject, conf = 0.95, type = "all")
+#'
+#'@export
 
 esize_m_boot <- function (lineup_vec, d, printarg=TRUE){
     lineup_table <- table(lineup_vec[d])

@@ -17,6 +17,10 @@
 #'
 #'#Call:
 #'gen_boot_propmean_se(lineuprops)
+#'
+#'@export
+#'
+
 gen_boot_propmean_se <- function (lineuprops){
     mean_boot_prop = mean(lineuprops, na.rm = T)
     median_boot_prop = median(lineuprops, na.rm = T)

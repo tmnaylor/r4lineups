@@ -24,6 +24,8 @@
 #'#Call:
 #'x <- func_size(lineup_vec, target_pos)
 #'x <- func_size(lineup_vec, 3)
+#'
+#'@export
 
 func_size <- function(lineup_vec, target_pos){
     fsize <- length(lineup_vec) / sum(lineup_vec == target_pos)

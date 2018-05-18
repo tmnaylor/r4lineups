@@ -33,4 +33,5 @@ lineupsizes <- lapply(bootdata, esize_m) \%>\% unlist
 gen_esize_m_ci(lineupsizes)
 gen_esize_m_ci(lineupsizes, perc = .025)
 gen_esize_m_ci(lineupsizes, perc = .975)
+
 }

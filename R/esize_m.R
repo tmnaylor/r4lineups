@@ -35,6 +35,9 @@
 #'#Call:
 #'esize_m(lineup_table, printarg = TRUE)
 #'esize_m(lineup_table)
+#'
+#'@export
+
 esize_m <- function (lineup_table, printarg=FALSE){
   k <- length(lineup_table)
   ea <- sum(lineup_table)/k

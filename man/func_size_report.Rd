@@ -28,6 +28,7 @@ target_pos <- 3
 #Call:
 x <- func_size_report(lineup_vec, target_pos)
 x <- func_size_report(lineup_vec, 3)
+
 }
 \references{
 Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their

@@ -29,6 +29,7 @@ target_pos <- 3
 #Call:
 x <- func_size(lineup_vec, target_pos)
 x <- func_size(lineup_vec, 3)
+
 }
 \references{
 Tredoux, C. G. (1998). Statistical inference on measures of lineup fairness.

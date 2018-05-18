@@ -4,14 +4,14 @@
 \alias{allprop}
 \title{Lineup proportion for all lineup members}
 \usage{
-allprop(lineup_vec, target_pos)
+allprop(lineup_vec, target_pos, k)
 }
 \arguments{
 \item{lineup_vec}{A numeric vector of lineup choices}
 
 \item{target_pos}{A numeric vector indexing all lineup members}
 
-\item{conf}{Desired level of alpha. Defaults to 0.95. May be specified by user (scalar).}
+\item{k}{Number of members in lineup. Must be specified by user (scalar).}
 }
 \value{
 Returns a vector containing lineup proportion for each lineup member
@@ -25,7 +25,7 @@ lineup_vec <- round(runif(100, 1, 6))
 target_pos <- c(1, 2, 3, 4, 5, 6)
 
 #Call:
-x <- allprop(lineup_vec, target_pos)
+x <- allprop(lineup_vec, target_pos, 6)
 }
 \references{
 Wells, G. L., Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for

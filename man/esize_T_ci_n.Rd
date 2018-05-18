@@ -26,6 +26,7 @@ lineup_table <- table(lineup_vec)
 
 #Call:
 e_ci <- esize_T_ci_n(lineup_table, .95)
+
 }
 \references{
 Malpass, R. S. (1981). Effective size and defendant bias in

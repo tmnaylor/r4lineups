@@ -30,6 +30,7 @@ pos_abs <- 4
 #Call:
 var_d <- var_diag_ratio(lineup_pres, lineup_abs, pos_pres, pos_abs)
 var_d <- var_diag_ratio(lineup_pres, lineup_abs, 3, 4)
+
 }
 \references{
 Malpass, R. S. (1981). Effective size and defendant bias in

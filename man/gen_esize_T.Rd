@@ -25,6 +25,7 @@ bootdf <- gen_boot_samples(lineup_vec, 1000)
 
 Call:
 esize_vec <- gen_esize_T(bootdf)
+
 }
 \references{
 Malpass, R. S. (1981). Effective size and defendant bias in

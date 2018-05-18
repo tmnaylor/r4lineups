@@ -4,12 +4,12 @@
 \alias{gen_linevec}
 \title{Lineup vector}
 \usage{
-gen_linevec(lineup_table, nom_size)
+gen_linevec(lineup_table, k)
 }
 \arguments{
 \item{lineup_table}{A table of lineup choices}
 
-\item{nom_size}{Nominal size (i.e.,total number of lineup members).
+\item{k}{Nominal size (i.e.,total number of lineup members).
 Must be declared by user}
 }
 \value{
@@ -26,4 +26,5 @@ lineup_table <- table(lineup_vec)
 
 #Call:
 lineup_vec <- gen_linevec(lineup_table, 3)
+
 }

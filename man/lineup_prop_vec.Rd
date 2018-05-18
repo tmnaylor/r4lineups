@@ -25,6 +25,7 @@ lineup_vec <- round(runif(100, 1, 6))
 #Call:
 lineup_prop_vec(lineup_vec, 3)
 lineup_prop_vec(c(1, 2, 5, 3, 2, 4), 2)
+
 }
 \references{
 Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for

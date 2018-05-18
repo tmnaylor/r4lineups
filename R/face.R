@@ -1,4 +1,6 @@
-# Helper function
+#' Helper function
+#' @param file_list A selection of image files (raw data)
+#' @export
 # This function reads and shows an array of faces
 show_lineup <- function(file_list){
 

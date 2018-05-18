@@ -28,6 +28,10 @@
 #'
 #'Call:
 #'esize_vec <- gen_esize_T(bootdf)
+#'
+#'@export
+#'
+
 gen_esize_T <- function (lineup_boot_df){
   map(lineup_boot_df,~table(.)) %>%
     map_dbl(., ~ esize_T(.))

@@ -19,6 +19,9 @@
 #'
 #'bootobject <- boot(lineup_vec, lineup_prop_boot, R = 1000)
 #'cis <- boot.ci(bootobject, conf = 0.95, type = "all")
+#'
+#'@export
+#'
 
 lineup_prop_boot <- function(lineup_vec, d,  target_pos){
     sum(lineup_vec[d] == target_pos)/length(lineup_vec)

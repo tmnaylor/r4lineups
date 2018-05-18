@@ -7,6 +7,8 @@
 #'                   the target was absent
 #'@param pos_res A scalar, representing target position in TP lineup. Must be declared by user
 #'@param pos_abs A scalar, representing target position in TA lineup. Must be declared by user
+#'@param k1 Number of targets in TP lineup. Must be specified by user (scalar).
+#'@param k2 Number of targets in TA lineup. Must be specified by user (scalar).
 #'@references Malpass, R. S. (1981). Effective size and defendant bias in
 #'            eyewitness identification lineups. \emph{Law and Human Behavior, 5}(4), 299-309.
 #'
@@ -32,10 +34,15 @@
 #'pos_abs <- 5
 #'
 #'#Call:
-#'diag_ratio_T(lineup_pres, lineup_abs, pos_pres, pos_abs)
-#'diag_ratio_T(lineup_pres, lineup_abs, 3, 5)
+#'diag_ratio_T(lineup_pres, lineup_abs, pos_pres, pos_abs, 6, 5)
+#'diag_ratio_T(lineup_pres, lineup_abs, 3, 5, 6, 5)
+#'
+#'@export
 
-diag_ratio_T <- function(lineup_pres, lineup_abs, pos_pres, pos_abs){
+diag_ratio_T <- function(lineup_pres, lineup_abs, pos_pres, pos_abs, k1, k2){
+
+    datacheck2(lineup_pres, lineup_abs, k1, k2)
+
     a <- (sum(lineup_pres == pos_pres) + 0.5)/(length(lineup_pres) + 0.5)
     b <- (sum(lineup_abs == pos_abs) + 0.5)/(length(lineup_abs) + 0.5)
     c <- a/b

@@ -4,7 +4,7 @@
 \alias{homog_diag_boot}
 \title{Homogeneity of diagnosticity ratio with bootstrapped CIs}
 \usage{
-homog_diag_boot(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, B)
+homog_diag_boot(lineup_pres_list, lineup_abs_list, B)
 }
 \arguments{
 \item{lineup_pres_list}{A list containing k vectors of lineup choices for k lineups, in which the
@@ -25,6 +25,23 @@ Function for computing bootstrapped estimates of homogeneity of diagnosticity ra
 \details{
 Computes bootstrapped diagnosticity ratio with chi-squared estimate,
         significance level and confidence intervals for k lineup pairs
+}
+\examples{
+#'@examples
+#Target present data:
+A <-  round(runif(100,1,6))
+B <-  round(runif(70,1,5))
+C <-  round(runif(20,1,4))
+lineup_pres_list <- list(A, B, C)
+rm(A, B, C)
+
+#Target absent data:
+A <-  round(runif(100,1,6))
+B <-  round(runif(70,1,5))
+C <-  round(runif(20,1,4))
+lineup_abs_list <- list(A, B, C)
+rm(A, B, C)
+
 }
 \references{
 Malpass, R. S. (1981). Effective size and defendant bias in

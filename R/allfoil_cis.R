@@ -4,7 +4,8 @@
 #'@param lineuptabprops A dataframe of bootstrapped lineup proportions
 #'@param sumlineup Number of members in a lineup
 #'@references Malpass, R. S. (1981). Effective size and defendant bias in
-#'            eyewitness identification lineups. Law and Human Behavior, 5(4), 299-309.
+#'            eyewitness identification lineups. \emph{Law and Human Behavior, 5}(4), 299-309.
+#'@export
 
 allfoil_cihigh <- function(linetabprops, sumlineup){
     z <- 1:length(linetabprops)

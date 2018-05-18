@@ -20,6 +20,10 @@
 #'gen_esize_m_ci(lineupsizes)
 #'gen_esize_m_ci(lineupsizes, perc = .025)
 #'gen_esize_m_ci(lineupsizes, perc = .975)
+#'
+#'@export
+#'
+
 gen_esize_m_ci <- function (lineupesizes, perc=.05){
     if(perc >= 0 & perc <= 1) {
         quantile(lineupesizes, probs = perc)

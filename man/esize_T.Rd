@@ -24,6 +24,7 @@ lineup_table <- table(lineup_vec)
 
 Call:
 e <- esize_T(lineup_table)
+
 }
 \references{
 Malpass, R. S. (1981). Effective size and defendant bias in eyewitness

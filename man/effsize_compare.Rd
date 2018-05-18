@@ -30,6 +30,7 @@ linedf <- as.data.frame(cbind(lineup_vec1, lineup_vec2))
 
 #Call:
 x <- effsize_compare(linedf)
+
 }
 \references{
 Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their

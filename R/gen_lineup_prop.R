@@ -18,6 +18,9 @@
 #'lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos)
 #'lineuprops <- gen_lineup_prop(lineup_boot_df, 3)
 #'
+#'@export
+#'
+
 gen_lineup_prop <- function (lineup_boot_df, target_pos){
   map(lineup_boot_df,~table(.)) %>%
     map_dbl(., ~ lineup_prop_tab(.,target_pos))

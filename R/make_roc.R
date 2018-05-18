@@ -30,6 +30,8 @@
 #'
 #'The approach is outlined in several papers by Mickes, Wixted, Gronlund,
 #'Clark, and others (see references)
+#'
+#'@export
 
 make_roc <- function(df_confacc){
   make_rocdata(df_confacc) %>%

@@ -27,6 +27,7 @@ bootobject
 
 #To get confidence intervals:
 cis <- boot.ci(bootobject, conf = 0.95, type = "all")
+
 }
 \references{
 Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their

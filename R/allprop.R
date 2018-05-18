@@ -3,7 +3,7 @@
 #'Computes lineup proportion for each member in a lineup
 #'@param lineup_vec A numeric vector of lineup choices
 #'@param target_pos A numeric vector indexing all lineup members
-#'@param conf Desired level of alpha. Defaults to 0.95. May be specified by user (scalar).
+#'@param k Number of members in lineup. Must be specified by user (scalar).
 #'@return Returns a vector containing lineup proportion for each lineup member
 #'@examples
 #'#Data:
@@ -11,12 +11,14 @@
 #'target_pos <- c(1, 2, 3, 4, 5, 6)
 #'
 #'#Call:
-#'x <- allprop(lineup_vec, target_pos)
+#'x <- allprop(lineup_vec, target_pos, 6)
 #'@references Wells, G. L., Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
 #'             assessing the fairness of a lineup. \emph{Law and Human Behavior, 3}(4),
 #'             285-293.
+#'@export
 
-allprop <- function(lineup_vec, target_pos){
+allprop <- function(lineup_vec, target_pos, k){
+  datacheck1(lineup_vec, k)
     propvec <- as.data.frame(matrix(ncol= 1,
                                     nrow = length(target_pos)))
     for (i in 1:length(target_pos)){
