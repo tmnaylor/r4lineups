@@ -4,7 +4,7 @@
 \alias{var_diag_ratio}
 \title{Variance of diagnosticity ratio (Tredoux)}
 \usage{
-var_diag_ratio(lineup_pres, lineup_abs, pos_pres, pos_abs)
+var_diag_ratio(lineup_pres, lineup_abs, pos_pres, pos_abs, k1, k2)
 }
 \arguments{
 \item{lineup_pres}{A numeric vector of lineup choices for a lineup in which
@@ -16,6 +16,10 @@ the target was absent}
 \item{pos_pres}{A scalar, representing target position in TP lineup. Must be declared by user}
 
 \item{pos_abs}{A scalar, representing target position in TA lineup. Must be declared by user}
+
+\item{k1}{Number of targets in TP lineup. Must be specified by user (scalar).}
+
+\item{k2}{Number of targets in TA lineup. Must be specified by user (scalar).}
 }
 \description{
 Computes the variance of the diagnosticity ratio for a lineup pair
@@ -28,8 +32,8 @@ pos_pres <- 3
 pos_abs <- 4
 
 #Call:
-var_d <- var_diag_ratio(lineup_pres, lineup_abs, pos_pres, pos_abs)
-var_d <- var_diag_ratio(lineup_pres, lineup_abs, 3, 4)
+var_d <- var_diag_ratio(lineup_pres, lineup_abs, pos_pres, pos_abs, 6, 6)
+var_d <- var_diag_ratio(lineup_pres, lineup_abs, 3, 4, 6, 6)
 
 }
 \references{

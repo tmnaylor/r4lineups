@@ -23,6 +23,7 @@ allprop <- function(lineup_vec, target_pos, k){
                                     nrow = length(target_pos)))
     for (i in 1:length(target_pos)){
         propvec[i,]=lineup_prop_vec(lineup_vec, target_pos[i])
+        names(propvec) <- c("prop")
     }
     return(propvec)
 }
