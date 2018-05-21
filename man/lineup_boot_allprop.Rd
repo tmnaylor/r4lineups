@@ -32,8 +32,8 @@ lineup_vec <- round(runif(100, 1, 6))
 target_pos <- c(1, 2, 3, 4, 5, 6)
 
 #Call:
-lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos)
-lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos, conf = 0.975)
+lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos, 8)
+lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos, 8, conf = 0.975)
 
 }
 \references{

@@ -19,6 +19,10 @@
 #'names(x) <- names_a
 #'names(x) <- paste(names_a,names_b,sep = "")
 #'bootdf <- map_df(x, magrittr:extract, c(1:7))
+#'
+#'@export
+#'@importFrom magrittr %>% extract
+#'@importFrom purrr rerun map_df
 
 gen_boot_samples <- function (lineup_vec, bootno){
   names_a <- rep("sample_",bootno)

@@ -32,4 +32,5 @@ names_b <- as.character(1:1000)
 names(x) <- names_a
 names(x) <- paste(names_a,names_b,sep = "")
 bootdf <- map_df(x, magrittr:extract, c(1:7))
+
 }

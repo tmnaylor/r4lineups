@@ -8,13 +8,13 @@
 #'@return Confidence intervals for effective size
 #'@examples
 #'#Data:
-#'esize_vec <- round(runif(100, 1, 6))
+#'lineup_vec <- round(runif(100, 1, 6))
 #'
 #'#Use gen_boot_samples to get bootstrapped data:
-#'e_size_boot <- gen_boot_samples(esize_vec, 1000)
+#'bootdata <- gen_boot_samples(lineup_vec, 1000)
 #'
-#'#Compute effective size for bootstrapped data:
-#'lineupsizes <- lapply(bootdata, esize_m) %>% unlist
+#'#Compute effective size over df of bootstrapped data:
+#'lineupsizes <- gen_esize_m(bootdata)
 #'
 #'#Call:
 #'gen_esize_m_ci(lineupsizes)

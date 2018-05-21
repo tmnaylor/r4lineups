@@ -9,13 +9,13 @@ esize_m(lineup_table, printarg = FALSE)
 \arguments{
 \item{lineup_table}{A table of lineup choices}
 
-\item{printarg}{Defaults to FALSE. Returns Tredoux's adjusted effective size estimate
+\item{printarg}{Defaults to FALSE. Returns Malpass's effective size estimate
 
                 If TRUE, provides both Tredoux's (1998) and Malpass's (1981)
                 calculations of effective size}
 }
 \value{
-Tredoux's & Malpass's estimates of effective size
+Malpass's & Tredoux's estimates of effective size
 }
 \description{
 Function for computing Effective Size
@@ -28,11 +28,10 @@ Reduces the size of a lineup from a (corrected) nominal starting
 \examples{
 #Data:
 lineup_vec <- round(runif(100, 1, 6))
-lineup_table <- table(lineup_vec)
 
 #Call:
-esize_m(lineup_table, printarg = TRUE)
-esize_m(lineup_table)
+esize_m(lineup_vec, printarg = TRUE)
+esize_m(lineup_vec)
 
 }
 \references{

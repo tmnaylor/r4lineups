@@ -12,7 +12,10 @@ esize_m_boot(lineup_vec, d, printarg = TRUE)
 \item{d}{Indices for bootstrap resampling}
 
 \item{printarg}{Defaults to FALSE. If TRUE, provides both Tredoux's (1998)
-and Malpass's (1981) calculations of effective size}
+and Malpass's (1981) calculations of effective size.}
+}
+\value{
+If printarg=FALSE, provides only Malpass's calculation of effective size
 }
 \description{
 Base function for computing bootstrapped effective size

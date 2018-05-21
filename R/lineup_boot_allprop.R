@@ -22,10 +22,14 @@
 #'target_pos <- c(1, 2, 3, 4, 5, 6)
 #'
 #'#Call:
-#'lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos)
-#'lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos, conf = 0.975)
+#'lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos, 8)
+#'lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos, 8, conf = 0.975)
 #'
 #'@export
+#'@importFrom boot boot boot.ci
+#'@importFrom magrittr %>% extract
+#'@importFrom purrr map map_df
+#'@importFrom dplyr slice
 
 lineup_boot_allprop <- function(lineup_vec, target_pos, k, conf = 0.95){
   datacheck1(lineup_vec, k)

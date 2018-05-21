@@ -27,12 +27,14 @@
 #'bootdf <- gen_boot_samples(lineup_vec, 1000)
 #'
 #'Call:
-#'esize_vec <- gen_esize_T(bootdf)
+#'esize_vec <- gen_esize_m(bootdf)
 #'
 #'@export
+#'@importFrom magrittr %>%
+#'@importFrom purrr map map_dbl
 #'
 
-gen_esize_T <- function (lineup_boot_df){
+gen_esize_m <- function (lineup_boot_df){
   map(lineup_boot_df,~table(.)) %>%
-    map_dbl(., ~ esize_T(.))
+    map_dbl(., ~ esize_m(.))
 }

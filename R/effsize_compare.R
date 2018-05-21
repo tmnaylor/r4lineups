@@ -40,6 +40,7 @@
 #'x <- effsize_compare(linedf)
 #'
 #'@export
+#'@importFrom boot boot boot.ci
 
 effsize_compare <- function(linedf){
     cat ("\n")

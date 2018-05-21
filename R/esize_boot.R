@@ -4,7 +4,7 @@
 #'@param lineup_vec A vector of lineup choices
 #'@param d Indices for bootstrap resampling
 #'@param printarg Defaults to FALSE. If TRUE, provides both Tredoux's (1998)
-#'                and Malpass's (1981) calculations of effective size
+#'                and Malpass's (1981) calculations of effective size.
 #'@seealso \code{\link[boot:boot]{boot}}: https://cran.r-project.org/web/packages/boot/boot.pdf
 #'@details Function to call when bootstrap resampling using boot function (in package 'boot')
 #'@references Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their
@@ -27,6 +27,7 @@
 #'            Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
+#'@return If printarg=FALSE, provides only Malpass's calculation of effective size
 #'@examples
 #'#Get boot object:
 #'bootobject <- boot(lineup_vec, esize_m_boot, R=1000)
@@ -48,10 +49,7 @@ esize_m_boot <- function (lineup_vec, d, printarg=TRUE){
     ea <- (sum(lineup_table))/ka
     xa <- sum(abs(lineup_table_a-ea)/(2*ea))
     esize_ma_a = ka-xa
-    if (printarg) {
-        cat("Effective size (Malpass, 1981) = ", esize_ma_a,"\n")
-        cat("Effective size (Malpass, 1981,","\n",
-            "            adj Tredoux, 1998) = ", esize_ma, "\n")
-    }
-    esize_ma
+
+   esize_ma
+
 }

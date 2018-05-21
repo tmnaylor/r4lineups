@@ -2,7 +2,7 @@
 #'
 #'Function for computing Effective Size
 #' @param lineup_table A table of lineup choices
-#' @param printarg Defaults to FALSE. Returns Tredoux's adjusted effective size estimate
+#' @param printarg Defaults to FALSE. Returns Malpass's effective size estimate
 #'
 #'                 If TRUE, provides both Tredoux's (1998) and Malpass's (1981)
 #'                 calculations of effective size
@@ -26,15 +26,14 @@
 #'            Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
-#'@return Tredoux's & Malpass's estimates of effective size
+#'@return Malpass's & Tredoux's estimates of effective size
 #'@examples
 #'#Data:
 #'lineup_vec <- round(runif(100, 1, 6))
-#'lineup_table <- table(lineup_vec)
 #'
 #'#Call:
-#'esize_m(lineup_table, printarg = TRUE)
-#'esize_m(lineup_table)
+#'esize_m(lineup_vec, printarg = TRUE)
+#'esize_m(lineup_vec)
 #'
 #'@export
 
