@@ -2,7 +2,7 @@
 #'
 #'Function for computing pooled estimator from a set of k diagnosticity ratios
 #'
-#'@param df A dataframe containing: ln(d), variance of ln(d), d weights
+#'@param df A dataframe containing rows: ln(d), variance of ln(d), d weights
 #'@return Mean diagnosticity ratio for k independent lineups
 #'@references Malpass, R. S. (1981). Effective size and defendant bias in
 #'            eyewitness identification lineups. \emph{Law and Human Behavior, 5}(4), 299-309.
@@ -21,13 +21,13 @@
 #'            Wells, G. L.,Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
-#'@details For this function to work, ln(d), the variance of ln(d) and the weights
-#'         must always be assigned to vectors named ratio, var and wi, respectively.
+#'@details. The order in which the estimates are bound together (i.e., their position
+#'         in the dataframe) is important, and should always be as follows:
 #'
-#'         This is because these particular character strings are called in the d_bar function.
-#'
-#'         The order in which the estimates are bound together (i.e., their position
-#'         in the dataframe) does not matter.
+#'         \itemize{
+#'         \item row 1: var
+#'         \item row 2: lnd
+#'         \item row 3: wi}
 #'@examples
 #'#Data:
 #'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
@@ -41,17 +41,17 @@
 #'#Compute weights for pooled estimator:
 #'wi <- d_weights(linedf)
 #'
-#'#Bind ln(d), variance of ln(d) and weights into one df
+#'#Bind ln(d), variance of ln(d) and weights into one df (of 3 rows & x observations)
 #'#(see Details above):
-#'df <- cbind(ratio, var, wi)
+#'df <- t(cbind(ratio, var, wi))
 #'
 #'#Call:
 #'d_bar(df)
 #'@export
 
 d_bar <- function(df){
-    numerator   <- sum(df$wi*df$lnd)
-    denominator <- sum(df$wi)
-    d_bar       <- exp(numerator/denominator)
-    return(d_bar)
+  numerator   <- sum(df[3,]*df[2,])
+  denominator <- sum(df[3,])
+  d_bar       <- exp(numerator/denominator)
+  return(d_bar)
 }

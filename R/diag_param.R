@@ -11,6 +11,7 @@
 #'                for the target present condition
 #'@param pos_abs A list containing k numeric vectors indexing lineup member positions
 #'               for the target absent condition
+#''@param k A vector indexing number of members in each lineup pair. Must be specified by user (scalar).
 #'@return Returns a dataframe containing:
 #'
 #'         \itemize{
@@ -37,6 +38,10 @@
 #'                For a lineup pair A that consists of (1)TP lineup and (2)TA lineup:
 #'                A(1) is the first vector in the TP list
 #'                A(2) is the first vector in the TP list
+#'        \item The order in which nominal size for each lineup pair is listed must
+#'              also correspond with the positions of each respective lineup in the
+#'              lineup lists (i.e., if lineup 1 has k = 6, then the first element of
+#'              vector 'k' = 6)
 #'
 #'       \item Data must be in a list format. This allows the function to compare
 #'             lineups in which the number of choices and number of lineup members differs.
@@ -89,11 +94,15 @@
 #'pos_abs <- list(a1, b1, c1)
 #'rm(a1, b1, c1)
 #'
+#'#k:
+#'k <- c(6, 5, 4)
+#'
 #'#Call:
-#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
+#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k)
 #'@export
 
-diag_param <- function(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs){
+diag_param <- function(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k){
+  datacheck4(pos_pres, k)
   diagdf1 <- as.data.frame(matrix(ncol = 2,
                                   nrow = length(lineup_pres_list)))
 

@@ -28,7 +28,8 @@
 #'
 #'
 #'@export
-#'
+#'@import magick here
+#'@importFrom psych fa
 
 face_sim <- function(){
   root <- paste(here(),"/Faces/*.jpg",sep = "")
@@ -36,7 +37,7 @@ face_sim <- function(){
                             multi = TRUE, filters = Filters,
                             index = nrow(Filters))
   a_face_df <- make_lineup_data(file_list)
-  fa_faces <- fa(a_face_df, nfactors = 1)
+  fa_faces <- psych::fa(a_face_df, nfactors = 1)
   z <- fa_faces$loadings[1:length(fa_faces$loadings)]
   cat("\nLineup is shown in the Viewer window,\n")
   cat("Reading from left to right for order,\n")

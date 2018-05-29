@@ -15,13 +15,13 @@
 #'lineup_boot_df <- gen_boot_samples(lineup_vec, 1000)
 #'
 #'#Call:
-#'lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos)
-#'lineuprops <- gen_lineup_prop(lineup_boot_df, 3)
+#'lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos, 6)
+#'lineuprops <- gen_lineup_prop(lineup_boot_df, 3, 6)
 #'
 #'@export
-#'
+#'@importFrom purrr map map_dbl
 
-gen_lineup_prop <- function (lineup_boot_df, target_pos){
+gen_lineup_prop <- function (lineup_boot_df, target_pos, k){
   map(lineup_boot_df,~table(.)) %>%
-    map_dbl(., ~ lineup_prop_tab(.,target_pos))
+    map_dbl(., ~ lineup_prop_tab(.,target_pos, k))
 }

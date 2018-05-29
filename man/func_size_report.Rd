@@ -4,12 +4,14 @@
 \alias{func_size_report}
 \title{Functional Size with Bootstrapped Confidence Intervals}
 \usage{
-func_size_report(lineup_vec, target_pos)
+func_size_report(lineup_vec, target_pos, k)
 }
 \arguments{
 \item{lineup_vec}{A numeric vector of lineup choices}
 
 \item{target_pos}{A scalar, representing target position in lineup. Must be declared by user}
+
+\item{k}{Number of members in lineup. Must be specified by user (scalar).}
 
 \item{R}{Number of bootstrap samples}
 }
@@ -26,8 +28,8 @@ lineup_vec <- round(runif(100, 1, 6))
 target_pos <- 3
 
 #Call:
-x <- func_size_report(lineup_vec, target_pos)
-x <- func_size_report(lineup_vec, 3)
+x <- func_size_report(lineup_vec, target_pos, 6)
+x <- func_size_report(lineup_vec, 3, 6)
 
 }
 \references{

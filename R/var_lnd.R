@@ -49,11 +49,13 @@
 #'var <- var_lnd(linedf)
 #'
 #'@export
-#'
 
 var_lnd <- function(linedf){
+
     var <- (linedf$n21/(linedf$n11+(linedf$n11+linedf$n21)))+
         (linedf$n22/(linedf$n12+(linedf$n12+linedf$n22)))
     var <- as.data.frame(var)
+
     return(var)
-}
+
+    }

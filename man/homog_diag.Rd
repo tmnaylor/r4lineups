@@ -4,7 +4,7 @@
 \alias{homog_diag}
 \title{Master function: Homogeneity of diagnosticity ratio}
 \usage{
-homog_diag(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
+homog_diag(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k)
 }
 \arguments{
 \item{lineup_pres_list}{A list containing k vectors of lineup choices for k lineups, in which the

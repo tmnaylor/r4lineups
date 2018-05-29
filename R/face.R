@@ -1,6 +1,7 @@
 #' Helper function
 #' @param file_list A selection of image files (raw data)
 #' @export
+#' @import magick here
 # This function reads and shows an array of faces
 show_lineup <- function(file_list){
 

@@ -4,7 +4,7 @@
 \alias{homog_diag_boot}
 \title{Homogeneity of diagnosticity ratio with bootstrapped CIs}
 \usage{
-homog_diag_boot(lineup_pres_list, lineup_abs_list, B)
+homog_diag_boot(lineup_pres_list, lineup_abs_list, R)
 }
 \arguments{
 \item{lineup_pres_list}{A list containing k vectors of lineup choices for k lineups, in which the
@@ -27,7 +27,6 @@ Computes bootstrapped diagnosticity ratio with chi-squared estimate,
         significance level and confidence intervals for k lineup pairs
 }
 \examples{
-#'@examples
 #Target present data:
 A <-  round(runif(100,1,6))
 B <-  round(runif(70,1,5))

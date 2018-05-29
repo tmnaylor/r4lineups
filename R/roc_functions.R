@@ -8,6 +8,7 @@
 #'where accuracy = binary accuracy.
 #'@return An ROC object of package pROC
 #'@export
+#'@import pROC ggplot2 ggrepel
 
 make_rocdata <- function(df_confacc) {
     rocobj <- roc(accuracy ~ confidence, df_confacc)

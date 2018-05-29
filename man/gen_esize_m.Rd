@@ -4,10 +4,12 @@
 \alias{gen_esize_m}
 \title{Effective Size (across a dataframe)}
 \usage{
-gen_esize_m(lineup_boot_df)
+gen_esize_m(lineup_boot_df, k)
 }
 \arguments{
 \item{lineup_boot_df}{A dataframe containing bootstrapped samples of lineup data}
+
+\item{k}{Number of members in lineup. Must be specified by user (scalar).}
 }
 \value{
 A vector of effective size calculations for each lineup in bootstrapped df
@@ -24,7 +26,7 @@ Data:
 bootdf <- gen_boot_samples(lineup_vec, 1000)
 
 Call:
-esize_vec <- gen_esize_m(bootdf)
+esize_vec <- gen_esize_m(bootdf, k)
 
 }
 \references{

@@ -3,6 +3,7 @@
 #'Function for computing Effective Size (Tredoux, 1998) on
 #'lineups contained as columns in a df, usually from a bootstrapped sample
 #'@param lineup_boot_df A dataframe containing bootstrapped samples of lineup data
+#'@param k Number of members in lineup. Must be specified by user (scalar).
 #'@details This function computes effective size for k lineups simultaneously.
 #'@return A vector of effective size calculations for each lineup in bootstrapped df
 #'@references Malpass, R. S. (1981). Effective size and defendant bias in
@@ -27,14 +28,14 @@
 #'bootdf <- gen_boot_samples(lineup_vec, 1000)
 #'
 #'Call:
-#'esize_vec <- gen_esize_m(bootdf)
+#'esize_vec <- gen_esize_m(bootdf, k)
 #'
 #'@export
 #'@importFrom magrittr %>%
 #'@importFrom purrr map map_dbl
 #'
 
-gen_esize_m <- function (lineup_boot_df){
+gen_esize_m <- function (lineup_boot_df, k){
   map(lineup_boot_df,~table(.)) %>%
-    map_dbl(., ~ esize_m(.))
+    map_dbl(., ~ esize_m(., k))
 }

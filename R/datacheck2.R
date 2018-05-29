@@ -18,15 +18,15 @@ datacheck2 <- function(lineup_pres, lineup_abs, k1, k2){
     lineup_pres = lineup_pres
   }
   else{
-    stop("TP lineup vector does not contain data for all targets/lineup members.
-        Please check.")
+    stop("User-declared nominal size does not match observed nominal size for TP lineup. Please
+         check vector of TP target positions.")
   }
 
   if (length(unique(lineup_abs))== k2){
     lineup_abs = lineup_abs
   }
   else{
-    stop("TA lineup vector does not contain data for all targets/lineup members.
-        Please check.")
+    stop("User-declared nominal size does not match observed nominal size for TA lineup. Please
+         check vector of TA target positions.")
   }
 }

@@ -4,7 +4,7 @@
 \alias{diag_param}
 \title{Parameters for diagnosticity ratio}
 \usage{
-diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
+diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k)
 }
 \arguments{
 \item{lineup_pres_list}{A list containing k vectors of lineup choices for k lineups, in which the
@@ -17,7 +17,8 @@ target was absent}
 for the target present condition}
 
 \item{pos_abs}{A list containing k numeric vectors indexing lineup member positions
-for the target absent condition}
+              for the target absent condition
+'@param k A vector indexing number of members in each lineup pair. Must be specified by user (scalar).}
 }
 \value{
 Returns a dataframe containing:
@@ -52,6 +53,10 @@ This function calculates the parameters needed to calculate the diagnosticity
                For a lineup pair A that consists of (1)TP lineup and (2)TA lineup:
                A(1) is the first vector in the TP list
                A(2) is the first vector in the TP list
+       \item The order in which nominal size for each lineup pair is listed must
+             also correspond with the positions of each respective lineup in the
+             lineup lists (i.e., if lineup 1 has k = 6, then the first element of
+             vector 'k' = 6)
 
       \item Data must be in a list format. This allows the function to compare
             lineups in which the number of choices and number of lineup members differs.
@@ -87,8 +92,11 @@ c1 <- c(1, 2, 3, 4)
 pos_abs <- list(a1, b1, c1)
 rm(a1, b1, c1)
 
+#k:
+k <- c(6, 5, 4)
+
 #Call:
-linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
+linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k)
 }
 \references{
 Malpass, R. S. (1981). Effective size and defendant bias in

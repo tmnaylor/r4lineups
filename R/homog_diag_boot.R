@@ -30,7 +30,6 @@
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
 #'@examples
-#'#'@examples
 #'#Target present data:
 #'A <-  round(runif(100,1,6))
 #'B <-  round(runif(70,1,5))
@@ -46,12 +45,14 @@
 #'rm(A, B, C)
 #'
 #'@export
+#'@importFrom boot boot boot.ci
 
-homog_diag_boot <- function(lineup_pres_list, lineup_abs_list, B){
-  bootdata1 <- gen_boot_samples_list(lineup_pres_list, B)
-  bootdata2 <- gen_boot_samples_list(lineup_abs_list, B)
-  pres_boot.dat <- lapply(bootdata1, diag_param_boot)
-  abs_boot.dat <- lapply(bootdata2, diag_param_boot)
+homog_diag_boot <- function(lineup_pres_list, lineup_abs_list, k, R){
+  datacheck5(lineup_pres_list, k)
+  bootdata1 <- gen_boot_samples_list(lineup_pres_list, R)
+  bootdata2 <- gen_boot_samples_list(lineup_abs_list, R)
+  pres_boot.dat <- suppressWarnings(lapply(bootdata1, diag_param_boot))
+  abs_boot.dat <- suppressWarnings(lapply(bootdata2, diag_param_boot))
   bootlist <- mapply(cbind,pres_boot.dat, abs_boot.dat)
 
   listdf <- as.data.frame(bootlist)
@@ -62,17 +63,20 @@ homog_diag_boot <- function(lineup_pres_list, lineup_abs_list, B){
   par1 <- lapply(linedf, var_lnd) %>% unlist
   par2 <- lapply(linedf, ln_diag_ratio) %>% unlist
   par3 <- lapply(linedf, d_weights) %>% unlist
-  par4 <- as.data.frame(cbind(par1, par2, par3))
-  names(par4) <- c("var", "lnd", "wi")
+  par4 <- as.data.frame(rbind(par1, par2, par3))
+  rownames(par4) <- c("var", "lnd", "wi")
 
-  bootdata3 <- gen_boot_samples_list(par4, 100)
-  par4.1 <- as.data.frame(bootdata3[1])
-  par4.2 <- as.data.frame(bootdata3[2])
-  par4.3 <- as.data.frame(bootdata3[3])
+  bootmean <- boot(par4, d_bar.boot, R)
+  ci.mean <- boot.ci(bootmean, type = "bca")
+  bootchi <- boot(par4, chi_diag.boot, R)
+  ci.chi <- boot.ci(bootchi, type = "bca")
 
-
-  chi <- lapply(par4, chi_diag)
-  par6 <- pchisq(par5, df = 3, lower.tail=F)
-  par7 <- d_bar(par4)
+  cat ("Mean diagnosticity ratio is", round(bootmean$t0, 3))
+  cat ("\n")
+  cat ("Confidence intervals (bias-corrected)", round(ci.mean$bca[4:5], 3))
+  cat ("\n")
+  cat ("Chi-squared estimate is", round(bootchi$t0, 3))
+  cat ("\n")
+  cat ("Confidence interavals (bias-corrected):", round(ci.chi$bca[4:5], 3))
 
 }

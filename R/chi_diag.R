@@ -6,15 +6,12 @@
 #'@details \itemize{
 #'         \item To compute linedf, use the diag_param helper function.
 #'
-#'        \item To compute df, apply ln_diag_ratio, var_lnd & d_weights functions
+#'         \item To compute df, apply ln_diag_ratio, var_lnd & d_weights functions
 #'         to linedf, then bind results into one dataframe (see \strong{Examples})
 #'
-#'         \item For this function to work, ln(d), the variance of ln(d) and the weights
-#'         must always be assigned to vectors named ratio, var and wi, respectively.
-#'         This is because these particular character strings are called in the d_bar function.
-#'
-#'        \item The order in which the estimates are bound together (i.e., their position
-#'         in the dataframe) does not matter.
+#'         \item The order in which the estimates are bound together (i.e., their position
+#'         in the dataframe) is important, and should always be as follows:
+#'         row 1: \emph{var}, row 2: \emph{lnd}, row 3: \emph{wi}.
 #'         }
 #'@examples
 #'#Data:
@@ -25,9 +22,9 @@
 #'var <- var_lnd(linedf)
 #'wi <- d_weights(linedf)
 #'
-#'#Bind estimates into one df
+#'#Bind estimates into one df of 3 rows & x observations
 #'#(see Details above)
-#'df <- cbind(ratio, var, wi)
+#'df <- t(cbind(ratio, var, wi))
 #'
 #'#Call:
 #'chi_diag(df)
@@ -52,6 +49,6 @@
 #'@export
 
 chi_diag <- function(df){
-    q <- sum(((df$lnd-log(d_bar(df)))^2)/(df$var))
+    q <- sum(((df[2,]-log(d_bar(df)))^2)/(df[1,]))
     return(q)
 }

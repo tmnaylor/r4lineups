@@ -22,8 +22,9 @@ allprop <- function(lineup_vec, target_pos, k){
     propvec <- as.data.frame(matrix(ncol= 1,
                                     nrow = length(target_pos)))
     for (i in 1:length(target_pos)){
-        propvec[i,]=lineup_prop_vec(lineup_vec, target_pos[i])
+        propvec[i,]=lineup_prop_vec(lineup_vec, target_pos[i], k)
         names(propvec) <- c("prop")
+        propvec <- round(propvec, 3)
     }
     return(propvec)
 }

@@ -4,7 +4,7 @@
 \alias{lineup_prop_vec}
 \title{Lineup proportion}
 \usage{
-lineup_prop_vec(lineup_vec, target_pos)
+lineup_prop_vec(lineup_vec, target_pos, k)
 }
 \arguments{
 \item{lineup_vec}{A numeric vector of lineup choices}

@@ -4,15 +4,17 @@
 \alias{esize_m}
 \title{Effective Size}
 \usage{
-esize_m(lineup_table, printarg = FALSE)
+esize_m(lineup_table, k, both = FALSE)
 }
 \arguments{
 \item{lineup_table}{A table of lineup choices}
 
-\item{printarg}{Defaults to FALSE. Returns Malpass's effective size estimate
+\item{k}{Number of members in lineup. Must be specified by user (scalar).}
+
+\item{both}{Defaults to FALSE. Returns Tredoux's adjusted effective size estimate.
 
                 If TRUE, provides both Tredoux's (1998) and Malpass's (1981)
-                calculations of effective size}
+                calculations of effective size.}
 }
 \value{
 Malpass's & Tredoux's estimates of effective size

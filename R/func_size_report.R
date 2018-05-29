@@ -6,6 +6,7 @@
 #'@param lineup_vec A numeric vector of lineup choices
 #'@param target_pos A scalar, representing target position in lineup. Must be declared by user
 #'@param R Number of bootstrap samples
+#'@param k Number of members in lineup. Must be specified by user (scalar).
 #'@seealso \code{\link[boot:boot]{boot}}: https://cran.r-project.org/web/packages/boot/boot.pdf
 #'@details Function depends on functions from package 'boot'
 #'@references Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their
@@ -26,13 +27,15 @@
 #'target_pos <- 3
 #'
 #'#Call:
-#'x <- func_size_report(lineup_vec, target_pos)
-#'x <- func_size_report(lineup_vec, 3)
+#'x <- func_size_report(lineup_vec, target_pos, 6)
+#'x <- func_size_report(lineup_vec, 3, 6)
 #'
 #'@export
 #'@importFrom boot boot boot.ci
 
-func_size_report <- function(lineup_vec, target_pos){
+func_size_report <- function(lineup_vec, target_pos, k){
+
+   datacheck1(lineup_vec, k)
     temp1 <- boot(lineup_vec, func_size.boot, target_pos = target_pos, R=1000)
     temp2 <- boot.ci(temp1, type = c("norm","bca","perc"))
     cat ("Functional size of lineup is ",round(func_size(lineup_vec, target_pos),3))

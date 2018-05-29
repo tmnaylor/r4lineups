@@ -15,7 +15,7 @@ datacheck3 <- function(lineup_table, k){
     lineup_table = lineup_table
   }
   else{
-    stop("Lineup table does not contain data for all targets/lineup members.
-         Please check.")
+    stop("User-declared nominal size does not match observed nominal size. Please
+         check vector of target positions.")
   }
 }

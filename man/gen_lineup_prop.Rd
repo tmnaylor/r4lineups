@@ -4,7 +4,7 @@
 \alias{gen_lineup_prop}
 \title{Lineup proportion over dataframe}
 \usage{
-gen_lineup_prop(lineup_boot_df, target_pos)
+gen_lineup_prop(lineup_boot_df, target_pos, k)
 }
 \arguments{
 \item{lineup_boot_df}{Dataframe of lineup choices (usually a bootstrapped set)}
@@ -28,7 +28,7 @@ target_pos <- 3
 lineup_boot_df <- gen_boot_samples(lineup_vec, 1000)
 
 #Call:
-lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos)
-lineuprops <- gen_lineup_prop(lineup_boot_df, 3)
+lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos, 6)
+lineuprops <- gen_lineup_prop(lineup_boot_df, 3, 6)
 
 }

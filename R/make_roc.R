@@ -32,6 +32,7 @@
 #'Clark, and others (see references)
 #'
 #'@export
+#'@import pROC ggplot2 ggrepel
 
 make_roc <- function(df_confacc){
   make_rocdata(df_confacc) %>%

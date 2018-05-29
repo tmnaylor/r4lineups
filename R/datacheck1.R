@@ -14,7 +14,7 @@ datacheck1 <- function(lineup_vec, k){
     lineup_vec = lineup_vec
   }
   else{
-    stop("Lineup vector does not contain data for all targets/lineup members.
-         Please check.")
+    stop("User-declared nominal size does not match observed nominal size. Please
+         check vector of target positions.")
   }
 }

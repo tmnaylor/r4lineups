@@ -59,17 +59,19 @@
 #'pos_abs <- list(a1, b1, c1)
 #'rm(a1, b1, c1)
 #'
+#'#k:
+#'k <- c(6, 5, 4)
 #'#Call:
-#'homog_diag(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
+#'homog_diag(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k)
 #'
 #'@export
 
-homog_diag <- function(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs){
-  linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
+homog_diag <- function(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k){
+  linedf <- suppressWarnings(diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k))
   par1 <- ln_diag_ratio(linedf)
   par2 <- var_lnd(linedf)
   par3 <- d_weights(linedf)
-  par4 <- cbind(par1, par2, par3)
+  par4 <- t(cbind(par1, par2, par3))
   par5 <- chi_diag(par4)
   par6 <- pchisq(par5, df = ncol(linedf)-1, lower.tail=F)
   par7 <- d_bar(par4)

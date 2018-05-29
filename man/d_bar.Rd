@@ -7,7 +7,7 @@
 d_bar(df)
 }
 \arguments{
-\item{df}{A dataframe containing: ln(d), variance of ln(d), d weights}
+\item{df}{A dataframe containing rows: ln(d), variance of ln(d), d weights}
 }
 \value{
 Mean diagnosticity ratio for k independent lineups
@@ -16,13 +16,13 @@ Mean diagnosticity ratio for k independent lineups
 Function for computing pooled estimator from a set of k diagnosticity ratios
 }
 \details{
-For this function to work, ln(d), the variance of ln(d) and the weights
-        must always be assigned to vectors named ratio, var and wi, respectively.
+. The order in which the estimates are bound together (i.e., their position
+        in the dataframe) is important, and should always be as follows:
 
-        This is because these particular character strings are called in the d_bar function.
-
-        The order in which the estimates are bound together (i.e., their position
-        in the dataframe) does not matter.
+        \itemize{
+        \item row 1: var
+        \item row 2: lnd
+        \item row 3: wi}
 }
 \examples{
 #Data:
@@ -37,9 +37,9 @@ var <- var_lnd(linedf)
 #Compute weights for pooled estimator:
 wi <- d_weights(linedf)
 
-#Bind ln(d), variance of ln(d) and weights into one df
+#Bind ln(d), variance of ln(d) and weights into one df (of 3 rows & x observations)
 #(see Details above):
-df <- cbind(ratio, var, wi)
+df <- t(cbind(ratio, var, wi))
 
 #Call:
 d_bar(df)
