@@ -1,9 +1,9 @@
 datacheck4 <- function(pos_list, k){
 
-  for (i in length(pos_list)){
+  for (i in 1:length(pos_list)){
 
-    if (length(table(pos_list[i]))== k[i]){
-      pos_list[i] = pos_list[i]
+    if (length(table(pos_list[i]))== k[[i]]){
+      pos_list = pos_list
     }
     else{
       stop("User-declared nominal size does not match observed nominal size. Please

@@ -4,7 +4,7 @@
 \alias{diag_param}
 \title{Parameters for diagnosticity ratio}
 \usage{
-diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k)
+diag_param(lineup_pres_list, lineup_abs_list, pos_list, k)
 }
 \arguments{
 \item{lineup_pres_list}{A list containing k vectors of lineup choices for k lineups, in which the
@@ -13,11 +13,8 @@ target was present}
 \item{lineup_abs_list}{A list containing k vectors of lineup choices for k lineups, in which the
 target was absent}
 
-\item{pos_pres}{A list containing k numeric vectors indexing lineup member positions
-for the target present condition}
-
-\item{pos_abs}{A list containing k numeric vectors indexing lineup member positions
-              for the target absent condition
+\item{pos_list}{A list containing k numeric vectors indexing lineup member positions
+               for each lineup pair
 '@param k A vector indexing number of members in each lineup pair. Must be specified by user (scalar).}
 }
 \value{
@@ -73,11 +70,6 @@ C <-  round(runif(20,1,4))
 lineup_pres_list <- list(A, B, C)
 rm(A, B, C)
 
-a1 <- c(1, 2, 3, 4, 5, 6)
-b1 <- c(1, 2, 3, 4, 5)
-c1 <- c(1, 2, 3, 4)
-pos_pres <- list(a1, b1, c1)
-rm(a1, b1, c1)
 
 #Target absent data:
 A <-  round(runif(100,1,6))
@@ -86,17 +78,18 @@ C <-  round(runif(20,1,4))
 lineup_abs_list <- list(A, B, C)
 rm(A, B, C)
 
-a1 <- c(1, 2, 3, 4, 5, 6)
-b1 <- c(1, 2, 3, 4, 5)
-c1 <- c(1, 2, 3, 4)
-pos_abs <- list(a1, b1, c1)
-rm(a1, b1, c1)
+#Pos list
+lineup1_pos <- c(1, 2, 3, 4, 5, 6)
+lineup2_pos <- c(1, 2, 3, 4, 5)
+lineup3_pos <- c(1, 2, 3, 4)
+pos_list <- list(lineup1_pos, lineup2_pos, lineup3_pos)
+rm(lineup1_pos, lineup2_pos, lineup3_pos)
 
-#k:
+#Nominal size:
 k <- c(6, 5, 4)
 
 #Call:
-linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k)
+linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_list, k)
 }
 \references{
 Malpass, R. S. (1981). Effective size and defendant bias in

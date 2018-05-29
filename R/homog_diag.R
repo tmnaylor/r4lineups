@@ -40,12 +40,6 @@
 #'lineup_pres_list <- list(A, B, C)
 #'rm(A, B, C)
 #'
-#'a1 <- c(1, 2, 3, 4, 5, 6)
-#'b1 <- c(1, 2, 3, 4, 5)
-#'c1 <- c(1, 2, 3, 4)
-#'pos_pres <- list(a1, b1, c1)
-#'rm(a1, b1, c1)
-#'
 #'#Target absent data:
 #'A <-  round(runif(100,1,6))
 #'B <-  round(runif(70,1,5))
@@ -53,13 +47,14 @@
 #'lineup_abs_list <- list(A, B, C)
 #'rm(A, B, C)
 #'
-#'a1 <- c(1, 2, 3, 4, 5, 6)
-#'b1 <- c(1, 2, 3, 4, 5)
-#'c1 <- c(1, 2, 3, 4)
-#'pos_abs <- list(a1, b1, c1)
-#'rm(a1, b1, c1)
+#'#Pos list
+#'lineup1_pos <- c(1, 2, 3, 4, 5, 6)
+#'lineup2_pos <- c(1, 2, 3, 4, 5)
+#'lineup3_pos <- c(1, 2, 3, 4)
+#'pos_list <- list(lineup1_pos, lineup2_pos, lineup3_pos)
+#'rm(lineup1_pos, lineup2_pos, lineup3_pos)
 #'
-#'#k:
+#'#Nominal size:
 #'k <- c(6, 5, 4)
 #'
 #'#Call:
@@ -67,8 +62,8 @@
 #'
 #'@export
 
-homog_diag <- function(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k){
-  linedf <- suppressWarnings(diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k))
+homog_diag <- function(lineup_pres_list, lineup_abs_list, pos_list, k){
+  linedf <- suppressWarnings(diag_param(lineup_pres_list, lineup_abs_list, pos_list, k))
   par1 <- ln_diag_ratio(linedf)
   par2 <- var_lnd(linedf)
   par3 <- d_weights(linedf)

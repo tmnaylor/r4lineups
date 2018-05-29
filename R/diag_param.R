@@ -7,10 +7,8 @@
 #'                        target was present
 #'@param lineup_abs_list A list containing k vectors of lineup choices for k lineups, in which the
 #'                       target was absent
-#'@param pos_pres A list containing k numeric vectors indexing lineup member positions
-#'                for the target present condition
-#'@param pos_abs A list containing k numeric vectors indexing lineup member positions
-#'               for the target absent condition
+#'@param pos_list A list containing k numeric vectors indexing lineup member positions
+#'                for each lineup pair
 #''@param k A vector indexing number of members in each lineup pair. Must be specified by user (scalar).
 #'@return Returns a dataframe containing:
 #'
@@ -75,11 +73,6 @@
 #'lineup_pres_list <- list(A, B, C)
 #'rm(A, B, C)
 #'
-#'a1 <- c(1, 2, 3, 4, 5, 6)
-#'b1 <- c(1, 2, 3, 4, 5)
-#'c1 <- c(1, 2, 3, 4)
-#'pos_pres <- list(a1, b1, c1)
-#'rm(a1, b1, c1)
 #'
 #'#Target absent data:
 #'A <-  round(runif(100,1,6))
@@ -88,27 +81,28 @@
 #'lineup_abs_list <- list(A, B, C)
 #'rm(A, B, C)
 #'
-#'a1 <- c(1, 2, 3, 4, 5, 6)
-#'b1 <- c(1, 2, 3, 4, 5)
-#'c1 <- c(1, 2, 3, 4)
-#'pos_abs <- list(a1, b1, c1)
-#'rm(a1, b1, c1)
+#'#Pos list
+#'lineup1_pos <- c(1, 2, 3, 4, 5, 6)
+#'lineup2_pos <- c(1, 2, 3, 4, 5)
+#'lineup3_pos <- c(1, 2, 3, 4)
+#'pos_list <- list(lineup1_pos, lineup2_pos, lineup3_pos)
+#'rm(lineup1_pos, lineup2_pos, lineup3_pos)
 #'
-#'#k:
+#'#Nominal size:
 #'k <- c(6, 5, 4)
 #'
 #'#Call:
-#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k)
+#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_list, k)
 #'@export
 
-diag_param <- function(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k){
-  datacheck4(pos_pres, k)
+diag_param <- function(lineup_pres_list, lineup_abs_list, pos_list, k){
+  datacheck4(pos_list, k)
   diagdf1 <- as.data.frame(matrix(ncol = 2,
                                   nrow = length(lineup_pres_list)))
 
   for (i in 1:length(lineup_pres_list)){
-    diagdf1[i,1]= sum(lineup_pres_list[[i]] == pos_pres[[i]])
-    diagdf1[i,2] = sum(lineup_pres_list[[i]] != pos_pres[[i]])
+    diagdf1[i,1]= sum(lineup_pres_list[[i]] == pos_list[[i]])
+    diagdf1[i,2] = sum(lineup_pres_list[[i]] != pos_list[[i]])
 
 
   }
@@ -116,8 +110,8 @@ diag_param <- function(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k){
   diagdf2 <- as.data.frame(matrix(ncol = 2,
                                   nrow = length(lineup_abs_list)))
   for (i in 1:length(lineup_abs_list)){
-    diagdf2[i,1]= sum(lineup_abs_list[[i]] == pos_abs[[i]])
-    diagdf2[i,2] = sum(lineup_abs_list[[i]] != pos_abs[[i]])
+    diagdf2[i,1]= sum(lineup_abs_list[[i]] == pos_list[[i]])
+    diagdf2[i,2] = sum(lineup_abs_list[[i]] != pos_list[[i]])
 
     diagdf <- cbind(diagdf1, diagdf2)
     names(diagdf) <- c("n11", "n21", "n12", "n22")

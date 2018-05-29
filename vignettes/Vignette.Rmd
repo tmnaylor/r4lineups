@@ -233,7 +233,7 @@ lineup_abs_list <- list(TA_lineup1, TA_lineup2, TA_lineup3)
 lineup1_pos <- c(1, 2, 3, 4, 5, 6)
 lineup2_pos <- c(1, 2, 3, 4, 5)
 lineup3_pos <- c(1, 2, 3, 4)
-pos_pres <- list(lineup1_pos, lineup2_pos, lineup3_pos)
+pos_list <- list(lineup1_pos, lineup2_pos, lineup3_pos)
 ```
 
 3. To ensure the data have been coded accurately, we then specify nominal size for each lineup pair. The order in which nominal size for each lineup pair is listed must also correspond with the positions of each respective lineup in the lineup lists (i.e., if lineup 1 has k = 6, then the first element of vector 'k' = 6). Following the example above, we create our nominal size vector k by calling `k <- c(6, 5, 4)`
@@ -244,14 +244,14 @@ k <- c(6, 5, 4)
 ```
 
 ```{r, warning=FALSE}
-homog_diag(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k)
+homog_diag(lineup_pres_list, lineup_abs_list, pos_list, k)
 ```
 
 #### Calculate homogeneity for _k_ independent diagnosticity ratios, with bootstrapped confidence intervals
 
 This function returns bootstrapped estimates of homogeneity of k diagnosticity ratios, and therefore takes the same arguments as `homog_diag` (which provides normal theory estimates). Thus, we follow steps 1-3, outlined above, before calling `homog_diag_boot`:
 ```{r}
-homog_diag_boot()
+homog_diag_boot(lineup_pres_list, lineup_abs_list, k, R=100)
 ```
 
 ## ROC Curve (Confidence ~ Accuracy)
@@ -264,10 +264,12 @@ This function operates via a dialog box which asks users to select a list of ima
 1. This function requires dataframe with two columns, named confidence and accuracy (where accuracy = binary accuracy):
 
 ```{r, echo = F, results='asis'}
+#Load ROC data: mickwix sample data
 data("mickwix")
 pander::pandoc.table(mickwix[1:3,], "Confacc data")
 ```
 ```{r}
+#Call roc function
 make_roc(mickwix)
 ```
 
@@ -280,6 +282,8 @@ This function computes the degree to which each face in a set of faces loads ont
     * A dialog box will appear, through which the user may access the OS's file explorer. Navigate to the folder in which the images are stored, select all and open.
 
     _Note:_ Each image should be of one face only. 
+            The images used in this vignette can be found in the data subdirectory for this 
+            package
 
 ```{r, echo=FALSE}
 include_graphics("lineupimage1.jpg")
