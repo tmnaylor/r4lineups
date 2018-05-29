@@ -18,6 +18,7 @@
 #'@export
 
 allprop <- function(lineup_vec, target_pos, k){
+  lineup_vec <- typecheck(lineup_vec)
   datacheck1(lineup_vec, k)
     propvec <- as.data.frame(matrix(ncol= 1,
                                     nrow = length(target_pos)))

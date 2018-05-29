@@ -38,18 +38,32 @@
 #'
 #'@export
 
-esize_m_boot <- function (lineup_vec, d, printarg=TRUE){
+esize_m_boot <- function (lineup_vec, d, k){
+
     lineup_table <- table(lineup_vec[d])
-    k <- length(lineup_table)
+    #Revised formulation (Tredoux, 1998)
     ea <- sum(lineup_table)/k
     x <- sum(abs(lineup_table-ea)/(2*ea))
     esize_ma = k-x
-    ka <- sum(lineup_table!=0)
-    lineup_table_a <- lineup_table[lineup_table!=0]
+
+
+    #Original formulation (Malpass, 1981)
+    if (0 %in% names(lineup_table)== TRUE ){
+      ka <- k-1
+      lineup_table_a <- lineup_table[-1]
+    }
+    else{
+      ka <- k
+      lineup_table_a <- lineup_table
+    }
+
     ea <- (sum(lineup_table))/ka
     xa <- sum(abs(lineup_table_a-ea)/(2*ea))
     esize_ma_a = ka-xa
 
-   esize_ma
+    return(esize_ma_a)
+    }
 
-}
+
+
+

@@ -4,7 +4,7 @@
 \alias{esize_m_boot}
 \title{Bootstrapped Effective Size}
 \usage{
-esize_m_boot(lineup_vec, d, printarg = TRUE)
+esize_m_boot(lineup_vec, d, k)
 }
 \arguments{
 \item{lineup_vec}{A vector of lineup choices}

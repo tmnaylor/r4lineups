@@ -4,7 +4,7 @@
 \alias{homog_diag_boot}
 \title{Homogeneity of diagnosticity ratio with bootstrapped CIs}
 \usage{
-homog_diag_boot(lineup_pres_list, lineup_abs_list, R)
+homog_diag_boot(lineup_pres_list, lineup_abs_list, k, R)
 }
 \arguments{
 \item{lineup_pres_list}{A list containing k vectors of lineup choices for k lineups, in which the

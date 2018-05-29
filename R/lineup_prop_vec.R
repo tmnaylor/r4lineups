@@ -19,7 +19,7 @@
 #'@export
 
 lineup_prop_vec <- function(lineup_vec, target_pos, k){
-
+  lineup_vec <- typecheck(lineup_vec)
   datacheck1(lineup_vec, k)
     sum(lineup_vec == target_pos)/length(lineup_vec)
 }

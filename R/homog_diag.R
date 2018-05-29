@@ -61,6 +61,7 @@
 #'
 #'#k:
 #'k <- c(6, 5, 4)
+#'
 #'#Call:
 #'homog_diag(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k)
 #'

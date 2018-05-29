@@ -32,6 +32,7 @@
 #'@importFrom dplyr slice
 
 lineup_boot_allprop <- function(lineup_vec, target_pos, k, conf = 0.95){
+  lineup_vec <- typecheck(lineup_vec)
   datacheck1(lineup_vec, k)
   z <- map(target_pos,~boot(lineup_vec, lineup_prop_boot, target_pos = .x, R = 1000) %>%
              boot.ci(conf = 0.95, type = "bca")) %>%

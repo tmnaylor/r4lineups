@@ -34,7 +34,7 @@
 #'@importFrom boot boot boot.ci
 
 func_size_report <- function(lineup_vec, target_pos, k){
-
+  lineup_vec <- typecheck(lineup_vec)
    datacheck1(lineup_vec, k)
     temp1 <- boot(lineup_vec, func_size.boot, target_pos = target_pos, R=1000)
     temp2 <- boot.ci(temp1, type = c("norm","bca","perc"))

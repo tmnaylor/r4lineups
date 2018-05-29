@@ -29,6 +29,8 @@
 
 func_size <- function(lineup_vec, target_pos){
 
+    lineup_vec <- typecheck(lineup_vec)
+
     fsize <- length(lineup_vec) / sum(lineup_vec == target_pos)
     return(fsize)
 }

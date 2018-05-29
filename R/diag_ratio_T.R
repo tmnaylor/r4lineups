@@ -41,6 +41,9 @@
 
 diag_ratio_T <- function(lineup_pres, lineup_abs, pos_pres, pos_abs, k1, k2){
 
+    lineup_pres <- typecheck(lineup_pres)
+    lineup_abs <- typecheck(lineup_abs)
+
     datacheck2(lineup_pres, lineup_abs, k1, k2)
 
     a <- (sum(lineup_pres == pos_pres) + 0.5)/(length(lineup_pres) + 0.5)
