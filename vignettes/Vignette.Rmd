@@ -118,15 +118,15 @@ func_size_report(lineup_vec, 3, 8)
 
 This package allows the user to calculate effective size in several different ways. 
 
-1. __Malpass (1981) & Tredoux (1998)__
+1. __Malpass (1981) & Malpass adjusted effective size (see: Tredoux, 1998)__
 
-    Effective size can be computed by calling the `esize_m` function and passing a    table of lineup data. If printarg = FALSE, only Tredoux's adjusted formula for effective size is used. If both = TRUE, both Tredoux's and Malpass's calculations of effective size are returned. User must also specify nominal size.
+    Effective size can be computed by calling the `esize_m` function and passing a    table of lineup data. If printarg = FALSE, only Malpass's adjusted formula for effective size is used. If both = TRUE, both Malpass's original and adjusted calculations of effective size are returned. The user must also specify nominal size.
 
 ```{r}
 esize_m(table(lineup_vec), k = 8, both = TRUE)
 ```
     
-* _Compute bootstrapped estimates (Tredoux):_
+* _Compute bootstrapped estimates (Malpass adjusted):_
 
 ```{r,indent = "  "}
 #Create a dataframe of bootstrapped lineup data
@@ -140,12 +140,7 @@ lineupsizes <- gen_esize_m(bootdata, 8)
 gen_esize_m_ci(lineupsizes, perc = .025)
 gen_esize_m_ci(lineupsizes, perc = .975)
 ```
-
-* _Compute bootstrapped estimates (Malpass):_
-```{r, indent = "  "}
-
-```
-* _Compute bootstrap descriptive statistics (Tredoux):_
+* _Compute bootstrap descriptive statistics (Malpass adjusted):_
 ```{r}
 gen_boot_propmean_se(lineupsizes)
 ```
@@ -197,7 +192,7 @@ _Note:_ `var_diag_ratio` relies on Wells & Lindsay's original formula for comput
 
 ### Differences between Independent Diagnosticity Ratios
 
-The functions included in this package are based on Colin G. Tredoux's approach to calculating homogeneity for k independent diagnosticity ratios, as detailed in Tredoux (1998).
+The functions included in this package are based on an approach to calculating homogeneity for k independent diagnosticity ratios, as detailed in Tredoux (1998).
 
 #### Calculate homogeneity for _k_ independent diagnosticity ratios, using normal theory estimates
 
