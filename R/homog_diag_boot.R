@@ -10,6 +10,8 @@
 #'                present condition
 #'@param pos_abs A numeric vector indexing lineup member positions for the target
 #'               absent condition
+#'@param k Number of members in lineup. Must be specified by user (scalar).
+#'@param R Number of bootstrap replications. Defaults to R = 100.
 #'@details Computes bootstrapped diagnosticity ratio with chi-squared estimate,
 #'         significance level and confidence intervals for k lineup pairs
 #'@references Malpass, R. S. (1981). Effective size and defendant bias in
@@ -47,7 +49,7 @@
 #'@export
 #'@importFrom boot boot boot.ci
 
-homog_diag_boot <- function(lineup_pres_list, lineup_abs_list, k, R){
+homog_diag_boot <- function(lineup_pres_list, lineup_abs_list, k, R=100){
   datacheck5(lineup_pres_list, k)
   bootdata1 <- gen_boot_samples_list(lineup_pres_list, R)
   bootdata2 <- gen_boot_samples_list(lineup_abs_list, R)

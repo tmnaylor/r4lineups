@@ -1,4 +1,4 @@
-#'Effective Size with Confidence Intervals from Normal Theory(Tredoux, 1998)
+#'Effective Size with Confidence Intervals from Normal Theory (Tredoux, 1998)
 #'
 #'Function for generating Effective Size (Tredoux, 1998) with CIs from normal theory
 #'@param lineup_table A table of lineup choices

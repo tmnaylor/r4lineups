@@ -1,6 +1,6 @@
 #' Diagnosticty Ratio (Tredoux, 1998)
 #'
-#'Computes Tredoux's diagnosticity ratio for one lineup pair
+#'Computes Wells's adjusted diagnosticity ratio for one lineup pair (see: Tredoux, 1998)
 #'@param lineup_pres A numeric vector of lineup choices for a lineup in which
 #'                   the target was present
 #'@param lineup_abs A numeric vector of lineup choices for a lineup in which

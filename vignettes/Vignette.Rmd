@@ -118,7 +118,7 @@ func_size_report(lineup_vec, 3, 8)
 
 This package allows the user to calculate effective size in several different ways. 
 
-1. __Malpass (1981) & Malpass adjusted effective size (see: Tredoux, 1998)__
+1. __Malpass's original (1981) & adjusted effective size (see: Tredoux, 1998)__
 
     Effective size can be computed by calling the `esize_m` function and passing a    table of lineup data. If printarg = FALSE, only Malpass's adjusted formula for effective size is used. If both = TRUE, both Malpass's original and adjusted calculations of effective size are returned. The user must also specify nominal size.
 
@@ -126,7 +126,7 @@ This package allows the user to calculate effective size in several different wa
 esize_m(table(lineup_vec), k = 8, both = TRUE)
 ```
     
-* _Compute bootstrapped estimates (Malpass adjusted):_
+* _Compute bootstrapped estimates (Malpass's adjusted):_
 
 ```{r,indent = "  "}
 #Create a dataframe of bootstrapped lineup data
@@ -140,7 +140,7 @@ lineupsizes <- gen_esize_m(bootdata, 8)
 gen_esize_m_ci(lineupsizes, perc = .025)
 gen_esize_m_ci(lineupsizes, perc = .975)
 ```
-* _Compute bootstrap descriptive statistics (Malpass adjusted):_
+* _Compute bootstrap descriptive statistics (Malpass's adjusted):_
 ```{r}
 gen_boot_propmean_se(lineupsizes)
 ```
@@ -170,7 +170,7 @@ The effective size for lineup_1 is therefore not significantly different from th
 
 ## Diagnosticity Ratio
 
-We can calculate diagnosticity ratio for a set of identification parades using either `diag_ratio_W` for Wells & Lindsay's (1980) diagnosticity ratio formula, or `diag_ratio_T` for Tredoux's (1998) adjusted diagnosticity ratio. 
+We can calculate diagnosticity ratio for a set of identification parades using either `diag_ratio_W` for Wells & Lindsay's (1980) diagnosticity ratio formula, or `diag_ratio_T` for Wells's adjusted diagnosticity ratio (see: Tredoux, 1998. 
 
 * Both functions require the same set of arguments: a vector of lineup choices in which the target was present (TP), a vector of lineup choices in which the target was absent (TA), as well as target positions and nominal size for TP and TA lineups, respectively. These last arguments are declared by the user. 
 
