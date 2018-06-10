@@ -13,11 +13,11 @@ esize_m(lineup_table, k, both = FALSE)
 
 \item{both}{Defaults to FALSE. Returns Tredoux's adjusted effective size estimate.
 
-                If TRUE, provides both Tredoux's (1998) and Malpass's (1981)
+                If TRUE, provides both Malpass's (1981) and Makpass's adjusted (see: Tredoux, 1998)
                 calculations of effective size.}
 }
 \value{
-Malpass's & Tredoux's estimates of effective size
+Malpass's original & adjusted estimates of effective size
 }
 \description{
 Function for computing Effective Size

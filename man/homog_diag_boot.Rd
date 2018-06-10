@@ -4,7 +4,7 @@
 \alias{homog_diag_boot}
 \title{Homogeneity of diagnosticity ratio with bootstrapped CIs}
 \usage{
-homog_diag_boot(lineup_pres_list, lineup_abs_list, k, R)
+homog_diag_boot(lineup_pres_list, lineup_abs_list, k, R = 100)
 }
 \arguments{
 \item{lineup_pres_list}{A list containing k vectors of lineup choices for k lineups, in which the
@@ -12,6 +12,10 @@ target was present}
 
 \item{lineup_abs_list}{A list containing k vectors of lineup choices for k lineups, in which the
 target was absent}
+
+\item{k}{Number of members in lineup. Must be specified by user (scalar).}
+
+\item{R}{Number of bootstrap replications. Defaults to R = 100.}
 
 \item{pos_pres}{A numeric vector indexing lineup member positions for the target
 present condition}

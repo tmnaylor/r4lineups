@@ -2,7 +2,7 @@
 % Please edit documentation in R/esize_T_ci_n.R
 \name{esize_T_ci_n}
 \alias{esize_T_ci_n}
-\title{Effective Size with Confidence Intervals from Normal Theory(Tredoux, 1998)}
+\title{Effective Size with Confidence Intervals from Normal Theory (Tredoux, 1998)}
 \usage{
 esize_T_ci_n(lineup_table, alpha)
 }

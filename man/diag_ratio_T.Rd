@@ -22,7 +22,7 @@ the target was absent}
 \item{pos_res}{A scalar, representing target position in TP lineup. Must be declared by user}
 }
 \description{
-Computes Tredoux's diagnosticity ratio for one lineup pair
+Computes Wells's adjusted diagnosticity ratio for one lineup pair (see: Tredoux, 1998)
 }
 \examples{
 #Data:

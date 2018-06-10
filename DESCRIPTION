@@ -1,18 +1,22 @@
 Package: r4lineups
 Title: Statistical Inference on Lineup Fairness
-Version: 0.0.0.9000
-Authors@R: person("Colin", "Tredoux", email = "colin.tredoux@uct.ac.za", role = c("aut", "cre"))
-Description: 
+Version: 0.0.1
+Authors@R: c(
+            person("Colin", "Tredoux", email = "colin.tredoux@uct.ac.za", role = c("aut", "cre")),
+            person("Tamsyn", "Naylor", email = "tmnaylor@outlook.com", role = "aut"))
+Description: Some descriptioney description. Write this out in full later. 
 Depends: R (>= 3.4.3)
 Imports: boot,
+         dplyr,
+         ggplot2,
          ggrepel,
          here,
          magick,
          magrittr,
-         pacman,
+         pander,
          pROC,
          psych,
-         tidyverse
+         purrr
 License: CC0
 Encoding: UTF-8
 LazyData: true
