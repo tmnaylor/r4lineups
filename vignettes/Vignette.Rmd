@@ -19,14 +19,48 @@ knitr::opts_chunk$set(
 )
 ```
 
-This package contains functions to compute various estimates of lineup fairness, allowing eyewitness testimony researchers to reason inferentially about several well-known measures of lineup fairness developed in psychological research. 
+This package contains functions to compute various properties of laboratory or police lineups.  
+  Since the early 1970s eyewitness testimony researchers have recognised the importance of estimating properties such as lineup bias (is the lineup biased against the suspect, leading to a rate of choosing higher than one would expect by chance?), and lineup size (how many reasonable choices are in fact available to the witness? A lineup is supposed to consist of a suspect and a number of additional members, or foils, whom a poor quality witness might mistake for the perpetrator).
+  Lineup measures are descriptive, in the first instance, but since the earliest articles in the literature researchers have recognised the importance of reasoning inferentially about them.
+ 
+The measures described below were originally proposed by Doob & Kirshenbaum (1973), Wells, Leippe & Ostrom (1979), Malpass (1981), Tredoux (1998, 1999), and Malpass, Tredoux & McQuiston-Surrett (2007).  
 
-The measures described below were developed by _______ (see References). Several other functions contained in this package are variations of measures of lineup fairness adapted from (refs), and modified by Professor Colin Tredoux. *UNFINISHED
+Much of the justification for what follows can be found in Tredoux (1998)
 
 
 ## Data Format
 
-The majority of r4lineups functions require a vector of numeric lineup data, whilst other functions require the user to pass a list of lineup data. It is advisable to read the documentation to determine the format of data needed by each specific function. Most r4lineups functions will not work with a dataframe, even if the dataframe contains only one vector. If your lineup data is in dataframe format already, you can easily convert it to a vector or a list. 
+The majority of functions in **r4lineups** require a numeric *vector* representing lineup data, whilst other functions require the user to pass a *list* of lineup data. It is advisable to read the documentation to determine the format of data needed by each specific function. Most **r4lineup** functions will not work with a dataframe, even if the dataframe contains only one column, and thus appears to be in vector like format. If your lineup data is in dataframe format already, you can easily convert it to a vector or a list. 
+
+For instance, if we have 10 mock witnesses, and each views a lineup with 6 members, then we could record their choices as a numeric vector, where the elements represent the position of the lineup member chosen by each witness:
+
+lineup_vec <- c(3, 2, 5, 6, 1, 3, 3, 5, 6, 4)
+
+However, it is also possible to represent this set of choices as a one-dimensional table:
+
+lineup_tbl <- table(lineup_vec)
+
+If we had our lineup choices recorded in a data frame, which is what we might end up with if we import the data from a spreadsheet program, then we could easily extract the variable representing choices in the dataframe into a vector.
+
+For instance, if the lineup choices shown above for 10 mock witnesses were part of a larger dataset, and we had recorded the ages and participant number of each participant, then the dataframe might appear as shown below (we create the dataframe below with simulated data here, though)
+
+participant_num <- paste("Partic_",1:10, sep = "")
+age <- round(runif(10, 18, 80), 2)
+line_df = data.frame(participant_num, age, lineup_vec)
+
+Show the dataframe:
+
+line_df
+
+Extract the lineup choices, per participant, to a vector:
+a_lineup_vec <- line_df$linep_vec
+
+Or make a table directly from the variable of choices:
+a_lineup_table <- table(line_df$lineup_vec)
+
+One **important** issue is that there is no way of the functions in this package knowing if some of the members of a lineup received no choices.  In other words, if there were in fact 7 lineup members in our running example, but member 7 was not chosen by any witnesses, then this would not be evident from the lineup vector, since it records the choice made by each witness, but not the number of lineup memberss.  To deal with this problem, generally the functions in the package require nominal lineup size (the number of physical members of the lineup) to be passed as an argument.
+
+Let's look at a slightly larger data set:
 
 ```{r,}
 library(r4lineups)
@@ -37,7 +71,7 @@ data(CGTmock)
 pander::pandoc.table(CGTmock[1:3,], "CTGmock data")
 ```
 
-* For functions that require data for only one lineup or one lineup pair, you can convert the data from a given lineup to a vector by calling `lineup_vec <- CGTmock$lineup_1` or alternatively `lineup_vec <- CGTmock[[1]]`
+* For functions that require data for only one lineup or one lineup pair, you can convert the data from a given lineup to a vector by calling for e.g. `lineup_vec <- CGTmock$lineup_1` or alternatively `lineup_vec <- CGTmock[[1]]`
 
 * For functions that require several lineups or several lineup pairs, you can convert the data to a list by calling `lineup_list <- as.list(CGTmock)`
     
@@ -54,19 +88,25 @@ lineup_list <- as.list(CGTmock)
 
 ## Lineup Proportion
 
-Proportion refers to the proportion of witnesses selecting a particular member of a lineup. This package provides calculations of proportion for individual lineup members, and for all members of a lineup. 
+Proportion refers to the proportion of witnesses selecting a particular member of a lineup. This package provides calculations of proportion for individual lineup members (lineup_prop_vec), and for all members of a lineup with a subsidiary function (allprop).
+
+The calculation of the proportion of mock witnesses choosing the suspect is essentially a measure of lineup bias (see Malpass, 1981; Tredoux, 1998)
 
 ### Calculating proportion for a single target/lineup member:
 ```{r}
 library(r4lineups)
 
 lineup_prop_vec(lineup_vec, 3, 8)
+# Tamsyn, we need to name all arguments in the examples
+# e.g. lineup_prop_vec(lineup_vec, target_pos = 3, lsize = 8)
+# or whatever the names really are
 ```
-The function returns a proportion indicating the frequency with which the target/linuep member occupying position 3 in the lineup was identified by 14.29% of the witnesses, or 14.29% of the time. 
+The example use of the function here returns a proportion indicating the frequency with which the target/linuep member occupying position 3 in the lineup was identified by 14.29% of the witnesses. 
 
 * _Compute bootstrapped estimates:_
-
-    To calculate boostrapped lineup proportion for a single lineup member, we pass the `lineup_prop_boot` function as an argument to the `boot` function supplied by the package 'boot':
+The original work on lineup bias suggested testing whether the computed proportion = 1/nominal_size using a z test of proportions, or a binomial probability (see Tredoux, 1998), or a confidence interval around the proportion (see Tredoux, 1998), but very few studies actually use enough mock witnesses to strongly warrant this approach, since it assumes approximation to a normal distribution, and the size of the lineup places hard limits that are often not observed by computed confidence intervals.
+    We therefore recommend computing bootstrapped estimates of all lineup measures, and especially the sampling variability around estimates.
+    To calculate a boostrapped lineup proportion for a single lineup member, we pass the `lineup_prop_boot` function as an argument to the `boot` function supplied by the package 'boot'.  We do not work directly with the lineup_prop_boot function, all we need to know to bootstrap is the lineup vector, the position of the target, and the number of bootstrap resamples we desire.
 
 ```{r, indent = "  ", warning=FALSE,}
 bootobject <- boot::boot(lineup_vec, lineup_prop_boot, target_pos = 3, R = 1000)
@@ -80,9 +120,11 @@ cis <- boot::boot.ci(bootobject, conf = 0.95, type = "all")
 cis
 ```
 
+If you are not familiar with how the boot or the boot.ci function work, you could consult the documentation for the boot package. However, by using the functions as shown here you will be able to bootstrap without needing to understand them in detail.
+
 ### Calculating proportion for each lineup member
 
-Should the user want to calculate proportion for each member of a given lineup, the `allprop` function can be called. Instead of the user specifying the target position, a vector indexing all target positions is passed to the function. This can be manually generated by calling `target_pos <- c(1:k)`.
+Should the user want to calculate a proportion for each member of a given lineup, the `allprop` function can be called. Instead of the user specifying the target position, a vector indexing all target positions is passed to the function. This can be manually generated by making a vector target_pos, as shown below.
 
 ```{r, echo=FALSE  }
 target_pos <- c(1:8)
@@ -93,6 +135,8 @@ allprop(lineup_vec, target_pos, 8)
 
 
 * _Compute bootstrapped estimates:_
+
+We can generate bootstrap estimates for all the computed proportions, too, with *lineup_boot_allprop*
 
 ```{r, indent = "  "}
 lineuprops.ci <- lineup_boot_allprop(lineup_vec, target_pos, 8)
