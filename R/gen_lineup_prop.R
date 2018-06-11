@@ -2,7 +2,8 @@
 #'
 #'Function for computing lineup proportion over a dataframe
 #'@param lineup_boot_df Dataframe of lineup choices (usually a bootstrapped set)
-#'@param target_pos A scalar, representing target position in lineup. Must be declared by user
+#'@param target_pos A scalar, representing target position in lineup. Must be declared by user.
+#'@param k A vector indexing number of members in each lineup pair (nominal size). Must be specified by user (scalar).
 #'@return A vector of bootstrapped proportions, indicating the frequency with which
 #'        a target was identified in a lineup
 #'        Length of vector = number of bootstrap sample draws

@@ -11,8 +11,7 @@ esize_m_boot(lineup_vec, d, k)
 
 \item{d}{Indices for bootstrap resampling}
 
-\item{printarg}{Defaults to FALSE. If TRUE, provides both Malpass's original
-and adjusted (see: Tredoux, 1998) calculations of effective size.}
+\item{k}{A vector indexing number of members in each lineup pair. Must be specified by user (scalar).}
 }
 \value{
 If printarg=FALSE, provides only Malpass's priginal calculation of effective size

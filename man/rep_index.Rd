@@ -19,5 +19,4 @@ Can be used to create vectors of lineup data
 }
 \examples{
 rep_index(1, 10)
-[1] 1 1 1 1 1 1 1 1 1 1
 }

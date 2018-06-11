@@ -4,13 +4,13 @@
 \alias{gen_esize_m_ci}
 \title{Bootstrapped Confidence Intervals for Effective Size}
 \usage{
-gen_esize_m_ci(lineupesizes, perc = 0.05)
+gen_esize_m_ci(lineupsizes, perc = 0.05)
 }
 \arguments{
+\item{lineupsizes}{A vector of bootstrapped effective sizes}
+
 \item{perc}{Defaults to .05. Can be specified by user, according to desired
 level of alpha (scalar)}
-
-\item{lineupsizes}{A vector of bootstrapped effective sizes}
 }
 \value{
 Confidence intervals for effective size

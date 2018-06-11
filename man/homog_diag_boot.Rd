@@ -16,12 +16,6 @@ target was absent}
 \item{k}{Number of members in lineup. Must be specified by user (scalar).}
 
 \item{R}{Number of bootstrap replications. Defaults to R = 100.}
-
-\item{pos_pres}{A numeric vector indexing lineup member positions for the target
-present condition}
-
-\item{pos_abs}{A numeric vector indexing lineup member positions for the target
-absent condition}
 }
 \description{
 Function for computing bootstrapped estimates of homogeneity of diagnosticity ratio

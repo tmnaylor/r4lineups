@@ -9,7 +9,7 @@
 #'                       target was absent
 #'@param pos_list A list containing k numeric vectors indexing lineup member positions
 #'                for each lineup pair
-#''@param k A vector indexing number of members in each lineup pair. Must be specified by user (scalar).
+#'@param k A vector indexing number of members in each lineup pair. Must be specified by user (scalar).
 #'@return Returns a dataframe containing:
 #'
 #'         \itemize{
@@ -93,6 +93,7 @@
 #'
 #'#Call:
 #'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_list, k)
+#'@importFrom stats pchisq
 #'@export
 
 diag_param <- function(lineup_pres_list, lineup_abs_list, pos_list, k){

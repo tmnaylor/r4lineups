@@ -4,7 +4,7 @@
 \alias{func_size_report}
 \title{Functional Size with Bootstrapped Confidence Intervals}
 \usage{
-func_size_report(lineup_vec, target_pos, k)
+func_size_report(lineup_vec, target_pos, k, R)
 }
 \arguments{
 \item{lineup_vec}{A numeric vector of lineup choices}
@@ -13,7 +13,7 @@ func_size_report(lineup_vec, target_pos, k)
 
 \item{k}{Number of members in lineup. Must be specified by user (scalar).}
 
-\item{R}{Number of bootstrap samples}
+\item{R}{Number of bootstrap samples. Defaults to 1000}
 }
 \description{
 This function is a master function, calling other functions it needs,

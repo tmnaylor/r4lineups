@@ -23,6 +23,7 @@
 #'lineuprops <- boot::boot(lineup_vec, lineup_prop_boot, target_pos = 3, R = 1000)
 #'gen_boot_propmean_se(lineuprops$t)
 #'
+#'@importFrom stats median sd
 #'@export
 
 

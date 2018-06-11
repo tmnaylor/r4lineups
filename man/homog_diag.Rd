@@ -13,11 +13,10 @@ target was present}
 \item{lineup_abs_list}{A list containing k vectors of lineup choices for k lineups, in which the
 target was absent}
 
-\item{pos_pres}{A numeric vector indexing lineup member positions for the target
-present condition}
+\item{pos_list}{A numeric vector indexing lineup member positions for the target
+present & absent conditions.}
 
-\item{pos_abs}{A numeric vector indexing lineup member positions for the target
-absent condition}
+\item{k}{A vector indexing number of members in each lineup pair (nominal size). Must be specified by user (scalar).}
 }
 \value{
 Computes diagnosticity ratio with chi-squared estimate and significance
@@ -57,7 +56,7 @@ rm(lineup1_pos, lineup2_pos, lineup3_pos)
 k <- c(6, 5, 4)
 
 #Call:
-homog_diag(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs, k)
+homog_diag(lineup_pres_list, lineup_abs_list, pos_list, k)
 
 }
 \references{

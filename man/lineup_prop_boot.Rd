@@ -9,10 +9,10 @@ lineup_prop_boot(lineup_vec, d, target_pos)
 \arguments{
 \item{lineup_vec}{A numeric vector of lineup choices}
 
-\item{target_pos}{A scalar, representing target position in lineup. Must be declared by user}
-
-\item{d=d}{Indices for bootstrap sample. Argument used by boot function to
+\item{d}{Indices for bootstrap sample. Argument used by boot function to
 select samples for bootstrapping}
+
+\item{target_pos}{A scalar, representing target position in lineup. Must be declared by user}
 }
 \description{
 Base function for computing bootstrapped lineup proportion for a lineup member

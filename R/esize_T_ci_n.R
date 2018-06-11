@@ -31,6 +31,7 @@
 #'#Call:
 #'e_ci <- esize_T_ci_n(lineup_table, .95)
 #'
+#'@importFrom stats qnorm
 #'@export
 
 esize_T_ci_n <- function(lineup_table, alpha){

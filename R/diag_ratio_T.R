@@ -5,7 +5,7 @@
 #'                   the target was present
 #'@param lineup_abs A numeric vector of lineup choices for a lineup in which
 #'                   the target was absent
-#'@param pos_res A scalar, representing target position in TP lineup. Must be declared by user
+#'@param pos_pres A scalar, representing target position in TP lineup. Must be declared by user
 #'@param pos_abs A scalar, representing target position in TA lineup. Must be declared by user
 #'@param k1 Number of targets in TP lineup. Must be specified by user (scalar).
 #'@param k2 Number of targets in TA lineup. Must be specified by user (scalar).

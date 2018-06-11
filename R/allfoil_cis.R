@@ -1,7 +1,7 @@
 #'Confidence Intervals for Proportion
 #'
 #'Function to compute ci high for each foil in a lineup
-#'@param lineuptabprops A dataframe of bootstrapped lineup proportions
+#'@param linetabprops A dataframe of bootstrapped lineup proportions
 #'@param sumlineup Number of members in a lineup
 #'@references Malpass, R. S. (1981). Effective size and defendant bias in
 #'            eyewitness identification lineups. \emph{Law and Human Behavior, 5}(4), 299-309.

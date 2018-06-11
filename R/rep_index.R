@@ -6,7 +6,6 @@
 #'@param num Number of times to repeat index
 #'@examples
 #'rep_index(1, 10)
-#'[1] 1 1 1 1 1 1 1 1 1 1
 #'@export
 
 rep_index <- function(index,num){

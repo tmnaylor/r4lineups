@@ -5,6 +5,7 @@
 #'@param n Number of lineup members
 #'@export
 #'@importFrom purrr map
+#'@importFrom stats quantile
 
 makevec_prop <- function(prop,n){
     lineup_vec_1 = rep(1,n*prop)

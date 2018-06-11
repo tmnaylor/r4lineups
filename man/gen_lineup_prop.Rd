@@ -9,7 +9,9 @@ gen_lineup_prop(lineup_boot_df, target_pos, k)
 \arguments{
 \item{lineup_boot_df}{Dataframe of lineup choices (usually a bootstrapped set)}
 
-\item{target_pos}{A scalar, representing target position in lineup. Must be declared by user}
+\item{target_pos}{A scalar, representing target position in lineup. Must be declared by user.}
+
+\item{k}{A vector indexing number of members in each lineup pair (nominal size). Must be specified by user (scalar).}
 }
 \value{
 A vector of bootstrapped proportions, indicating the frequency with which

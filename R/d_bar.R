@@ -30,7 +30,7 @@
 #'         \item row 3: wi}
 #'@examples
 #'#Data:
-#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, abs_pres)
+#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_list, k)
 #'
 #'#Compute ln(d):
 #'ratio <- ln_diag_ratio(linedf)

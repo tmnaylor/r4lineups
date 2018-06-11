@@ -6,10 +6,6 @@
 #'                        target was present
 #'@param lineup_abs_list A list containing k vectors of lineup choices for k lineups, in which the
 #'                       target was absent
-#'@param pos_pres A numeric vector indexing lineup member positions for the target
-#'                present condition
-#'@param pos_abs A numeric vector indexing lineup member positions for the target
-#'               absent condition
 #'@param k Number of members in lineup. Must be specified by user (scalar).
 #'@param R Number of bootstrap replications. Defaults to R = 100.
 #'@details Computes bootstrapped diagnosticity ratio with chi-squared estimate,
@@ -48,6 +44,7 @@
 #'
 #'@export
 #'@importFrom boot boot boot.ci
+#'@importFrom stats setNames
 
 homog_diag_boot <- function(lineup_pres_list, lineup_abs_list, k, R=100){
   datacheck5(lineup_pres_list, k)

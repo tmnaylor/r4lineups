@@ -14,8 +14,8 @@
 #'         row 1: \emph{var}, row 2: \emph{lnd}, row 3: \emph{wi}.
 #'         }
 #'@examples
-#'#Data:
-#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_pres, pos_abs)
+#'#Data: Use diag param helper function to get data (n11, n21, n12, n22)
+#'linedf <- diag_param(lineup_pres_list, lineup_abs_list, pos_list, k)
 #'
 #'#Get ln(d), variance of ln(d) & d weights:
 #'ratio <- ln_diag_ratio(linedf)

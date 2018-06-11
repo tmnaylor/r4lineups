@@ -26,5 +26,4 @@ lineup_table <- table(lineup_vec)
 
 #Call:
 lineup_vec <- gen_linevec(lineup_table, 3)
-
 }

@@ -13,13 +13,13 @@ the target was present}
 \item{lineup_abs}{A numeric vector of lineup choices for a lineup in which
 the target was absent}
 
+\item{pos_pres}{A scalar, representing target position in TP lineup. Must be declared by user}
+
 \item{pos_abs}{A scalar, representing target position in TA lineup. Must be declared by user}
 
 \item{k1}{Number of targets in TP lineup. Must be specified by user (scalar).}
 
 \item{k2}{Number of targets in TA lineup. Must be specified by user (scalar).}
-
-\item{pos_res}{A scalar, representing target position in TP lineup. Must be declared by user}
 }
 \description{
 Computes Wells's adjusted diagnosticity ratio for one lineup pair (see: Tredoux, 1998)

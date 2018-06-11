@@ -23,6 +23,7 @@
 #'prop_bootci_lower <- gen_boot_propci(lineuprops, perc = .025)
 #'prop_bootci_upper <- gen_boot_propci(lineuprops, perc = .975)
 #'
+#'@importFrom stats quantile
 #'@export
 
 gen_boot_propci <- function (lineuprops, perc=.05){

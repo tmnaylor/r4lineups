@@ -14,8 +14,9 @@ target was present}
 target was absent}
 
 \item{pos_list}{A list containing k numeric vectors indexing lineup member positions
-               for each lineup pair
-'@param k A vector indexing number of members in each lineup pair. Must be specified by user (scalar).}
+for each lineup pair}
+
+\item{k}{A vector indexing number of members in each lineup pair. Must be specified by user (scalar).}
 }
 \value{
 Returns a dataframe containing:

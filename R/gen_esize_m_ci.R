@@ -24,9 +24,9 @@
 #'@export
 #'
 
-gen_esize_m_ci <- function (lineupesizes, perc=.05){
+gen_esize_m_ci <- function (lineupsizes, perc=.05){
     if(perc >= 0 & perc <= 1) {
-        quantile(lineupesizes, probs = perc)
+        quantile(lineupsizes, probs = perc)
     }
     else {
         cat("Illegal value entered (perc must be proportion)")

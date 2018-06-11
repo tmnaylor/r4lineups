@@ -3,8 +3,7 @@
 #'Base function for computing bootstrapped effective size
 #'@param lineup_vec A vector of lineup choices
 #'@param d Indices for bootstrap resampling
-#'@param printarg Defaults to FALSE. If TRUE, provides both Malpass's original
-#'                and adjusted (see: Tredoux, 1998) calculations of effective size.
+#'@param k A vector indexing number of members in each lineup pair. Must be specified by user (scalar).
 #'@seealso \code{\link[boot:boot]{boot}}: https://cran.r-project.org/web/packages/boot/boot.pdf
 #'@details Function to call when bootstrap resampling using boot function (in package 'boot')
 #'@references Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their

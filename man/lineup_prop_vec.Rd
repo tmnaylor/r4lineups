@@ -9,7 +9,9 @@ lineup_prop_vec(lineup_vec, target_pos, k)
 \arguments{
 \item{lineup_vec}{A numeric vector of lineup choices}
 
-\item{target_pos}{Suspect/lineup member position. Must be declared by user}
+\item{target_pos}{Suspect/lineup member position. Must be declared by user (scalar).}
+
+\item{k}{Nominal size (i.e., total number of members in lineup). Must be specified by user (scalar).}
 }
 \value{
 Returns a proportion indicating the frequency with which a target was
@@ -23,8 +25,7 @@ Computes the proportion of mock witnesses identifying a particular lineup member
 lineup_vec <- round(runif(100, 1, 6))
 
 #Call:
-lineup_prop_vec(lineup_vec, 3)
-lineup_prop_vec(c(1, 2, 5, 3, 2, 4), 2)
+lineup_prop_vec(lineup_vec, 3, 6)
 
 }
 \references{

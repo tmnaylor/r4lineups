@@ -30,6 +30,7 @@
 #'@export
 #'@import magick here
 #'@importFrom psych fa
+#'@importFrom utils choose.files Filters
 
 face_sim <- function(){
   root <- paste(here(),"/Faces/*.jpg",sep = "")

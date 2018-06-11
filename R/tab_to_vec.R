@@ -14,7 +14,7 @@
 #'
 #'#Call:
 #'lineup_vec <- gen_linevec(lineup_table, 3)
-#'
+#'@importFrom purrr map2
 #'@export
 
 gen_linevec <- function (lineup_table, k){
