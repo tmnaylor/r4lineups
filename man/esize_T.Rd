@@ -18,11 +18,11 @@ Reduces the size of a lineup from a (corrected) nominal starting
          the level of chance expectation.
 }
 \examples{
-Data:
+#Data:
 lineup_vec <- round(runif(100, 1, 6))
 lineup_table <- table(lineup_vec)
 
-Call:
+#Call:
 e <- esize_T(lineup_table)
 
 }
