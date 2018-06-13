@@ -23,9 +23,9 @@ This package contains functions to compute various properties of laboratory or p
   Since the early 1970s eyewitness testimony researchers have recognised the importance of estimating properties such as lineup bias (is the lineup biased against the suspect, leading to a rate of choosing higher than one would expect by chance?), and lineup size (how many reasonable choices are in fact available to the witness? A lineup is supposed to consist of a suspect and a number of additional members, or foils, whom a poor quality witness might mistake for the perpetrator).
   Lineup measures are descriptive, in the first instance, but since the earliest articles in the literature researchers have recognised the importance of reasoning inferentially about them.
  
-The measures described below were originally proposed by Doob & Kirshenbaum (1973), Wells, Leippe & Ostrom (1979), Malpass (1981), Tredoux (1998, 1999), and Malpass, Tredoux & McQuiston-Surrett (2007).  
+The measures described below were originally proposed by Doob & Kirshenbaum (1973), Wells, Leippe & Ostrom (1979), Malpass (1981), Tredoux (1998, 1999), and Malpass, Tredoux & McQuiston-Surrett (2007).  Most of the measures assume that a sample of mock witnesses has been given a description of the perpetrator, and a lineup, and asked to choose someone from the lineup (either as the best match to the description, or the best match to the lineup member the police likely have in mind; see Malpass et al., 2007)
 
-Much of the justification for what follows can be found in Tredoux (1998)
+Much of the justification for what follows can be found in Tredoux (1998), and Malpass et al. (2007)
 
 
 ## Data Format
@@ -38,25 +38,25 @@ For instance, if we have 10 mock witnesses, and each views a lineup with 6 membe
 
 However, it is also possible to represent this set of choices as a one-dimensional table:
 
-lineup_tbl <- table(lineup_vec)
+`lineup_tbl <- table(lineup_vec)`
 
 If we had our lineup choices recorded in a data frame, which is what we might end up with if we import the data from a spreadsheet program, then we could easily extract the variable representing choices in the dataframe into a vector.
 
 For instance, if the lineup choices shown above for 10 mock witnesses were part of a larger dataset, and we had recorded the ages and participant number of each participant, then the dataframe might appear as shown below (we create the dataframe below with simulated data here, though)
 
-participant_num <- paste("Partic_",1:10, sep = "")
-age <- round(runif(10, 18, 80), 2)
-line_df = data.frame(participant_num, age, lineup_vec)
+`participant_num <- paste("Partic_",1:10, sep = "")`
+`age <- round(runif(10, 18, 80), 2)`
+`line_df = data.frame(participant_num, age, lineup_vec)`
 
 Show the dataframe:
 
-line_df
+`line_df`
 
 Extract the lineup choices, per participant, to a vector:
-a_lineup_vec <- line_df$linep_vec
+`a_lineup_vec <- line_df$linep_vec`
 
 Or make a table directly from the variable of choices:
-a_lineup_table <- table(line_df$lineup_vec)
+`a_lineup_table <- table(line_df$lineup_vec)`
 
 One **important** issue is that there is no way of the functions in this package knowing if some of the members of a lineup received no choices.  In other words, if there were in fact 7 lineup members in our running example, but member 7 was not chosen by any witnesses, then this would not be evident from the lineup vector, since it records the choice made by each witness, but not the number of lineup memberss.  To deal with this problem, generally the functions in the package require nominal lineup size (the number of physical members of the lineup) to be passed as an argument.
 
@@ -82,7 +82,8 @@ lineup_list <- as.list(CGTmock)
 
 * __Nominal Size__
 
-    Functions relying on nominal size for accurate calculations require the user to manually specify nominal size. If nominal size, as specified by the user, is not reflected in the dataframe or vector passed to the function, execution of the function is halted with the following error message: _"User-declared nominal size does not match observed nominal size. Please check vector of target positions."_" Define
+    The notion of 'Nominal size' refers to the number of physical members of a lineup. 
+    Functions relying on nominal size for accurate calculations require the user to manually specify nominal size. If nominal size, as specified by the user, is not reflected in the dataframe or vector passed to the function, execution of the function is halted with the following error message: _"User-declared nominal size does not match observed nominal size. Please check vector of target positions."_
 
 -----
 
@@ -90,7 +91,7 @@ lineup_list <- as.list(CGTmock)
 
 Proportion refers to the proportion of witnesses selecting a particular member of a lineup. This package provides calculations of proportion for individual lineup members (lineup_prop_vec), and for all members of a lineup with a subsidiary function (allprop).
 
-The calculation of the proportion of mock witnesses choosing the suspect is essentially a measure of lineup bias (see Malpass, 1981; Tredoux, 1998)
+The calculation of the proportion of mock witnesses choosing the suspect is essentially a measure of lineup bias (see Malpass, 1981; Tredoux, 1998), especially when one tests whether it exceeds the proportion expected by chance guessing alone (1/nominal_size)
 
 ### Calculating proportion for a single target/lineup member:
 ```{r}
@@ -101,7 +102,7 @@ lineup_prop_vec(lineup_vec, 3, 8)
 # e.g. lineup_prop_vec(lineup_vec, target_pos = 3, lsize = 8)
 # or whatever the names really are
 ```
-The example use of the function here returns a proportion  the target/linuep member occupying position 3 in the lineup was identified by 14.29% of the witnesses. CHANGE
+The example use of the function here returns the proportion of mock witnesses choosing the target/linuep member occupying position 3 in the lineup, and is 0.14% of the witnesses. 
 
 * _Compute bootstrapped estimates:_
 The original work on lineup bias suggested testing whether the computed proportion = 1/nominal_size using a z test of proportions, or a binomial probability (see Tredoux, 1998), or a confidence interval around the proportion (see Tredoux, 1998), but very few studies actually use enough mock witnesses to strongly warrant this approach, since it assumes approximation to a normal distribution, and the size of the lineup places hard limits that are often not observed by computed confidence intervals.
@@ -124,7 +125,7 @@ If you are not familiar with how the boot or the boot.ci functions work, you cou
 
 ### Calculating proportion for each lineup member
 
-Should the user want to calculate a proportion for each member of a given lineup, the `allprop` function can be called. Instead of the user specifying the target position, a vector indexing all target positions is passed to the function. This can be manually generated by making a vector target_pos, as shown below, where we assume there are 8 lineup members.
+Should you want to calculate a proportion for each member of a given lineup, the `allprop` function can be called. This might be the case when there is no pre-specified suspect in the lineup, as some researchers do in laboratory experiments.  Instead of pecifying the target position, a vector indexing all target positions is passed to the function. This can be manually generated by making a vector target_pos, as shown below, where we assume there are 8 lineup members.
 
 *Replace all users with you
 
@@ -145,13 +146,19 @@ lineuprops.ci <- lineup_boot_allprop(lineup_vec, target_pos, 8)
 lineuprops.ci
 ```
 
-&nbsp; _Note_: _k_ = nominal size, and must be explicitly declared by the user (for more info, see the __Data Format__ section, above).
+&nbsp; _Note_: _k_ = nominal size, and must be explicitly declared (for more info, see the __Data Format__ section, above).
 
 ---
 
 ## Functional Size
 
-* To compute functional size with confidence intervals, we call `func_size_report`, and pass a vector of lineup data, as well as one scalar indicating target position, and another indicating nominal size:
+We defined nominal size above as the number of physical members of a lineup, but it is clear from experience that not all lineup members are good foils, and some might not end up being chosen at all.  They are not good tests of witness memory, in short.  Wells et al. (1979) proposed the notion of 'functional size' as a measure of the number of plausible lineup members, and defined it as the inverse of the proportion of mock witnesses choosing the suspect.
+
+Functional size = $\frac{D}{N}$
+
+You can compute functional size by inverting the result of the `lineup_prop_vec` function, or by calling `func_size`, but we suggest you use the function `func_size_report` which provides more detail, including bootstrapped confidence intervals.
+
+* To compute functional size with confidence intervals,  call `func_size_report`, and pass a vector of lineup data, as well as one scalar indicating target position, and another indicating nominal size:
 
 ```{r, indent = "  "}
 func_size_report(lineup_vec, 3, 8)
@@ -162,17 +169,35 @@ func_size_report(lineup_vec, 3, 8)
 
 ## Effective Size
 
+The measure of functional size proposed by Wells et al. (1979) does not take the choosing rates of foils other than the suspect into account at all, and Malpass (1981) thus proposed a measure of the number of plausible lineup foils that takes all the data from a lineup table into account.  He called this measure 'effective size'.  
+
+Malpass' Effective size A = $k_{a}-\sum_{i=1}^{k_{a}}\frac{|o_{i}-e_{a}|}{2e_{a}}$
+
+where $o_{i}$ is the (observed) number of mock witnesses who choose lineup member
+i; $e_{a}$ is the adjusted nominal chance expectation [N(l/$k_{a}$)], and $k_{a}$ is the adjusted nominal number of alternatives in the lineup (original number-number of null
+foils)
+
+Malpass' measure of effective size poses problems for statistical inference based on distribution theory, though, as argued by Tredoux (1998).  He instead proposed an alternate measure of effective size, known as E', derived from earlier work by Agresti and Agresti (1978).
+
 This package allows the user to calculate effective size in several different ways. 
 
 1. __Malpass's original (1981) & adjusted effective size (see: Tredoux, 1998)__
 
-    Effective size can be computed by calling the `esize_m` function and passing a    table of lineup data. If printarg = FALSE, only Malpass's adjusted formula for effective size is used. If both = TRUE, both Malpass's original and adjusted calculations of effective size are returned. The user must also specify nominal size.
+    Malpass' original formula for effective size proposed a denominator computed by entering the number of foils that attracted non-zero choice frequencies. Tredoux (1998) argued against this practice, pointing out that zero frequencies could arise from random guessing with appreciable frequency. He suggested a minor amendment of Malpass' original formula, as follows.
+    
+Malpass' Effective size B = $k-\sum_{i=1}^{k}\frac{|o_{i}-e|}{2e}$
+
+    Both Malpass' measures of effective size can be computed by calling the `esize_m` function and passing a table of lineup data. If 'both = FALSE' is passed as an argument, only Malpass's adjusted formula for effective size is used. If both = TRUE, both Malpass's original and adjusted calculations of effective size are returned. The user must also specify nominal size.
 
 ```{r}
 esize_m(table(lineup_vec), k = 8, both = TRUE)
 ```
     
 * _Compute bootstrapped estimates (Malpass's adjusted):_
+
+    Tredoux (1998) argued that it is better to use the alternate measure of E', but this was in a time when bootrapping methods for statistical inference were not widely known, and we therefore include a function that allows you to compute bootstrap estimates of the measures, with confidence intervals.  
+    
+    To do this, one must first generate a bootstrap sample using the gen_boot_samples function, the gen_esize_m function, and hte gen_esize_m_ci functions.  Their usage is shown below.
 
 ```{r,indent = "  "}
 #Create a dataframe of bootstrapped lineup data
@@ -191,8 +216,22 @@ gen_esize_m_ci(lineupsizes, perc = .975)
 gen_boot_propmean_se(lineupsizes)
 ```
 
+3. __Tredoux's measure of Effective Size, E'__
 
-2. __Effective Size Per Foils__
+Tredoux (1998) proposed a measure of effective size that is amenable to statistical inference using distribution theory.  
+
+E'=$\frac{1}{1-I}$, where I=$1-\sum_{1=1}^k(\frac{O_i}{N})^2$
+
+and where k, N, and 0i are all as defined earlier.
+
+To compute Tredoux's measure of effective size, E', use the function XXXXXXX.  We can compute confidence intervals around the measure of E' using normal distribution theory, and using bootstrap intervals, with the functions XXXXXXXXXXXXXXX.  Usage is shown below
+
+{INSERT DEMO OF E'}
+
+
+3. __Effective Size Per Foils__
+
+    Malpass (1981) proposed an additional method for computing effective size, based on the number of foils who are chosen at a rate nearly equal to chance expectation.  We propose that 'nearly equal' could mean that chance expectation falls within a confidence interval constructed around the proportion of mock witnesses choosing the lineup member. 
 
     To calculate effective size by counting the number of foils who fall within the CI for chance guessing, we pass a vector of lineup data, a vector of target positions and nominal size. This function returns effective size from a set of bootstrapped data. Default alpha is 0.05, but this can be adjusted as desired.
 ```{r}
@@ -201,7 +240,9 @@ eff_size_per_foils(lineup_vec, target_pos, 8, conf = 0.95)
 
 ### Comparing two effective sizes
 
-To test if the effective size of 2 independent lineups are significantly different from one another, we take the difference between said effective sizes and calculate CIs. This function requires a dataframe containing lineup data for 2 independent lineups. Here, we create a new dataframe containing 2 independent lineups from `CGTmock`.
+To test if the effective size of 2 independent lineups are significantly different from one another, we can take the difference between the effective sizes and calculate confidence intervals. This function, effsize_compare(), requires a dataframe containing lineup data for 2 independent lineups. Here, we create a new dataframe containing 2 independent lineups from `CGTmock`.
+
+*NOTE change all references to functions to include () e.g. effsize_compare() and not effsize_compare
 
 ```{r}
 #Get data
@@ -216,7 +257,9 @@ The effective size for lineup_1 is therefore not significantly different from th
 
 ## Diagnosticity Ratio
 
-We can calculate diagnosticity ratio for a set of identification parades using either `diag_ratio_W` for Wells & Lindsay's (1980) diagnosticity ratio formula, or `diag_ratio_T` for Wells's adjusted diagnosticity ratio (see: Tredoux, 1998. 
+Wells and Lindsay (1980) proposed the use of a 'diagnosticity ratio' (essentially a risk ratio) computed from witness choices in target present lineup and target absent lineup (i.e. the ratio of those).  Such a ratio could tell us the trade off between hits and false positives, and be used to evaluate modifications to lineup procedures, for instance.
+
+We can calculate diagnosticity ratio for a set of identification parades using either `diag_ratio_W` for Wells & Lindsay's (1980) diagnosticity ratio formula, or `diag_ratio_T` for Wells' adjusted diagnosticity ratio (see: Tredoux, 1998). 
 
 * Both functions require the same set of arguments: a vector of lineup choices in which the target was present (TP), a vector of lineup choices in which the target was absent (TA), as well as target positions and nominal size for TP and TA lineups, respectively. These last arguments are declared by the user. 
 
@@ -230,25 +273,29 @@ diag_ratio_W(TP_lineup, TA_lineup, pos_pres = 3, pos_abs = 7, k1 =8, k2 = 8)
 diag_ratio_T(TP_lineup, TA_lineup, pos_pres = 3, pos_abs = 7, k1 =8, k2 = 8)
 
 ```
-* We can also calculate the variance of the diagnosticity ratio:
+* We can also calculate the variance of the diagnosticity ratio, which is useful for applying some inferential methods:
 ```{r, indent = "  "}
 var_diag_ratio(TP_lineup, TA_lineup, 3, 7, 8, 8)
 ```
 _Note:_ `var_diag_ratio` relies on Wells & Lindsay's original formula for computing diagnosticity ratio.
 
+{TAMSYN - WHY?}
+
 ### Differences between Independent Diagnosticity Ratios
+
+We can compare diagnosticity ratios to other diagnosticity ratios, as detailed in Tredoux (1998). He showed a method for computing the equivalence of k diagnosticity ratios, in particular.
 
 The functions included in this package are based on an approach to calculating homogeneity for k independent diagnosticity ratios, as detailed in Tredoux (1998).
 
 #### Calculate homogeneity for _k_ independent diagnosticity ratios, using normal theory estimates
 
-The homogeneity function requires a dataframe containing the specific parameters used in the estimation diagnosticity ratio homogeneity. For each set of identification parades (i.e., each lineup pair), we need to calculate the natural log of the diagnosticity ratio (referred to here as lnd), its' variance (var_lnd), and a weight for each ratio that is equal to the inverse of its variance (wi). This is used to calculate a pooled estimator (i.e., the mean of the set of diagnosticity ratios). From this, we compute a chi-square deviate with _k_-1 degrees of freedom, and calculate its significance.
+The homogeneity function requires a dataframe containing the specific parameters used in the estimation of diagnosticity ratio homogeneity. For each lineup pair (TP and TA), we need to calculate the natural log of the diagnosticity ratio (referred to here as lnd), its variance (var_lnd), and a weight for each ratio that is equal to the inverse of its variance (wi). This is used to calculate a pooled estimator (i.e., the mean of the set of diagnosticity ratios). From this, we compute a chi-square deviate with _k_-1 degrees of freedom, and calculate its significance.
 
 All these calculations are built into the homog_diag function, and so do not need to be calculated separately. The user must pass a dataframe of lnd, var_lnd and wi to homog_diag, and all subsequent calculations are performed on this dataframe.
 
 To get the dataframe required by `homog_diag`, we follow the following steps:
 
-1. For each lineup pair, load data for TP and TA lineups onto separate vectors. Then, make a list containing all vectors for TP lineups, and another containing the TA lineups. The positions of each lineup pair should correspond in each list.
+1. For each lineup pair, load data for TP and TA lineups into separate vectors. Then, make a list containing all vectors for TP lineups, and another containing the TA lineups. The positions of each lineup pair should correspond in each list.
 
     * For example, if the first element of the TP lineup list is TP lineup data for lineup pair 1, then the first element of the TA lineup list should be the TA lineup data for lineup pair 1. 
 
@@ -268,7 +315,7 @@ lineup_abs_list <- list(TA_lineup1, TA_lineup2, TA_lineup3)
 ```
 2. Next, the function requires a list of target positions for each lineup pair. For each set of TP/TA data in the TP/TA lists, there should be a corresponding target position list.
 
-    * Each target position indexes the position of each member in the lineup. Therefore, it's length should = k for that lineup pair. 
+    * Each target position indexes the position of each member in the lineup. Therefore, its length should = k for that lineup pair. 
 
 ```{r}
 lineup1_pos <- c(1, 2, 3, 4, 5, 6)
@@ -294,7 +341,7 @@ This function returns bootstrapped estimates of homogeneity of k diagnosticity r
 
 This function does not require the user to specify a list of target positions (this is generated from the data).
 
-Thus, we follow steps 1 & 3, outlined above, before calling `homog_diag_boot`:
+Thus, we follow steps 1 and 3, outlined above, before calling `homog_diag_boot`:
 ```{r, warning=FALSE}
 homog_diag_boot(lineup_pres_list, lineup_abs_list, k, R=100)
 ```
@@ -305,11 +352,9 @@ _Note:_ R = number of bootstrap replications
 ## ROC Curve (Confidence ~ Accuracy)
 
 This function allows the user to compute and plot an ROC curve for data from an eyewitness experiment, where accuracy is recorded for target present and target
-absent lineups. 
+absent lineups. We follow the ideas suggested by Mickes, Wixted, and others (see references). This function is experimental, and we don't offer much control over the output.
 
-This function operates via a dialog box which asks users to select a list of images for processing.  
-
-1. This function requires dataframe with two columns, named confidence and accuracy (where accuracy = binary accuracy):
+1. This function requires a dataframe with two columns, which must be named confidence and accuracy (where accuracy = binary accuracy):
 
 ```{r, echo = F, results='asis'}
 #Load ROC data: mickwix sample data
@@ -325,13 +370,13 @@ make_roc(mickwix)
 
 ## Similarity of Faces in a Lineup
 
-This function computes the degree to which each face in a set of faces loads onto a common factor computed from said faces. 
+Following some ideas suggested by Tredoux (2001), this function computes the degree to which each face in a set of faces loads onto a common factor computed from numeric representations of the faces. 
 
 * Without passing any arguments, call `face_sim`:
 
     * A dialog box will appear, through which the user may access the OS's file explorer. Navigate to the folder in which the images are stored, select all, and open.
 
-     _Note:_ Each image should be of one face only. 
+     _Note:_ Each image should be of one face only. Each face should be standardised to have the same pupil locations in xy space (this will mean repositioning and resizing each face image).
     
     The images used in this vignette can be found in the data subdirectory for this 
             package.
