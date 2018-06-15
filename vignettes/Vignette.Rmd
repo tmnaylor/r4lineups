@@ -30,7 +30,7 @@ Much of the justification for what follows can be found in Tredoux (1998), and M
 
 ## Data Format
 
-The majority of functions in **r4lineups** require a numeric *vector* representing lineup data, whilst other functions require the user to pass a *list* of lineup data. It is advisable to read the documentation to determine the format of data needed by each specific function. Most **r4lineup** functions will not work with a dataframe, even if the dataframe contains only one column, and thus appears to be in vector like format. If your lineup data is in dataframe format already, you can easily convert it to a vector or a list. 
+The majority of functions in **r4lineups** require a numeric *vector* representing lineup data, whilst other functions require the user to pass a *list* of lineup data. It is advisable to read the documentation to determine the format of data needed by each specific function. Most **r4lineups** functions will not work with a dataframe, even if the dataframe contains only one column, and thus appears to be in vector like format. If your lineup data is in dataframe format already, you can easily convert it to a vector or a list. 
 
 For instance, if we have 10 mock witnesses, and each views a lineup with 6 members, then we could record their choices as a numeric vector, where the elements represent the position of the lineup member chosen by each witness:
 
@@ -78,6 +78,8 @@ pander::pandoc.table(CGTmock[1:3,], "CTGmock data")
 ```{r, include=FALSE}
 lineup_vec <- CGTmock$lineup_1
 lineup_list <- as.list(CGTmock)
+
+lineup_table <- table(lineup_vec)
 ```
 
 * __Nominal Size__
@@ -89,25 +91,23 @@ lineup_list <- as.list(CGTmock)
 
 ## Lineup Proportion
 
-Proportion refers to the proportion of witnesses selecting a particular member of a lineup. This package provides calculations of proportion for individual lineup members (lineup_prop_vec), and for all members of a lineup with a subsidiary function (allprop).
+Proportion refers to the proportion of witnesses selecting a particular member of a lineup. This package provides calculations of proportion for individual lineup members (`lineup_prop_vec()`), and for all members of a lineup with a subsidiary function (`allprop()`).
 
-The calculation of the proportion of mock witnesses choosing the suspect is essentially a measure of lineup bias (see Malpass, 1981; Tredoux, 1998), especially when one tests whether it exceeds the proportion expected by chance guessing alone (1/nominal_size)
+The calculation of the proportion of mock witnesses choosing the suspect is essentially a measure of lineup bias (see Malpass, 1981; Tredoux, 1998), especially when one tests whether it exceeds the proportion expected by chance guessing alone (1/nominal_size).
 
 ### Calculating proportion for a single target/lineup member:
 ```{r}
 library(r4lineups)
 
-lineup_prop_vec(lineup_vec, 3, 8)
-# Tamsyn, we need to name all arguments in the examples
-# e.g. lineup_prop_vec(lineup_vec, target_pos = 3, lsize = 8)
-# or whatever the names really are
+lineup_prop_vec(lineup_vec, target_pos = 3, k = 8)
 ```
-The example use of the function here returns the proportion of mock witnesses choosing the target/linuep member occupying position 3 in the lineup, and is 0.14% of the witnesses. 
+
+This function requires three arguments: a vector of lineup data, the position of the target in the lineup (target_pos), and nominal size (k). The example use of the function here returns the proportion of mock witnesses choosing the target/linuep member occupying position 3 in the lineup, and is 0.14% of the witnesses. 
 
 * _Compute bootstrapped estimates:_
 The original work on lineup bias suggested testing whether the computed proportion = 1/nominal_size using a z test of proportions, or a binomial probability (see Tredoux, 1998), or a confidence interval around the proportion (see Tredoux, 1998), but very few studies actually use enough mock witnesses to strongly warrant this approach, since it assumes approximation to a normal distribution, and the size of the lineup places hard limits that are often not observed by computed confidence intervals.
     We therefore recommend computing bootstrapped estimates of all lineup measures, and especially the sampling variability around estimates.
-    To calculate a boostrapped lineup proportion for a single lineup member, we pass the `lineup_prop_boot` function as an argument to the `boot` function supplied by the package 'boot'.  We do not work directly with the lineup_prop_boot function, all we need to know to bootstrap is the lineup vector, the position of the target, and the number of bootstrap resamples we desire.
+    To calculate a boostrapped lineup proportion for a single lineup member, we pass the `lineup_prop_boot` function as an argument to the `boot` function supplied by the package 'boot'.  We do not work directly with the lineup_prop_boot function, all we need to know to bootstrap is the lineup vector, the position of the target (target_pos), and the number of bootstrap resamples we desire (R).
 
 ```{r, indent = "  ", warning=FALSE,}
 bootobject <- boot::boot(lineup_vec, lineup_prop_boot, target_pos = 3, R = 1000)
@@ -121,13 +121,13 @@ cis <- boot::boot.ci(bootobject, conf = 0.95, type = "all")
 cis
 ```
 
-If you are not familiar with how the boot or the boot.ci functions work, you could consult the documentation for the boot package. However, by using the functions as shown here you will be able to bootstrap without needing to understand them in detail.
+If you are not familiar with how the boot or the boot.ci functions work, you could consult the documentation for the boot package. However, by using the functions as shown here you will be able to bootstrap without needing to understand them in detail. 
+
+Briefly, the argument 'conf' allows you to specify alpha, and 'type' specifies the type of confidence interval to be returned. If type = "all", the function will return normal theory, basic, percentile and bias-corrected confidence intervals.
 
 ### Calculating proportion for each lineup member
 
 Should you want to calculate a proportion for each member of a given lineup, the `allprop` function can be called. This might be the case when there is no pre-specified suspect in the lineup, as some researchers do in laboratory experiments.  Instead of pecifying the target position, a vector indexing all target positions is passed to the function. This can be manually generated by making a vector target_pos, as shown below, where we assume there are 8 lineup members.
-
-*Replace all users with you
 
 ```{r, echo=FALSE  }
 target_pos <- c(1:8)
@@ -135,18 +135,21 @@ target_pos <- c(1:8)
 ```{r}
 allprop(lineup_vec, target_pos, 8)
 ```
-
+The function then returns proportion of mock witnesses selecting each lineup member. 
 
 * _Compute bootstrapped estimates:_
 
-We can generate bootstrap estimates for all the computed proportions, too, with `lineup_boot_allprop`. *Explain args & replications more here
+    We can generate bootstrap estimates for all the computed proportions, too, with `lineup_boot_allprop`.
+
+    This function takes a vector of lineup data, a vector indexing target positions, and nominal size.
 
 ```{r, indent = "  "}
-lineuprops.ci <- lineup_boot_allprop(lineup_vec, target_pos, 8)
+lineuprops.ci <- lineup_boot_allprop(lineup_vec, target_pos, k = 8)
 lineuprops.ci
 ```
+The object `lineuprops.ci` is a dataframe of 2 columns and k rows, in which columns 1 & 2 contain lower and upper confidence intervals, respectively, and the number of rows = nominal size. 
 
-&nbsp; _Note_: _k_ = nominal size, and must be explicitly declared (for more info, see the __Data Format__ section, above).
+&nbsp; _Note_: _k_ = nominal size, and must always be explicitly declared (for more info, see the __Data Format__ section, above).
 
 ---
 
@@ -161,10 +164,10 @@ You can compute functional size by inverting the result of the `lineup_prop_vec`
 * To compute functional size with confidence intervals,  call `func_size_report`, and pass a vector of lineup data, as well as one scalar indicating target position, and another indicating nominal size:
 
 ```{r, indent = "  "}
-func_size_report(lineup_vec, 3, 8)
+func_size_report(lineup_vec, target_pos = 3, k = 8)
 ```
 
-   explain more & args
+   
 ---
 
 ## Effective Size
@@ -185,48 +188,57 @@ This package allows the user to calculate effective size in several different wa
 
     Malpass' original formula for effective size proposed a denominator computed by entering the number of foils that attracted non-zero choice frequencies. Tredoux (1998) argued against this practice, pointing out that zero frequencies could arise from random guessing with appreciable frequency. He suggested a minor amendment of Malpass' original formula, as follows.
     
-Malpass' Effective size B = $k-\sum_{i=1}^{k}\frac{|o_{i}-e|}{2e}$
+    Malpass' Effective size B = $k-\sum_{i=1}^{k}\frac{|o_{i}-e|}{2e}$ 
 
-    Both Malpass' measures of effective size can be computed by calling the `esize_m` function and passing a table of lineup data. If 'both = FALSE' is passed as an argument, only Malpass's adjusted formula for effective size is used. If both = TRUE, both Malpass's original and adjusted calculations of effective size are returned. The user must also specify nominal size.
+    Both Malpass' measures of effective size can be computed by calling the `esize_m` function and passing a table of lineup data. If 'both = FALSE' is passed as an argument, only Malpass's adjusted formula for effective size is used. If both = TRUE, both Malpass's original and adjusted calculations of effective size are returned. You must also specify nominal size.
 
-```{r}
+```{r, indent = "  "}
 esize_m(table(lineup_vec), k = 8, both = TRUE)
+
 ```
     
 * _Compute bootstrapped estimates (Malpass's adjusted):_
 
     Tredoux (1998) argued that it is better to use the alternate measure of E', but this was in a time when bootrapping methods for statistical inference were not widely known, and we therefore include a function that allows you to compute bootstrap estimates of the measures, with confidence intervals.  
     
-    To do this, one must first generate a bootstrap sample using the gen_boot_samples function, the gen_esize_m function, and hte gen_esize_m_ci functions.  Their usage is shown below.
+    To do this, one must first generate a bootstrap sample using the gen_boot_samples function, the `gen_esize_m function`, and the `gen_esize_m_ci` functions.  Their usage is shown below.
 
 ```{r,indent = "  "}
 #Create a dataframe of bootstrapped lineup data
 bootdata <- gen_boot_samples(lineup_vec, 1000)
 
 #Calculate effective size for each lineup in bootdata
-#Nomiinal size is again declared by user
-lineupsizes <- gen_esize_m(bootdata, 8)
+#Pass bootstrap df to function
+#Nominal size is again declared by user
+lineupsizes <- gen_esize_m(bootdata, k = 8)
 
-#Calculate lower and upper CIs with desired level of alpha
+#Pass vector of boostrapped effective sizes to gen_esize_m_ci
+#to calculate lower and upper CIs with desired level of alpha
 gen_esize_m_ci(lineupsizes, perc = .025)
 gen_esize_m_ci(lineupsizes, perc = .975)
 ```
 * _Compute bootstrap descriptive statistics (Malpass's adjusted):_
-```{r}
+
+    This function allows you to calculate descriptive statistics for a boostrapped vector/df of effective sizes (see object `lineupsizes`, above). We pass this to `gen_boot_propmean_se`. Descriptive statistics are reported in some detail. 
+```{r, indent = "  "}
 gen_boot_propmean_se(lineupsizes)
 ```
 
-3. __Tredoux's measure of Effective Size, E'__
+2. __Tredoux's measure of Effective Size, E'__
 
 Tredoux (1998) proposed a measure of effective size that is amenable to statistical inference using distribution theory.  
 
 E'=$\frac{1}{1-I}$, where I=$1-\sum_{1=1}^k(\frac{O_i}{N})^2$
 
-and where k, N, and 0i are all as defined earlier.
+and where k, N, and 0_i_ are all as defined earlier.
 
-To compute Tredoux's measure of effective size, E', use the function XXXXXXX.  We can compute confidence intervals around the measure of E' using normal distribution theory, and using bootstrap intervals, with the functions XXXXXXXXXXXXXXX.  Usage is shown below
+To compute Tredoux's measure of effective size, E', use the function esize_T.  We can compute confidence intervals around the measure of E' using normal distribution theory, and using bootstrap intervals, with the functions `esize_T_boot` from __r4lineups__, as well as`boot` & `boot.ci` from the __boot__ package.  Usage is shown below.
 
-{INSERT DEMO OF E'}
+```{r}
+esize_T(lineup_table)
+
+esize_boot <- boot::boot(lineup_table, esize_T_boot, R = 1000)
+```
 
 
 3. __Effective Size Per Foils__
@@ -234,9 +246,12 @@ To compute Tredoux's measure of effective size, E', use the function XXXXXXX.  W
     Malpass (1981) proposed an additional method for computing effective size, based on the number of foils who are chosen at a rate nearly equal to chance expectation.  We propose that 'nearly equal' could mean that chance expectation falls within a confidence interval constructed around the proportion of mock witnesses choosing the lineup member. 
 
     To calculate effective size by counting the number of foils who fall within the CI for chance guessing, we pass a vector of lineup data, a vector of target positions and nominal size. This function returns effective size from a set of bootstrapped data. Default alpha is 0.05, but this can be adjusted as desired.
+  
 ```{r}
-eff_size_per_foils(lineup_vec, target_pos, 8, conf = 0.95)
+eff_size_per_foils(lineup_vec, target_pos, k = 8, conf = 0.95)
 ```
+
+Applying this function to our data, we see that effective size for this lineup is 4.
 
 ### Comparing two effective sizes
 
@@ -374,7 +389,7 @@ Following some ideas suggested by Tredoux (2001), this function computes the deg
 
 * Without passing any arguments, call `face_sim`:
 
-    * A dialog box will appear, through which the user may access the OS's file explorer. Navigate to the folder in which the images are stored, select all, and open.
+    * A dialog box will appear, through which you may access your OS's file explorer. Navigate to the folder in which the images are stored, select all, and open.
 
      _Note:_ Each image should be of one face only. Each face should be standardised to have the same pupil locations in xy space (this will mean repositioning and resizing each face image).
     

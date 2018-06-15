@@ -1,11 +1,16 @@
-#'Effective Size (Tredoux, 1998)
+#'Bootstrapped Effective Size (Tredoux, 1998)
 #'
-#' Function for generating Effective Size (Tredoux, 1998)
+#' Base function for generating boostrapped Effective Size (Tredoux, 1998)
 #' @param lineup_table A table of lineup choices
+#' @param d Indices for bootstrap resampling
 #' @details Reduces the size of a lineup from a (corrected) nominal starting
 #'          value by the degree to which members are, in sum, chosen below
 #'          the level of chance expectation.
-#' @references Malpass, R. S. (1981). Effective size and defendant bias in eyewitness
+#' @seealso \code{\link[boot:boot]{boot}}: https://cran.r-project.org/web/packages/boot/boot.pdf
+#' @references Davison,  A.C. & Hinkley,  D.V. (1997). \emph{Bootstrap methods and their
+#'             application}. Cambridge University Press.
+#'
+#'             Malpass, R. S. (1981). Effective size and defendant bias in eyewitness
 #'                  identification lineups. \emph{Law and Human Behavior, 5}(4), 299-309.
 #'
 #'             Malpass, R. S., Tredoux, C., & McQuiston-Surrett, D. (2007).
@@ -19,18 +24,11 @@
 #'
 #'             Wells, G. L., Leippe, M. R., & Ostrom, T. M. (1979). Guidelines for
 #'                  empirically assessing the fairness of a lineup. \emph{Law and Human Behavior, 3}(4), 285-293.
-#'@examples
-#'#Data:
-#'lineup_vec <- round(runif(100, 1, 6))
-#'lineup_table <- table(lineup_vec)
-#'
-#'#Call:
-#'e <- esize_T(lineup_table)
 #'
 #'@export
 
-esize_T <- function(lineup_table){
-  i <- 1-(1/(sum(lineup_table)^2))*sum(lineup_table^2)
+esize_T_boot <- function(lineup_table, d){
+  i <- 1-(1/(sum(lineup_table[d])^2))*sum(lineup_table[d]^2)
   i <- 1/(1-i)
   return(i)
 }

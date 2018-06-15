@@ -3,7 +3,7 @@
 #'This function is a base function for the bootstrapping that ensues
 #'to compute bootstrapped confidence intervals for the estimate of functional size
 #'@param lineup_vec A numeric vector of lineup choices
-#'@param d Iindices for bootstrap resampling
+#'@param d Indices for bootstrap resampling
 #'@param target_pos A scalar, representing position of target in lineup. Must be declared by user
 #'@seealso \code{\link[boot:boot]{boot}}: https://cran.r-project.org/web/packages/boot/boot.pdf
 #'@details Function is called bootstrap resampling using boot function (in package 'boot')
