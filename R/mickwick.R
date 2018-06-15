@@ -1,7 +1,7 @@
-#'mickwix
-#'@name mickwix
+#'mickwick
+#'@name mickwick
 #'@title Confidence & Accuracy data (Mickes & Wixted)
 #'@docType data
-#'@usage data(mickwix)
+#'@usage data(mickwick)
 #'@description Data capturing confidence and accuracy for a lineup trial
-"mickwix"
+"mickwick"

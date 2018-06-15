@@ -9,7 +9,7 @@ func_size.boot(lineup_vec, d = d, target_pos)
 \arguments{
 \item{lineup_vec}{A numeric vector of lineup choices}
 
-\item{d}{Iindices for bootstrap resampling}
+\item{d}{Indices for bootstrap resampling}
 
 \item{target_pos}{A scalar, representing position of target in lineup. Must be declared by user}
 }
