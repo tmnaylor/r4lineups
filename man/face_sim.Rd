@@ -24,12 +24,6 @@ loads onto a common factor computed from the faces.
              factor in a factor analysis (using fa in package psych)
 }
 }
-\examples{
-face_sim()
-
-
-
-}
 \references{
 Tredoux, C. (2002). A direct measure of facial similarity
            and its relation to human similarity perceptions.

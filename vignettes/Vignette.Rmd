@@ -30,7 +30,7 @@ Much of the justification for what follows can be found in Tredoux (1998), and M
 
 ## Data Format
 
-The majority of functions in **r4lineups** require a numeric *vector* representing lineup data, whilst other functions require the user to pass a *list* of lineup data. It is advisable to read the documentation to determine the format of data needed by each specific function. Most **r4lineups** functions will not work with a dataframe, even if the dataframe contains only one column, and thus appears to be in vector like format. If your lineup data is in dataframe format already, you can easily convert it to a vector or a list. 
+The majority of functions in **r4lineups** require a numeric *vector* representing lineup data, whilst other functions require you to pass a *list* of lineup data. It is advisable to read the documentation to determine the format of data needed by each specific function. Most **r4lineups** functions will not work with a dataframe, even if the dataframe contains only one column, and thus appears to be in vector like format. If your lineup data is in dataframe format already, you can easily convert it to a vector or a list. 
 
 For instance, if we have 10 mock witnesses, and each views a lineup with 6 members, then we could record their choices as a numeric vector, where the elements represent the position of the lineup member chosen by each witness:
 
@@ -85,9 +85,17 @@ lineup_table <- table(lineup_vec)
 * __Nominal Size__
 
     The notion of 'Nominal size' refers to the number of physical members of a lineup. 
-    Functions relying on nominal size for accurate calculations require the user to manually specify nominal size. If nominal size, as specified by the user, is not reflected in the dataframe or vector passed to the function, execution of the function is halted with the following error message: _"User-declared nominal size does not match observed nominal size. Please check vector of target positions."_
+    Functions relying on nominal size for accurate calculations require you to manually specify nominal size. If the specified nominal size is not reflected in the dataframe or vector passed to the function, execution of the function is halted with the following error message: _"User-declared nominal size does not match observed nominal size. Please check vector of target positions."_
 
 -----
+
+## Datasets
+
+This package contains x datasets, listed below:
+
+1. CGTmock
+  * A dataframe of lineup choices for 3 trials (3 columns x 133 observations)
+2. 
 
 ## Lineup Proportion
 
@@ -182,7 +190,7 @@ foils)
 
 Malpass' measure of effective size poses problems for statistical inference based on distribution theory, though, as argued by Tredoux (1998).  He instead proposed an alternate measure of effective size, known as E', derived from earlier work by Agresti and Agresti (1978).
 
-This package allows the user to calculate effective size in several different ways. 
+This package allows you to calculate effective size in several different ways. 
 
 1. __Malpass's original (1981) & adjusted effective size (see: Tredoux, 1998)__
 
@@ -276,7 +284,7 @@ Wells and Lindsay (1980) proposed the use of a 'diagnosticity ratio' (essentiall
 
 We can calculate diagnosticity ratio for a set of identification parades using either `diag_ratio_W` for Wells & Lindsay's (1980) diagnosticity ratio formula, or `diag_ratio_T` for Wells' adjusted diagnosticity ratio (see: Tredoux, 1998). 
 
-* Both functions require the same set of arguments: a vector of lineup choices in which the target was present (TP), a vector of lineup choices in which the target was absent (TA), as well as target positions and nominal size for TP and TA lineups, respectively. These last arguments are declared by the user. 
+* Both functions require the same set of arguments: a vector of lineup choices in which the target was present (TP), a vector of lineup choices in which the target was absent (TA), as well as target positions and nominal size for TP and TA lineups, respectively. These last arguments are specified explicitly. 
 
 ```{r, indent = "  "}
 #Target present & target absent lineup data for 1 lineup pair 
@@ -306,7 +314,7 @@ The functions included in this package are based on an approach to calculating h
 
 The homogeneity function requires a dataframe containing the specific parameters used in the estimation of diagnosticity ratio homogeneity. For each lineup pair (TP and TA), we need to calculate the natural log of the diagnosticity ratio (referred to here as lnd), its variance (var_lnd), and a weight for each ratio that is equal to the inverse of its variance (wi). This is used to calculate a pooled estimator (i.e., the mean of the set of diagnosticity ratios). From this, we compute a chi-square deviate with _k_-1 degrees of freedom, and calculate its significance.
 
-All these calculations are built into the homog_diag function, and so do not need to be calculated separately. The user must pass a dataframe of lnd, var_lnd and wi to homog_diag, and all subsequent calculations are performed on this dataframe.
+All these calculations are built into the homog_diag function, and so do not need to be calculated separately. You will need to pass a dataframe of lnd, var_lnd and wi to homog_diag, and all subsequent calculations are performed on this dataframe.
 
 To get the dataframe required by `homog_diag`, we follow the following steps:
 
@@ -354,7 +362,7 @@ homog_diag(lineup_pres_list, lineup_abs_list, pos_list, k)
 
 This function returns bootstrapped estimates of homogeneity of k diagnosticity ratios, and therefore takes the same arguments as `homog_diag` (which provides normal theory estimates). 
 
-This function does not require the user to specify a list of target positions (this is generated from the data).
+This function does not require you to specify a list of target positions (this is generated from the data).
 
 Thus, we follow steps 1 and 3, outlined above, before calling `homog_diag_boot`:
 ```{r, warning=FALSE}
@@ -366,7 +374,7 @@ _Note:_ R = number of bootstrap replications
 
 ## ROC Curve (Confidence ~ Accuracy)
 
-This function allows the user to compute and plot an ROC curve for data from an eyewitness experiment, where accuracy is recorded for target present and target
+This function allows you to compute and plot an ROC curve for data from an eyewitness experiment, where accuracy is recorded for target present and target
 absent lineups. We follow the ideas suggested by Mickes, Wixted, and others (see references). This function is experimental, and we don't offer much control over the output.
 
 1. This function requires a dataframe with two columns, which must be named confidence and accuracy (where accuracy = binary accuracy):
