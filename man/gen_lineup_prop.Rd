@@ -30,7 +30,6 @@ target_pos <- 3
 lineup_boot_df <- gen_boot_samples(lineup_vec, 1000)
 
 #Call:
-lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos, 6)
 lineuprops <- gen_lineup_prop(lineup_boot_df, 3, 6)
 
 }

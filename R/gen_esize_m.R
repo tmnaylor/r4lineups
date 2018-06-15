@@ -24,11 +24,12 @@
 #'            empirically assessing the fairness of a lineup. \emph{Law and Human Behavior,
 #'            3}(4), 285-293.
 #'@examples
-#'Data:
+#'#Data:
+#'lineup_vec <- round(runif(100,1,6))
 #'bootdf <- gen_boot_samples(lineup_vec, 1000)
 #'
-#'Call:
-#'esize_vec <- gen_esize_m(bootdf, k)
+#'#Call:
+#'esize_vec <- gen_esize_m(bootdf, 6)
 #'
 #'@export
 #'@importFrom magrittr %>%

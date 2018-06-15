@@ -25,12 +25,4 @@ bootno <- 1000
 #Call:
 bootdf <- gen_boot_samples(lineup_vec, bootno)
 
-#Execute function line-by-line:
-names_a <- rep("sample_",1000)
-names_b <- as.character(1:1000)
-1000 \%>\% rerun(sample(lineup_vec, length(lineup_vec), replace = TRUE))  -> x
-names(x) <- names_a
-names(x) <- paste(names_a,names_b,sep = "")
-bootdf <- map_df(x, magrittr:extract, c(1:7))
-
 }

@@ -17,8 +17,8 @@
 #'@examples
 #'lineup_vec <- round(runif(100, 1, 6))
 #'
-#'bootobject <- boot(lineup_vec, lineup_prop_boot, R = 1000)
-#'cis <- boot.ci(bootobject, conf = 0.95, type = "all")
+#'bootobject <- boot::boot(lineup_vec, lineup_prop_boot, target_pos = 3, R = 1000)
+#'cis <- boot::boot.ci(bootobject, conf = 0.95, type = "all")
 #'
 #'@export
 #'@importFrom boot boot boot.ci

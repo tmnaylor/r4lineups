@@ -11,12 +11,10 @@
 #'@return An ROC object of package pROC
 #'@examples
 #'#Data:
-#'df <- View(mickwix)
+#'data(mickwix)
 #'
 #'#Call:
-#'make_roc(df)
-#'make_roc(wixdata)
-#'make_roc(conf_acc)
+#'make_roc(mickwix)
 #'
 #'
 #'

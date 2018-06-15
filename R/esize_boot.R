@@ -28,12 +28,15 @@
 #'            3}(4), 285-293.
 #'@return If printarg=FALSE, provides only Malpass's priginal calculation of effective size
 #'@examples
+#'#Data:
+#'lineup_vec <- round(runif(100, 1, 6))
+#'
 #'#Get boot object:
-#'bootobject <- boot(lineup_vec, esize_m_boot, R=1000)
+#'bootobject <- boot::boot(lineup_vec, esize_m_boot, k = 6, R=1000)
 #'bootobject
 #'
 #'#To get confidence intervals:
-#'cis <- boot.ci(bootobject, conf = 0.95, type = "all")
+#'cis <- boot::boot.ci(bootobject, conf = 0.95, type = "all")
 #'
 #'@export
 

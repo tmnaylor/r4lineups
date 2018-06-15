@@ -22,11 +22,12 @@ lineups contained as columns in a df, usually from a bootstrapped sample
 This function computes effective size for k lineups simultaneously.
 }
 \examples{
-Data:
+#Data:
+lineup_vec <- round(runif(100,1,6))
 bootdf <- gen_boot_samples(lineup_vec, 1000)
 
-Call:
-esize_vec <- gen_esize_m(bootdf, k)
+#Call:
+esize_vec <- gen_esize_m(bootdf, 6)
 
 }
 \references{

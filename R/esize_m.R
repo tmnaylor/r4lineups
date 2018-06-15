@@ -33,8 +33,8 @@
 #'lineup_vec <- round(runif(100, 1, 6))
 #'
 #'#Call:
-#'esize_m(lineup_vec, printarg = TRUE)
-#'esize_m(lineup_vec)
+#'esize_m(lineup_vec, 6, both = TRUE)
+#'esize_m(lineup_vec, 6)
 #'
 #'@export
 

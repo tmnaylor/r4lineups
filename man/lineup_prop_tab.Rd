@@ -28,7 +28,6 @@ lineup_table <- table(lineup_vec)
 #Call:
 lineup_prop_tab(lineup_table, 3, 6)
 lineup_prop_tab(table(lineup_vec), 2, 6)
-lineup_prop_tab(table(c(1, 2, 5, 3, 2, 4)), 2, 6)
 
 }
 \references{
