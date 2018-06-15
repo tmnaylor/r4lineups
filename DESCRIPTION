@@ -4,7 +4,7 @@ Version: 0.0.1
 Authors@R: c(
             person("Colin", "Tredoux", email = "colin.tredoux@uct.ac.za", role = c("aut", "cre")),
             person("Tamsyn", "Naylor", email = "tmnaylor@outlook.com", role = "aut"))
-Description: Some descriptioney description. Write this out in full later. 
+Description: Some description. Write this out in full later. 
 Depends: R (>= 3.4.3)
 Imports: boot,
          dplyr,

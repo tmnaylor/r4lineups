@@ -11,10 +11,10 @@
 #'@return An ROC object of package pROC
 #'@examples
 #'#Data:
-#'data(mickwix)
+#'data(mickwick)
 #'
 #'#Call:
-#'make_roc(mickwix)
+#'make_roc(mickwick)
 #'
 #'
 #'

@@ -30,10 +30,10 @@ Clark, and others (see references)
 }
 \examples{
 #Data:
-data(mickwix)
+data(mickwick)
 
 #Call:
-make_roc(mickwix)
+make_roc(mickwick)
 
 
 
