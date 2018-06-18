@@ -37,6 +37,6 @@
 #'
 
 gen_esize_m <- function (lineup_boot_df, k){
-  map(lineup_boot_df,~table(.)) %>%
-    map_dbl(., ~ esize_m(., k))
+  table_boot_df <- map(lineup_boot_df,~table(.))
+    map_dbl(table_boot_df, ~ esize_m(., k))
 }
