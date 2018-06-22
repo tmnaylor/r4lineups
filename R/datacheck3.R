@@ -18,4 +18,4 @@ datacheck3 <- function(lineup_table, k){
     stop("User-declared nominal size does not match observed nominal size. Please
          check vector of target positions.")
   }
-  }
+}
