@@ -24,6 +24,7 @@
 
 
 gen_lineup_prop <- function(lineup_boot_df, target_pos, k){
+  datacheck1(lineup_boot_df[1][[1]], k)
   table_boot_df <- map(lineup_boot_df,~table(.))
-    map_dbl(table_boot_df, ~ lineup_prop_tab(.,target_pos, k))
+    map_dbl(table_boot_df, ~ lineup_prop_tab(.,target_pos))
 }

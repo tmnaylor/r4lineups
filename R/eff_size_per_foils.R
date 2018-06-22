@@ -24,8 +24,7 @@
 
 eff_size_per_foils <- function(lineup_vec, target_pos, k, conf = 0.95){
   lineup_vec <- typecheck(lineup_vec)
-  lineup_vec <- typecheck(lineup_vec)
-  ci <- lineup_boot_allprop(lineup_vec, target_pos, k, conf = 0.95)
+  ci <- lineup_boot_allprop(lineup_vec, k, conf = 0.95)
   k0 <- 1/k
   ci_count <- cbind(ci[,1] <= k0 & ci[,2] >= k0)
   print(sum(ci_count == TRUE))

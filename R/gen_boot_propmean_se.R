@@ -14,7 +14,7 @@
 #'lineup_boot_df <- gen_boot_samples(lineup_vec, 1000)
 #'
 #'#Compute proportion for bootstrap samples:
-#'lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos, k = 6)
+#'lineuprops <- gen_lineup_prop(lineup_boot_df, target_pos = 3, k = 6)
 #'
 #'#Call:
 #'gen_boot_propmean_se(lineuprops)

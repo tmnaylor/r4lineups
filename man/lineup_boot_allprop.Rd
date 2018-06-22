@@ -4,12 +4,10 @@
 \alias{lineup_boot_allprop}
 \title{Confidence intervals for lineup proportion}
 \usage{
-lineup_boot_allprop(lineup_vec, target_pos, k, conf = 0.95)
+lineup_boot_allprop(lineup_vec, k, conf = 0.95)
 }
 \arguments{
 \item{lineup_vec}{A numeric vector of lineup choices}
-
-\item{target_pos}{A numeric vector indexing all lineup members}
 
 \item{k}{Number of targets in lineup. Must be specified by user (scalar).}
 
@@ -29,11 +27,10 @@ Function that computes bootstrapped lineup proportion using 1000 bootstrap draws
 \examples{
 #Data:
 lineup_vec <- round(runif(100, 1, 6))
-target_pos <- c(1, 2, 3, 4, 5, 6)
 
 #Call:
-lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos, 6)
-lineuprops_ci <- lineup_boot_allprop(lineup_vec, target_pos, 6, conf = 0.975)
+lineuprops_ci <- lineup_boot_allprop(lineup_vec, k= 6)
+lineuprops_ci <- lineup_boot_allprop(lineup_vec, k= 6, conf = 0.975)
 
 }
 \references{

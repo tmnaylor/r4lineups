@@ -4,14 +4,12 @@
 \alias{lineup_prop_tab}
 \title{Lineup proportion}
 \usage{
-lineup_prop_tab(lineup_table, target_pos, k)
+lineup_prop_tab(lineup_table, target_pos)
 }
 \arguments{
 \item{lineup_table}{A table of lineup choices}
 
 \item{target_pos}{A scalar, representing target position in lineup. Must be declared by user}
-
-\item{k}{Nominal size (i.e., total number of members in lineup). Must be specified by user (scalar).}
 }
 \value{
 Returns a proportion indicating the frequency with which a lineup
@@ -22,12 +20,12 @@ Computes the proportion of mock witnesses identifying a particular lineup member
 }
 \examples{
 #Data:
-lineup_vec <- round(runif(100, 1, 6))
+lineup_vec <- round(runif(100, 1))
 lineup_table <- table(lineup_vec)
 
 #Call:
-lineup_prop_tab(lineup_table, 3, 6)
-lineup_prop_tab(table(lineup_vec), 2, 6)
+lineup_prop_tab(lineup_table, 3)
+lineup_prop_tab(table(lineup_vec), 2)
 
 }
 \references{
