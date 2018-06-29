@@ -18,11 +18,9 @@ Description: This package contains functions to compute various properties of la
             McQuiston-Surrett (2007). Among others, this package includes functions for calculating
             lineup proportion, functional size, various estimates of effective size, diagnosticity ratio, 
             homogeneity of the diagnosticity ratio, ROC curves for confidence x accuracy data and the degree
-            of similarity of faces in a lineup. 
-            
-            Further information on the particular measures of lineup fairness and their formulae can be found 
-            in Tredoux, C. G. (1998). Statistical inference on measures of lineup fairness. Law and Human Behavior, 
-            22(2), 217-237.
+            of similarity of faces in a lineup. Further information on the particular measures of lineup fairness 
+            and their formulae can be found  in Tredoux, C. G. (1998). Statistical inference on measures of lineup 
+            fairness. Law and Human Behavior, 22(2), 217-237.
 Depends: R (>= 3.4.3)
 Imports: boot,
          dplyr,
