@@ -25,13 +25,13 @@
 #'@export
 #'@import magick here
 #'@importFrom psych fa
-#'@importFrom utils choose.files Filters
+
 
 face_sim <- function(){
   root <- paste(here(),"/Faces/*.jpg",sep = "")
-  file_list <- choose.files(default = "root", caption = "Select files",
-                            multi = TRUE, filters = Filters,
-                            index = nrow(Filters))
+  file_list <- utils::choose.files(default = "root", caption = "Select files",
+                            multi = TRUE, filters = utils::Filters,
+                            index = nrow(utils::Filters))
   a_face_df <- make_lineup_data(file_list)
   fa_faces <- psych::fa(a_face_df, nfactors = 1)
   z <- fa_faces$loadings[1:length(fa_faces$loadings)]
