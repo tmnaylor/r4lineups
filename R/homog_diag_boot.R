@@ -47,7 +47,9 @@
 #'@importFrom stats setNames
 
 homog_diag_boot <- function(lineup_pres_list, lineup_abs_list, k, R=100){
-  datacheck5(lineup_pres_list, k)
+
+  datacheck1(lineup_pres_list[[1]], k)
+
   bootdata1 <- gen_boot_samples_list(lineup_pres_list, R)
   bootdata2 <- gen_boot_samples_list(lineup_abs_list, R)
   pres_boot.dat <- suppressWarnings(lapply(bootdata1, diag_param_boot))
