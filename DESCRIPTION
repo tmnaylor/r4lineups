@@ -4,7 +4,25 @@ Version: 0.0.1
 Authors@R: c(
             person("Colin", "Tredoux", email = "colin.tredoux@uct.ac.za", role = c("aut", "cre")),
             person("Tamsyn", "Naylor", email = "tmnaylor@outlook.com", role = "aut"))
-Description: Some description. Write this out in full later. 
+Maintainer: Dr Colin Tredoux <colin.tredoux@uct.ac.za>
+Description: This package contains functions to compute various properties of laboratory or police lineups.  
+            Since the early 1970s eyewitness testimony researchers have recognised the importance of estimating 
+            properties such as lineup bias (is the lineup biased against the suspect, leading to a rate of choosing
+            higher than one would expect by chance?), and lineup size (how many reasonable choices are in fact 
+            available to the witness? A lineup is supposed to consist of a suspect and a number of additional 
+            members, or foils, whom a poor quality witness might mistake for the perpetrator).
+            Lineup measures are descriptive, in the first instance, but since the earliest articles in the 
+            literature researchers have recognised the importance of reasoning inferentially about them. 
+            The measures in this package were originally proposed by Doob & Kirshenbaum (1973), 
+            Wells, Leippe & Ostrom (1979), Malpass (1981), Tredoux (1998, 1999), and Malpass, Tredoux & 
+            McQuiston-Surrett (2007). Among others, this package includes functions for calculating
+            lineup proportion, functional size, various estimates of effective size, diagnosticity ratio, 
+            homogeneity of the diagnosticity ratio, ROC curves for confidence x accuracy data and the degree
+            of similarity of faces in a lineup. 
+            
+            Further information on the particular measures of lineup fairness and their formulae can be found 
+            in Tredoux, C. G. (1998). Statistical inference on measures of lineup fairness. Law and Human Behavior, 
+            22(2), 217-237.
 Depends: R (>= 3.4.3)
 Imports: boot,
          dplyr,
