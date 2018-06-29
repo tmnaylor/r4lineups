@@ -97,7 +97,7 @@ This package contains several sample datasets, listed below:
 2. `line73`   : Lineup data from Doob & Kirshenbaum (1973) 
 3. `mockdata`: Lineup data from a study conducted by Nortje & Tredoux (2012)
 4. `mickwick` : Confidence and accuracy data for lineup choices. Sample data to be passed to ROC function `make_roc()`
-5. Image data for face_sim
+5. Foil images (used to demonstrate `face_sim`) can be found at https://github.com/tmnaylor/malpass_foils 
 
 All sample datasets can be loaded by calling `data(sample_data)`. Further details can be found in the documentation for each dataset. 
 
@@ -387,12 +387,13 @@ absent lineups. We follow the ideas suggested by Mickes, Wixted, and others (see
 
 1. This function requires a dataframe with two columns, which must be named confidence and accuracy (where accuracy = binary accuracy):
 
-```{r, echo = F, results='asis'}
+```{r, echo = F, results='asis', warning=FALSE}
 #Load ROC data: mickwick sample data
 data(mickwick)
 pander::pandoc.table(mickwick[1:8,], "Confacc data")
 ```
-```{r, fig.cap= "ROC Curve for Confidence ~ Accuracy", fig.width= 5}
+
+```{r, fig.cap= "ROC Curve for Confidence ~ Accuracy", fig.width= 5, warning=FALSE}
 #Call roc function
 make_roc(mickwick)
 ```
@@ -403,30 +404,40 @@ make_roc(mickwick)
 
 Following some ideas suggested by Tredoux (2002), this function computes the degree to which each face in a set of faces loads onto a common factor computed from numeric representations of the faces. 
 
-* Without passing any arguments, call `face_sim()`:
+The images used in this example can be found at https://github.com/tmnaylor/malpass_foils, and can be loaded 
+    by calling `image_read` from the `magick` package: 
+```{r}
+foil1 <- magick::image_read('https://raw.githubusercontent.com/tmnaylor/malpass_foils/master/malp1.jpg')
+```
 
-    * A dialog box will appear, through which you may access your OS's file explorer. Navigate to the folder in which the images are stored, select all, and open.
+```{r, fig.align='center'}
+print(foil1)
+```
+
+
+
+
+Without passing any arguments, call `face_sim()`:
+
+  * A dialog box will appear, through which you may access your OS's file explorer. Navigate to the folder in which the images are stored, select all, and open.
 
      _Note:_ Each image should be of one face only. Each face should be standardised to have the same pupil locations in xy space (this will mean repositioning and resizing each face image).
     
-    The images used in this vignette can be found in the data subdirectory for this 
-            package. --- HAVE TO EDIT THIS. INCLUDE AS A .RDA FILE, REMAKE WITH MAGICK
-
 ```{r, echo=FALSE}
-knitr::include_graphics("lineupimage1.jpg")
+knitr::include_graphics("lineupimage1.png")
 ```
 
 * The function will now process the selected images, printing the lineup array to the viewer pane in RStudio, and reporting the loading of each face on the first common factor in a factor analysis:
 
 
 ```{r, echo = FALSE, fig.cap= "Set of faces is printed to viewer pane"}
-knitr::include_graphics("lineupimage2.jpg", dpi = 100)
+knitr::include_graphics("lineupimage2.png", dpi = 100)
 ```
 
 
 
 ```{r, echo = FALSE, fig.cap= "Returns factor loading for each face"}
-knitr::include_graphics("lineupimage3.jpg")
+knitr::include_graphics("lineupimage3.png")
 ```
 
 ---
