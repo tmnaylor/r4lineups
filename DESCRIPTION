@@ -4,7 +4,7 @@ Version: 0.0.1
 Authors@R: c(
             person("Colin", "Tredoux", email = "colin.tredoux@uct.ac.za", role = c("aut", "cre")),
             person("Tamsyn", "Naylor", email = "tmnaylor@outlook.com", role = "aut"))
-Maintainer: Tamsyn Naylor <tmnaylor@outlook.com>
+Maintainer: Dr Colin Tredoux <colin.tredoux@uct.ac.za>
 Description:Since the early 1970s eyewitness testimony researchers have recognised the importance of estimating 
              properties such as lineup bias (is the lineup biased against the suspect, leading to a rate of 
              choosing higher than one would expect by chance?), and lineup size (how many reasonable choices are 
