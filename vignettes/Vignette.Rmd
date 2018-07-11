@@ -373,8 +373,9 @@ This function returns bootstrapped estimates of the homogeneity of k diagnostici
 This function does not require you to specify a list of target positions (this is generated from the data).
 
 Thus, we follow steps 1 and 3, outlined above, before calling `homog_diag_boot()`:
-```{r, warning=FALSE}
-homog_diag_boot(lineup_pres_list, lineup_abs_list, k, R=100)
+
+```{r, echo=FALSE}
+knitr::include_graphics("homog.png", dpi = 120)
 ```
 _Note:_ R = number of bootstrap replications
 
