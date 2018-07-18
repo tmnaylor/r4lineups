@@ -15,7 +15,7 @@ Description: Since the early 1970s eyewitness testimony researchers have recogni
     the literature researchers have recognised the importance of reasoning inferentially 
     about them. This package contains functions to compute various properties of 
     laboratory or police lineups, and is intended for use by researchers in forensic 
-    psychology and/or eyewitness testimony research. Among others, the r4lineupspackage 
+    psychology and/or eyewitness testimony research. Among others, the r4lineups package 
     includes functions for calculating lineup proportion, functional size, various 
     estimates of effective size, diagnosticity ratio, homogeneity of the diagnosticity 
     ratio, ROC curves for confidence x accuracy data and the degree of similarity of 
